@@ -1,0 +1,46 @@
+baseURL = "https://kevinsec.io/"
+languageCode = "en-us"
+title = "KevinSec"
+theme = "PaperMod"
+
+[pagination]
+pagerSize = 10
+
+[params]
+author = "KevinSec"
+description = "Offensive Security Research | Pentesting | Red Teaming"
+defaultTheme = "dark"
+ShowReadingTime = true
+ShowCodeCopyButtons = true
+ShowShareButtons = true
+
+[menu]
+[[menu.main]]
+identifier = "blog"
+name = "Blog"
+url = "/blog/"
+weight = 10
+
+[[menu.main]]
+identifier = "research"
+name = "Research"
+url = "/research/"
+weight = 20
+
+[[menu.main]]
+identifier = "services"
+name = "Services"
+url = "/services/"
+weight = 30
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 40
+
+[[menu.main]]
+identifier = "contact"
+name = "Contact"
+url = "/contact/"
+weight = 50
