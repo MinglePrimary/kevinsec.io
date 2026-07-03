@@ -6,7 +6,7 @@ draft: false
 description: ""
 cover:
   relative: false
-  image: attacker_red.png
+  image: ""
 author: KevinSec
 ShowToc: true
 TocOpen: false
