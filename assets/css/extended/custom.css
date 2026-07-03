@@ -1,0 +1,4 @@
+.article-entry .post-cover img {
+    max-height: 220px;
+    object-fit: cover;
+}

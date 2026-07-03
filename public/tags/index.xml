@@ -6,8 +6,15 @@
     <description>Recent content in Tags on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 20:14:00 +0700</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kevinsec Welcome Blog</title>
+      <link>http://localhost:1313/tags/kevinsec-welcome-blog/</link>
+      <pubDate>Fri, 03 Jul 2026 20:14:00 +0700</pubDate>
+      <guid>http://localhost:1313/tags/kevinsec-welcome-blog/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Blog</title>
       <link>http://localhost:1313/tags/blog/</link>

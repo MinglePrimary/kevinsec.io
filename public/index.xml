@@ -6,8 +6,23 @@
     <description>Recent content on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 20:21:00 +0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Testing Cover Image</title>
+      <link>http://localhost:1313/blog/testing-cover-image/</link>
+      <pubDate>Fri, 03 Jul 2026 20:21:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/testing-cover-image/</guid>
+      <description>&lt;p&gt;Testing image upload.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/blog/testing-cover-image/attacker_red.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Welcome to KevinSec</title>
+      <link>http://localhost:1313/blog/welcome-to-kevinsec/</link>
+      <pubDate>Fri, 03 Jul 2026 20:14:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/welcome-to-kevinsec/</guid>
+      <description>KevinSec Updates</description>
+    </item>
     <item>
       <title>Welcome to KevinSec</title>
       <link>http://localhost:1313/blog/welcome/</link>
@@ -17,7 +32,7 @@
 &lt;p&gt;This blog will focus on:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Web application security&lt;/li&gt;
-&lt;li&gt;Offensive security research&lt;/li&gt;
+&lt;li&gt;Offensive security research, Write-up&lt;/li&gt;
 &lt;li&gt;CVE analysis&lt;/li&gt;
 &lt;li&gt;Payloads and pentest notes&lt;/li&gt;
 &lt;li&gt;Red team methodology&lt;/li&gt;
