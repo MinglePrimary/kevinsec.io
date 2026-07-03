@@ -1,0 +1,13 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $width := .Get "width" | default "700" }}
+{{ $caption := .Get "caption" | default "" }}
+
+<figure class="ks-image" style="text-align:center;">
+  <img src="{{ $src }}"
+       alt="{{ $alt }}"
+       style="width:{{ $width }}px; max-width:100%; height:auto;">
+  {{ with $caption }}
+  <figcaption>{{ . }}</figcaption>
+  {{ end }}
+</figure>
