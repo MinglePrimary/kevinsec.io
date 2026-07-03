@@ -19,10 +19,10 @@ Testing image upload 1.
 
 Testing image upload 2.
 <p align="center">
-  <img src="/images/uploads/KevinSec-logo_Demo.png"
-       alt="KevinSec Logo"
-       width="300">
+  <img src="attacker_red.png"
+       alt="Attacker Logo"
+       width="2200">
 </p>
 
 Testing image upload 3.
-<img src="/images/uploads/KevinSec-logo_Demo.png" alt="KevinSec logo" width="200">
+<img src="/images/uploads/KevinSec-logo_Demo.png" width="220">
