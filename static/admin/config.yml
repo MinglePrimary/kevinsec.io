@@ -1,62 +1,648 @@
-backend:
-  name: github
-  repo: MinglePrimary/kevinsec.io
-  branch: main
+# ============================================================
+# DECАP CMS CONFIGURATION — KEVINSEC.IO
+# File: static/admin/config.yml
+# Date: 3 july 2026
+# ============================================================
 
+backend:
+  # GIỮ NGUYÊN backend đang hoạt động của bạn.
+  # Ví dụ:
+  #
+  # name: github
+  # repo: YOUR_GITHUB_USERNAME/YOUR_REPOSITORY
+  # branch: main
+  #
+  # Hoặc backend Git Gateway hiện tại.
+
+# URL website production
+site_url: "https://kevinsec.io"
+
+# URL hiển thị trong giao diện CMS
+display_url: "https://kevinsec.io"
+
+# Nơi Decap CMS lưu ảnh trong repository
 media_folder: "static/images/uploads"
+
+# Đường dẫn ảnh sau khi Hugo build
 public_folder: "/images/uploads"
 
+# Chuẩn hóa slug về ASCII
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# Giai đoạn đầu nên dùng simple để thao tác dễ hơn.
+# Khi cần review trước khi publish có thể đổi thành:
+# publish_mode: editorial_workflow
+publish_mode: simple
+
+# Tắt preview mặc định của Decap CMS.
+# PaperMod cần custom preview mới mô phỏng chính xác giao diện.
+editor:
+  preview: false
+
 collections:
+
+  # ==========================================================
+  # 1. BLOG COLLECTION
+  # ==========================================================
+
   - name: "blog"
-    label: "Blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+
     folder: "content/blog"
-    path: "{{slug}}/index"
-    media_folder: ""
-    public_folder: ""
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+
+    extension: "md"
+    format: "yaml-frontmatter"
+
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+
+    summary: "{{title}} — {{date}}"
+
+    sortable_fields:
+      fields:
+        - "title"
+        - "date"
+        - "draft"
+
+    view_filters:
+      - label: "Drafts"
+        field: "draft"
+        pattern: true
+
+      - label: "Published"
+        field: "draft"
+        pattern: false
+
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Draft", name: "draft", widget: "boolean", default: false }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Categories", name: "categories", widget: "list", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "Tiêu đề chính của bài viết."
+
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        required: false
+        hint: "Đường dẫn URL. Để trống nếu muốn Decap tự tạo từ title."
+
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        default: ""
+
+      - label: "Last Modified"
+        name: "lastmod"
+        widget: "datetime"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        required: false
+
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: true
+        hint: "Bật để lưu nháp; tắt để Hugo publish bài."
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Mô tả ngắn dùng cho SEO và social preview."
+
+      - label: "Summary"
+        name: "summary"
+        widget: "text"
+        required: false
+        hint: "Đoạn tóm tắt hiển thị tại trang danh sách Blog."
+
+      - label: "Cover Image"
+        name: "cover"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - label: "Image"
+            name: "image"
+            widget: "image"
+            required: false
+
+          - label: "Alternative Text"
+            name: "alt"
+            widget: "string"
+            required: false
+
+          - label: "Caption"
+            name: "caption"
+            widget: "string"
+            required: false
+
+          - label: "Relative Image"
+            name: "relative"
+            widget: "boolean"
+            default: false
+            required: false
+
+      - label: "Categories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - "Cybersecurity"
+          - "Web Security"
+          - "Pentest"
+          - "Red Team"
+          - "Bug Bounty"
+          - "Recon"
+          - "Security Tools"
+          - "Career"
+          - "KevinSec Updates"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        allow_add: true
+        collapsed: false
+        hint: "Ví dụ: burp-suite, xss, sqli, nuclei."
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "KevinSec"
+        required: false
+
+      - label: "Show Table of Contents"
+        name: "ShowToc"
+        widget: "boolean"
+        default: true
+        required: false
+
+      - label: "Table of Contents Open"
+        name: "TocOpen"
+        widget: "boolean"
+        default: false
+        required: false
+
+      - label: "Show Reading Time"
+        name: "ShowReadingTime"
+        widget: "boolean"
+        default: true
+        required: false
+
+      - label: "Show Breadcrumbs"
+        name: "ShowBreadCrumbs"
+        widget: "boolean"
+        default: true
+        required: false
+
+      - label: "Canonical URL"
+        name: "canonicalURL"
+        widget: "string"
+        required: false
+        hint: "Chỉ nhập khi bài được đăng lại từ một URL gốc khác."
+
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+        hint: "Nội dung chính của bài viết."
+
+
+  # ==========================================================
+  # 2. RESEARCH COLLECTION
+  # ==========================================================
+
+  - name: "research"
+    label: "Research Articles"
+    label_singular: "Research Article"
+
+    folder: "content/research"
+    create: true
+
+    extension: "md"
+    format: "yaml-frontmatter"
+
+    slug: "{{slug}}"
+    preview_path: "research/{{slug}}"
+
+    summary: "{{title}} — {{status}} — {{date}}"
+
+    sortable_fields:
+      fields:
+        - "title"
+        - "date"
+        - "status"
+        - "severity"
+        - "draft"
+
+    view_filters:
+      - label: "Draft Research"
+        field: "draft"
+        pattern: true
+
+      - label: "Published Research"
+        field: "draft"
+        pattern: false
+
+      - label: "CVE Research"
+        field: "research_type"
+        pattern: "CVE Research"
+
+      - label: "Vulnerability Research"
+        field: "research_type"
+        pattern: "Vulnerability Research"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        required: false
+
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+
+      - label: "Last Modified"
+        name: "lastmod"
+        widget: "datetime"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        required: false
+
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: true
+
+      - label: "Research Type"
+        name: "research_type"
+        widget: "select"
+        default: "Vulnerability Research"
+        options:
+          - "Vulnerability Research"
+          - "CVE Research"
+          - "Security Advisory"
+          - "Exploit Analysis"
+          - "Technical Deep Dive"
+          - "Tool Research"
+          - "Attack Surface Research"
+          - "Case Study"
+
+      - label: "Research Status"
+        name: "status"
+        widget: "select"
+        default: "In Progress"
+        options:
+          - "Idea"
+          - "In Progress"
+          - "Under Review"
+          - "Vendor Notified"
+          - "Embargoed"
+          - "Published"
+          - "Archived"
+
+      - label: "Severity"
+        name: "severity"
+        widget: "select"
+        required: false
+        options:
+          - "Informational"
+          - "Low"
+          - "Medium"
+          - "High"
+          - "Critical"
+
+      - label: "CVE ID"
+        name: "cve"
+        widget: "string"
+        required: false
+        hint: "Ví dụ: CVE-2026-12345."
+
+      - label: "CVSS Score"
+        name: "cvss"
+        widget: "number"
+        required: false
+        value_type: "float"
+        min: 0
+        max: 10
+        step: 0.1
+
+      - label: "Vendor"
+        name: "vendor"
+        widget: "string"
+        required: false
+
+      - label: "Affected Product"
+        name: "product"
+        widget: "string"
+        required: false
+
+      - label: "Affected Versions"
+        name: "affected_versions"
+        widget: "string"
+        required: false
+
+      - label: "Disclosure Date"
+        name: "disclosure_date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: false
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+
+      - label: "Executive Summary"
+        name: "summary"
+        widget: "text"
+        required: false
+
+      - label: "Cover Image"
+        name: "cover"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - label: "Image"
+            name: "image"
+            widget: "image"
+            required: false
+
+          - label: "Alternative Text"
+            name: "alt"
+            widget: "string"
+            required: false
+
+          - label: "Caption"
+            name: "caption"
+            widget: "string"
+            required: false
+
+      - label: "Categories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - "Research"
+          - "Web Security"
+          - "Network Security"
+          - "API Security"
+          - "Cloud Security"
+          - "Mobile Security"
+          - "Red Team"
+          - "Vulnerability Disclosure"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        allow_add: true
+
+      - label: "References"
+        name: "references"
+        widget: "list"
+        required: false
+        collapsed: true
+        fields:
+          - label: "Reference Title"
+            name: "title"
+            widget: "string"
+
+          - label: "Reference URL"
+            name: "url"
+            widget: "string"
+
+      - label: "Show Table of Contents"
+        name: "ShowToc"
+        widget: "boolean"
+        default: true
+        required: false
+
+      - label: "Open Table of Contents"
+        name: "TocOpen"
+        widget: "boolean"
+        default: true
+        required: false
+
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+
+
+  # ==========================================================
+  # 3. FIXED WEBSITE PAGES
+  # ==========================================================
 
   - name: "pages"
-    label: "Pages"
+    label: "Website Pages"
+
     files:
-      - label: "Home"
-        name: "home"
+
+      # ------------------------------------------------------
+      # HOME PAGE
+      # ------------------------------------------------------
+
+      - name: "home"
+        label: "Home Page"
         file: "content/_index.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
 
-      - label: "Research"
-        name: "research"
-        file: "content/research/_index.md"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            default: "KevinSec"
 
-      - label: "Services"
-        name: "services"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
+
+          - label: "Profile Mode"
+            name: "profileMode"
+            widget: "object"
+            collapsed: false
+
+            fields:
+              - label: "Enabled"
+                name: "enabled"
+                widget: "boolean"
+                default: true
+
+              - label: "Profile Title"
+                name: "title"
+                widget: "string"
+                default: "KevinSec"
+
+              - label: "Subtitle"
+                name: "subtitle"
+                widget: "text"
+                required: false
+
+              - label: "Profile Image"
+                name: "imageUrl"
+                widget: "image"
+                required: false
+
+              - label: "Image Width"
+                name: "imageWidth"
+                widget: "number"
+                value_type: "int"
+                default: 160
+                required: false
+
+              - label: "Image Height"
+                name: "imageHeight"
+                widget: "number"
+                value_type: "int"
+                default: 160
+                required: false
+
+              - label: "Profile Buttons"
+                name: "buttons"
+                widget: "list"
+                required: false
+                fields:
+                  - label: "Button Name"
+                    name: "name"
+                    widget: "string"
+
+                  - label: "Button URL"
+                    name: "url"
+                    widget: "string"
+
+          - label: "Home Content"
+            name: "body"
+            widget: "markdown"
+            required: false
+
+
+      # ------------------------------------------------------
+      # SERVICES PAGE
+      # ------------------------------------------------------
+
+      - name: "services"
+        label: "Services Page"
         file: "content/services/_index.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
 
-      - label: "About"
-        name: "about"
-        file: "content/about.md"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            default: "Security Services"
 
-      - label: "Contact"
-        name: "contact"
-        file: "content/contact.md"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
+
+          - label: "Show Table of Contents"
+            name: "ShowToc"
+            widget: "boolean"
+            default: false
+            required: false
+
+          - label: "Show Breadcrumbs"
+            name: "ShowBreadCrumbs"
+            widget: "boolean"
+            default: true
+            required: false
+
+          - label: "Content"
+            name: "body"
+            widget: "markdown"
+
+
+      # ------------------------------------------------------
+      # ABOUT PAGE
+      # ------------------------------------------------------
+
+      - name: "about"
+        label: "About Page"
+        file: "content/about/index.md"
+
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            default: "About KevinSec"
+
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
+
+          - label: "Show Table of Contents"
+            name: "ShowToc"
+            widget: "boolean"
+            default: true
+            required: false
+
+          - label: "Show Breadcrumbs"
+            name: "ShowBreadCrumbs"
+            widget: "boolean"
+            default: true
+            required: false
+
+          - label: "Content"
+            name: "body"
+            widget: "markdown"
+
+
+      # ------------------------------------------------------
+      # CONTACT PAGE
+      # ------------------------------------------------------
+
+      - name: "contact"
+        label: "Contact Page"
+        file: "content/contact/index.md"
+
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            default: "Contact KevinSec"
+
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
+
+          - label: "Email"
+            name: "contact_email"
+            widget: "string"
+            required: false
+
+          - label: "GitHub URL"
+            name: "github_url"
+            widget: "string"
+            required: false
+
+          - label: "LinkedIn URL"
+            name: "linkedin_url"
+            widget: "string"
+            required: false
+
+          - label: "Content"
+            name: "body"
+            widget: "markdown"

@@ -1,5 +1,22 @@
 ---
-title: "Services"
+title: "Security Services"
+description: "Professional offensive security services for modern organizations."
+ShowToc: false
+ShowBreadCrumbs: true
 ---
 
-KevinSec provides web application pentesting, API security assessment, red team simulation, and security training.
+## Web Application Penetration Testing
+
+Assessment of web applications against common and advanced attack vectors.
+
+## API Security Testing
+
+Security testing for REST APIs, GraphQL and application integrations.
+
+## Attack Surface Assessment
+
+Discovery and prioritization of internet-facing assets, services and risks.
+
+## Security Training
+
+Practical cybersecurity and web penetration testing training.

@@ -24,18 +24,18 @@
 &lt;/ul&gt;</description>
     </item>
     <item>
-      <title>About</title>
+      <title>About KevinSec</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;KevinSec is a cybersecurity research and service brand focused on practical offensive security.&lt;/p&gt;</description>
+      <description>Offensive security research and professional cybersecurity services.</description>
     </item>
     <item>
-      <title>Contact</title>
+      <title>Contact KevinSec</title>
       <link>http://localhost:1313/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/contact/</guid>
-      <description>&lt;p&gt;For security assessment, collaboration, or research inquiries, contact KevinSec.&lt;/p&gt;</description>
+      <description>Contact KevinSec for cybersecurity services and research collaboration.</description>
     </item>
   </channel>
 </rss>
