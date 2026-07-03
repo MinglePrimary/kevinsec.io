@@ -18,11 +18,7 @@ Testing image upload 1.
 ![](attacker_red.png)
 
 Testing image upload 2.
-<p align="center">
-  <img src="attacker_red.png"
-       alt="Attacker Logo"
-       width="2200">
-</p>
+<img src="attacker_red.png" alt="Attacker Logo" width="220">
 
 Testing image upload 3.
 <img src="/images/uploads/KevinSec-logo_Demo.png" width="220">
