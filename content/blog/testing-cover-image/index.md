@@ -13,6 +13,15 @@ TocOpen: false
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ---
-Testing image upload.
+Testing image upload 1.
 
 ![](attacker_red.png)
+
+Testing image upload 2.
+<p align="center">
+  <img src="static/images/uploads/KevinSec-logo_Demo.png"
+       alt="KevinSec Logo"
+       width="300">
+</p>
+ 
+<img src="static/images/uploads/KevinSec-logo_Demo.png" alt="KevinSec logo" width="200">
