@@ -13,8 +13,38 @@
       <link>http://localhost:1313/blog/testing-cover-image/</link>
       <pubDate>Fri, 03 Jul 2026 20:21:00 +0700</pubDate>
       <guid>http://localhost:1313/blog/testing-cover-image/</guid>
-      <description>&lt;p&gt;Testing image upload.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/blog/testing-cover-image/attacker_red.png&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Testing image upload 1.
+&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/blog/testing-cover-image/attacker_red.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Testing image upload 2.
+&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;Testing image upload 3.
+
+
+
+
+
+&lt;figure class=&#34;ks-image&#34; style=&#34;text-align:center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/uploads/KevinSec-logo_Demo.png&#34;
+       alt=&#34;Testing banner&#34;
+       style=&#34;width:220px; max-width:100%; height:auto;&#34;&gt;
+  
+  &lt;figcaption&gt;Demo image upload&lt;/figcaption&gt;
+  
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Testing image upload 4.
+
+
+
+
+
+&lt;figure class=&#34;ks-image&#34; style=&#34;text-align:center;&#34;&gt;
+  &lt;img src=&#34;attacker_red.png&#34;
+       alt=&#34;Testing banner&#34;
+       style=&#34;width:220px; max-width:100%; height:auto;&#34;&gt;
+  
+  &lt;figcaption&gt;Demo image upload&lt;/figcaption&gt;
+  
+&lt;/figure&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Welcome to KevinSec</title>
