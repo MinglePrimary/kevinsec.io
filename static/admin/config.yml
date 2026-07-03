@@ -1,51 +1,29 @@
-# ============================================================
-# DECАP CMS CONFIGURATION — KEVINSEC.IO
-# File: static/admin/config.yml
-# Date: 3 july 2026
-# ============================================================
-
 backend:
-  # GIỮ NGUYÊN backend đang hoạt động của bạn.
-  # Ví dụ:
-  #
-  # name: github
-  # repo: YOUR_GITHUB_USERNAME/YOUR_REPOSITORY
-  # branch: main
-  #
-  # Hoặc backend Git Gateway hiện tại.
+  name: github
+  repo: MinglePrimary/kevinsec.io
+  branch: main
 
-# URL website production
 site_url: "https://kevinsec.io"
-
-# URL hiển thị trong giao diện CMS
 display_url: "https://kevinsec.io"
 
-# Nơi Decap CMS lưu ảnh trong repository
 media_folder: "static/images/uploads"
-
-# Đường dẫn ảnh sau khi Hugo build
 public_folder: "/images/uploads"
 
-# Chuẩn hóa slug về ASCII
 slug:
   encoding: "ascii"
   clean_accents: true
   sanitize_replacement: "-"
 
-# Giai đoạn đầu nên dùng simple để thao tác dễ hơn.
-# Khi cần review trước khi publish có thể đổi thành:
-# publish_mode: editorial_workflow
 publish_mode: simple
 
-# Tắt preview mặc định của Decap CMS.
-# PaperMod cần custom preview mới mô phỏng chính xác giao diện.
 editor:
   preview: false
 
 collections:
 
   # ==========================================================
-  # 1. BLOG COLLECTION
+  # BLOG POSTS
+  # Lưu tại: content/blog/*.md
   # ==========================================================
 
   - name: "blog"
@@ -60,23 +38,12 @@ collections:
 
     slug: "{{slug}}"
     preview_path: "blog/{{slug}}"
-
     summary: "{{title}} — {{date}}"
 
     sortable_fields:
-      fields:
-        - "title"
-        - "date"
-        - "draft"
-
-    view_filters:
-      - label: "Drafts"
-        field: "draft"
-        pattern: true
-
-      - label: "Published"
-        field: "draft"
-        pattern: false
+      - "title"
+      - "date"
+      - "draft"
 
     fields:
       - label: "Title"
@@ -88,7 +55,7 @@ collections:
         name: "slug"
         widget: "string"
         required: false
-        hint: "Đường dẫn URL. Để trống nếu muốn Decap tự tạo từ title."
+        hint: "Đường dẫn URL, ví dụ: web-pentest-checklist."
 
       - label: "Publish Date"
         name: "date"
@@ -96,7 +63,6 @@ collections:
         format: "YYYY-MM-DDTHH:mm:ssZ"
         date_format: "YYYY-MM-DD"
         time_format: "HH:mm"
-        default: ""
 
       - label: "Last Modified"
         name: "lastmod"
@@ -110,7 +76,7 @@ collections:
         name: "draft"
         widget: "boolean"
         default: true
-        hint: "Bật để lưu nháp; tắt để Hugo publish bài."
+        hint: "Bật để lưu nháp, tắt để xuất bản."
 
       - label: "Description"
         name: "description"
@@ -122,13 +88,14 @@ collections:
         name: "summary"
         widget: "text"
         required: false
-        hint: "Đoạn tóm tắt hiển thị tại trang danh sách Blog."
+        hint: "Tóm tắt hiển thị tại trang danh sách bài viết."
 
       - label: "Cover Image"
         name: "cover"
         widget: "object"
         required: false
         collapsed: true
+
         fields:
           - label: "Image"
             name: "image"
@@ -156,6 +123,7 @@ collections:
         widget: "select"
         multiple: true
         required: false
+
         options:
           - "Cybersecurity"
           - "Web Security"
@@ -172,8 +140,7 @@ collections:
         widget: "list"
         required: false
         allow_add: true
-        collapsed: false
-        hint: "Ví dụ: burp-suite, xss, sqli, nuclei."
+        hint: "Ví dụ: xss, sql-injection, burp-suite."
 
       - label: "Author"
         name: "author"
@@ -187,7 +154,7 @@ collections:
         default: true
         required: false
 
-      - label: "Table of Contents Open"
+      - label: "Open Table of Contents"
         name: "TocOpen"
         widget: "boolean"
         default: false
@@ -209,16 +176,16 @@ collections:
         name: "canonicalURL"
         widget: "string"
         required: false
-        hint: "Chỉ nhập khi bài được đăng lại từ một URL gốc khác."
+        hint: "Chỉ nhập khi bài viết có URL gốc ở website khác."
 
       - label: "Content"
         name: "body"
         widget: "markdown"
-        hint: "Nội dung chính của bài viết."
 
 
   # ==========================================================
-  # 2. RESEARCH COLLECTION
+  # RESEARCH ARTICLES
+  # Lưu tại: content/research/*.md
   # ==========================================================
 
   - name: "research"
@@ -233,33 +200,14 @@ collections:
 
     slug: "{{slug}}"
     preview_path: "research/{{slug}}"
-
     summary: "{{title}} — {{status}} — {{date}}"
 
     sortable_fields:
-      fields:
-        - "title"
-        - "date"
-        - "status"
-        - "severity"
-        - "draft"
-
-    view_filters:
-      - label: "Draft Research"
-        field: "draft"
-        pattern: true
-
-      - label: "Published Research"
-        field: "draft"
-        pattern: false
-
-      - label: "CVE Research"
-        field: "research_type"
-        pattern: "CVE Research"
-
-      - label: "Vulnerability Research"
-        field: "research_type"
-        pattern: "Vulnerability Research"
+      - "title"
+      - "date"
+      - "status"
+      - "severity"
+      - "draft"
 
     fields:
       - label: "Title"
@@ -270,6 +218,7 @@ collections:
         name: "slug"
         widget: "string"
         required: false
+        hint: "Đường dẫn URL của bài research."
 
       - label: "Publish Date"
         name: "date"
@@ -295,6 +244,7 @@ collections:
         name: "research_type"
         widget: "select"
         default: "Vulnerability Research"
+
         options:
           - "Vulnerability Research"
           - "CVE Research"
@@ -309,6 +259,7 @@ collections:
         name: "status"
         widget: "select"
         default: "In Progress"
+
         options:
           - "Idea"
           - "In Progress"
@@ -322,6 +273,7 @@ collections:
         name: "severity"
         widget: "select"
         required: false
+
         options:
           - "Informational"
           - "Low"
@@ -382,6 +334,7 @@ collections:
         widget: "object"
         required: false
         collapsed: true
+
         fields:
           - label: "Image"
             name: "image"
@@ -398,11 +351,18 @@ collections:
             widget: "string"
             required: false
 
+          - label: "Relative Image"
+            name: "relative"
+            widget: "boolean"
+            default: false
+            required: false
+
       - label: "Categories"
         name: "categories"
         widget: "select"
         multiple: true
         required: false
+
         options:
           - "Research"
           - "Web Security"
@@ -424,6 +384,7 @@ collections:
         widget: "list"
         required: false
         collapsed: true
+
         fields:
           - label: "Reference Title"
             name: "title"
@@ -445,13 +406,26 @@ collections:
         default: true
         required: false
 
+      - label: "Show Reading Time"
+        name: "ShowReadingTime"
+        widget: "boolean"
+        default: true
+        required: false
+
+      - label: "Show Breadcrumbs"
+        name: "ShowBreadCrumbs"
+        widget: "boolean"
+        default: true
+        required: false
+
       - label: "Content"
         name: "body"
         widget: "markdown"
 
 
   # ==========================================================
-  # 3. FIXED WEBSITE PAGES
+  # WEBSITE PAGES
+  # Các file bên dưới phải tồn tại trong repository
   # ==========================================================
 
   - name: "pages"
@@ -461,6 +435,7 @@ collections:
 
       # ------------------------------------------------------
       # HOME PAGE
+      # File: content/_index.md
       # ------------------------------------------------------
 
       - name: "home"
@@ -522,6 +497,8 @@ collections:
                 name: "buttons"
                 widget: "list"
                 required: false
+                collapsed: true
+
                 fields:
                   - label: "Button Name"
                     name: "name"
@@ -539,6 +516,7 @@ collections:
 
       # ------------------------------------------------------
       # SERVICES PAGE
+      # File: content/services/_index.md
       # ------------------------------------------------------
 
       - name: "services"
@@ -575,6 +553,7 @@ collections:
 
       # ------------------------------------------------------
       # ABOUT PAGE
+      # File: content/about/index.md
       # ------------------------------------------------------
 
       - name: "about"
@@ -611,6 +590,7 @@ collections:
 
       # ------------------------------------------------------
       # CONTACT PAGE
+      # File: content/contact/index.md
       # ------------------------------------------------------
 
       - name: "contact"
