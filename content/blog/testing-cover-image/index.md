@@ -22,3 +22,6 @@ Testing image upload 2.
 
 Testing image upload 3.
 <img src="/images/uploads/KevinSec-logo_Demo.png" width="220">
+
+Testing image upload 3.
+{{< image src="attacker_red.png" width="120" caption="Attack Flow" >}}
