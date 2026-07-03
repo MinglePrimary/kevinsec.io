@@ -23,7 +23,7 @@ collections:
 
   # ==========================================================
   # BLOG POSTS
-  # Lưu tại: content/blog/*.md
+  # Lưu theo Hugo Page Bundle: content/blog/<slug>/index.md
   # ==========================================================
 
   - name: "blog"
@@ -32,6 +32,12 @@ collections:
 
     folder: "content/blog"
     create: true
+    path: "{{slug}}/index"
+
+    # Ảnh upload trong editor được lưu cùng thư mục page bundle.
+    # Ví dụ: content/blog/my-post/cover.png
+    media_folder: ""
+    public_folder: ""
 
     extension: "md"
     format: "yaml-frontmatter"
@@ -115,7 +121,7 @@ collections:
           - label: "Relative Image"
             name: "relative"
             widget: "boolean"
-            default: false
+            default: true
             required: false
 
       - label: "Categories"
@@ -185,7 +191,7 @@ collections:
 
   # ==========================================================
   # RESEARCH ARTICLES
-  # Lưu tại: content/research/*.md
+  # Lưu theo Hugo Page Bundle: content/research/<slug>/index.md
   # ==========================================================
 
   - name: "research"
@@ -194,6 +200,12 @@ collections:
 
     folder: "content/research"
     create: true
+    path: "{{slug}}/index"
+
+    # Ảnh, PoC và tài nguyên upload được lưu cùng thư mục page bundle.
+    # Ví dụ: content/research/cve-example/cover.png
+    media_folder: ""
+    public_folder: ""
 
     extension: "md"
     format: "yaml-frontmatter"
@@ -354,7 +366,7 @@ collections:
           - label: "Relative Image"
             name: "relative"
             widget: "boolean"
-            default: false
+            default: true
             required: false
 
       - label: "Categories"
