@@ -3,15 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2026-07-03T20:21:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-07-03T20:21:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/testing-cover-image/</loc>
-    <lastmod>2026-07-03T20:21:00+07:00</lastmod>
+    <lastmod>2026-07-03T20:14:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2026-07-03T20:14:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2026-07-03T20:14:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/kevinsec-updates/</loc>
@@ -25,21 +22,6 @@
   </url><url>
     <loc>http://localhost:1313/blog/welcome-to-kevinsec/</loc>
     <lastmod>2026-07-03T20:14:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/blog/</loc>
-    <lastmod>2026-06-27T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/general/</loc>
-    <lastmod>2026-06-27T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/kevinsec/</loc>
-    <lastmod>2026-06-27T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/security/</loc>
-    <lastmod>2026-06-27T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/welcome/</loc>
-    <lastmod>2026-06-27T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
   </url><url>

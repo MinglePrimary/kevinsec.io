@@ -6,67 +6,14 @@
     <description>Recent content on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 20:21:00 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 20:14:00 +0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Testing Cover Image</title>
-      <link>http://localhost:1313/blog/testing-cover-image/</link>
-      <pubDate>Fri, 03 Jul 2026 20:21:00 +0700</pubDate>
-      <guid>http://localhost:1313/blog/testing-cover-image/</guid>
-      <description>&lt;p&gt;Testing image upload 1.
-&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/blog/testing-cover-image/attacker_red.png&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Testing image upload 2.
-&lt;img src=&#34;attacker_red.png&#34; alt=&#34;Attacker Logo&#34; width=&#34;220&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Testing image upload 3.
-
-
-
-
-
-&lt;figure class=&#34;ks-image&#34; style=&#34;text-align:center; margin:30px 0;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/images/uploads/KevinSec-logo_Demo.png&#34;
-       alt=&#34;Testing banner&#34;
-       style=&#34;width:220px; max-width:100%; height:auto;&#34;&gt;
-  
-  &lt;figcaption&gt;Demo image upload&lt;/figcaption&gt;
-  
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;Testing image upload 4.
-
-
-
-
-
-&lt;figure class=&#34;ks-image&#34; style=&#34;text-align:center; margin:30px 0;&#34;&gt;
-  &lt;img src=&#34;attacker_red.png&#34;
-       alt=&#34;Testing banner&#34;
-       style=&#34;width:220px; max-width:100%; height:auto;&#34;&gt;
-  
-  &lt;figcaption&gt;Demo image upload&lt;/figcaption&gt;
-  
-&lt;/figure&gt;&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Welcome to KevinSec</title>
       <link>http://localhost:1313/blog/welcome-to-kevinsec/</link>
       <pubDate>Fri, 03 Jul 2026 20:14:00 +0700</pubDate>
       <guid>http://localhost:1313/blog/welcome-to-kevinsec/</guid>
       <description>KevinSec Updates</description>
-    </item>
-    <item>
-      <title>Welcome to KevinSec</title>
-      <link>http://localhost:1313/blog/welcome/</link>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/blog/welcome/</guid>
-      <description>&lt;p&gt;Welcome to KevinSec.&lt;/p&gt;
-&lt;p&gt;This blog will focus on:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Web application security&lt;/li&gt;
-&lt;li&gt;Offensive security research, Write-up&lt;/li&gt;
-&lt;li&gt;CVE analysis&lt;/li&gt;
-&lt;li&gt;Payloads and pentest notes&lt;/li&gt;
-&lt;li&gt;Red team methodology&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     <item>
       <title>About KevinSec</title>

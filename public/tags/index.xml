@@ -15,26 +15,5 @@
       <guid>http://localhost:1313/tags/kevinsec-welcome-blog/</guid>
       <description></description>
     </item>
-    <item>
-      <title>Blog</title>
-      <link>http://localhost:1313/tags/blog/</link>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/blog/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Kevinsec</title>
-      <link>http://localhost:1313/tags/kevinsec/</link>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/kevinsec/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>http://localhost:1313/tags/security/</link>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/security/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>

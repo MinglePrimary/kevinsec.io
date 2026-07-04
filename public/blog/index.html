@@ -106,20 +106,6 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Testing Cover Image
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Testing image upload 1. Testing image upload 2. Testing image upload 3. Demo image uploadTesting image upload 4. Demo image upload</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-07-03 20:21:00 +0700 +07'>July 3, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
-  <a class="entry-link" aria-label="post link to Testing Cover Image" href="http://localhost:1313/blog/testing-cover-image/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
     <h2 class="entry-hint-parent">Welcome to KevinSec
     </h2>
   </header>
@@ -131,22 +117,6 @@ Mission Offensive Security Research Pentest Education Roadmap Web Security Red T
 
 <span title='2026-07-03 20:14:00 +0700 +07'>July 3, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
   <a class="entry-link" aria-label="post link to Welcome to KevinSec" href="http://localhost:1313/blog/welcome-to-kevinsec/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Welcome to KevinSec
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Welcome to KevinSec.
-This blog will focus on:
-Web application security Offensive security research, Write-up CVE analysis Payloads and pentest notes Red team methodology </p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-06-27 00:00:00 +0700 +07'>June 27, 2026</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
-  <a class="entry-link" aria-label="post link to Welcome to KevinSec" href="http://localhost:1313/blog/welcome/"></a>
 </article>
     </main>
     <footer class="footer ks-footer">
@@ -172,6 +142,18 @@ Web application security Offensive security research, Write-up CVE analysis Payl
       <a href="/contact/">Contact</a>
     </div>
   </div>
-</footer></body>
+</footer>
+
+<script>
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    if (document.body.className.includes("dark")) {
+      document.body.classList.remove("dark");
+      localStorage.setItem("pref-theme", "light");
+    } else {
+      document.body.classList.add("dark");
+      localStorage.setItem("pref-theme", "dark");
+    }
+  });
+</script></body>
 
 </html>
