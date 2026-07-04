@@ -183,8 +183,55 @@
   text-align: center;
 }
 
-@media (max-width: 900px) {
-  .ks-focus-grid {
-    grid-template-columns: 1fr;
+/* KevinSec Home Responsive Layout */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ks-home [class*="grid"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ks-home {
+    max-width: 100%;
+    padding: 0 18px;
+  }
+
+  .ks-home [class*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ks-card,
+  .ks-post-card,
+  .ks-service-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px;
+  }
+
+  .ks-card h3,
+  .ks-post-card h3,
+  .ks-service-card h3 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+
+  .ks-card p,
+  .ks-post-card p,
+  .ks-service-card p {
+    font-size: 1rem;
+    line-height: 1.65;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+
+  .ks-section {
+    margin: 56px 0;
+  }
+
+  .ks-section-header {
+    margin-bottom: 28px;
   }
 }
