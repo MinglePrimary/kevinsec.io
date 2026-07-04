@@ -16,14 +16,14 @@
       <description>&lt;p&gt;Testing image upload 1.
 &lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/blog/testing-cover-image/attacker_red.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Testing image upload 2.
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;img src=&#34;attacker_red.png&#34; alt=&#34;Attacker Logo&#34; width=&#34;220&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Testing image upload 3.
 
 
 
 
 
-&lt;figure class=&#34;ks-image&#34; style=&#34;text-align:center;&#34;&gt;
+&lt;figure class=&#34;ks-image&#34; style=&#34;text-align:center; margin:30px 0;&#34;&gt;
   &lt;img src=&#34;http://localhost:1313/images/uploads/KevinSec-logo_Demo.png&#34;
        alt=&#34;Testing banner&#34;
        style=&#34;width:220px; max-width:100%; height:auto;&#34;&gt;
@@ -37,7 +37,7 @@
 
 
 
-&lt;figure class=&#34;ks-image&#34; style=&#34;text-align:center;&#34;&gt;
+&lt;figure class=&#34;ks-image&#34; style=&#34;text-align:center; margin:30px 0;&#34;&gt;
   &lt;img src=&#34;attacker_red.png&#34;
        alt=&#34;Testing banner&#34;
        style=&#34;width:220px; max-width:100%; height:auto;&#34;&gt;

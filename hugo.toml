@@ -44,3 +44,8 @@ identifier = "contact"
 name = "Contact"
 url = "/contact/"
 weight = 50
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

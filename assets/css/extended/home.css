@@ -1,0 +1,146 @@
+/* KevinSec Home Page */
+
+.ks-home {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.ks-home-hero {
+  text-align: center;
+  padding: 3rem 0 4rem;
+}
+
+.ks-home-hero__logo {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.ks-home-hero__logo img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.ks-home-hero__eyebrow {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 0.75rem;
+}
+
+.ks-home-hero__title {
+  max-width: 900px;
+  margin: 0 auto 1rem;
+  line-height: 1.15;
+}
+
+.ks-home-hero__description {
+  max-width: 820px;
+  margin: 0.75rem auto;
+}
+
+.ks-home-section {
+  margin: 4rem 0;
+}
+
+.ks-home-section__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ks-home-section__header p {
+  max-width: 760px;
+  margin: 0.5rem auto 0;
+}
+
+.ks-card-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.ks-card-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ks-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--entry);
+}
+
+.ks-card h3 {
+  margin-top: 0;
+}
+
+.ks-topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.ks-topic-list span {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--entry);
+  font-size: 0.95rem;
+}
+
+.ks-home-section__actions,
+.ks-home-hero__actions,
+.ks-home-cta__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.ks-button {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.ks-button--primary {
+  background: var(--primary);
+  color: var(--theme);
+  border-color: var(--primary);
+}
+
+.ks-button--secondary {
+  background: var(--entry);
+  color: var(--primary);
+}
+
+.ks-home-cta {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--entry);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .ks-card-grid--three {
+    grid-template-columns: 1fr;
+  }
+
+  .ks-home {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .ks-home-hero {
+    padding-top: 2rem;
+  }
+}
