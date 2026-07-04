@@ -1,9 +1,57 @@
 /* KevinSec Home Page */
 
 .ks-home {
-  max-width: 1080px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 2rem 1rem 4rem;
+  padding: 0 24px;
+}
+
+.ks-section {
+  margin: 72px 0;
+}
+
+.ks-section-header {
+  max-width: 860px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+.ks-section-header h2 {
+  margin-bottom: 14px;
+}
+
+.ks-section-header p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.ks-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.ks-card {
+  padding: 28px;
+  border-radius: 16px;
+}
+
+.ks-card h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.ks-card p {
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.ks-card a {
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .ks-home-hero {
@@ -130,17 +178,16 @@
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .ks-card-grid--three {
+@media (max-width: 900px) {
+  .ks-focus-grid {
     grid-template-columns: 1fr;
   }
 
   .ks-home {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 18px;
   }
 
-  .ks-home-hero {
-    padding-top: 2rem;
+  .ks-card {
+    padding: 24px;
   }
 }
