@@ -44,9 +44,14 @@
 }
 
 .ks-card p {
+  margin-bottom: 18px;
   font-size: 1rem;
   line-height: 1.65;
-  margin-bottom: 18px;
+}
+
+.ks-card-link {
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .ks-card a {
@@ -178,17 +183,8 @@
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .ks-card-grid--three {
+@media (max-width: 900px) {
+  .ks-focus-grid {
     grid-template-columns: 1fr;
-  }
-
-  .ks-home {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .ks-home-hero {
-    padding-top: 2rem;
   }
 }
