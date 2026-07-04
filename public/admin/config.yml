@@ -124,6 +124,24 @@ collections:
             default: true
             required: false
 
+          - label: "Hidden"
+            name: "hidden"
+            widget: "boolean"
+            default: false
+            required: false
+
+          - label: "Hidden In List"
+            name: "hiddenInList"
+            widget: "boolean"
+            default: false
+            required: false
+
+          - label: "Hidden In Single"
+            name: "hiddenInSingle"
+            widget: "boolean"
+            default: false
+            required: false
+
       - label: "Categories"
         name: "categories"
         widget: "select"
@@ -140,6 +158,8 @@ collections:
           - "Security Tools"
           - "Career"
           - "KevinSec Updates"
+        default:
+          - "Cybersecurity"
 
       - label: "Tags"
         name: "tags"
@@ -369,6 +389,24 @@ collections:
             default: true
             required: false
 
+          - label: "Hidden"
+            name: "hidden"
+            widget: "boolean"
+            default: false
+            required: false
+
+          - label: "Hidden In List"
+            name: "hiddenInList"
+            widget: "boolean"
+            default: false
+            required: false
+
+          - label: "Hidden In Single"
+            name: "hiddenInSingle"
+            widget: "boolean"
+            default: false
+            required: false
+
       - label: "Categories"
         name: "categories"
         widget: "select"
@@ -384,6 +422,8 @@ collections:
           - "Mobile Security"
           - "Red Team"
           - "Vulnerability Disclosure"
+        default:
+          - "Research"
 
       - label: "Tags"
         name: "tags"
@@ -429,6 +469,12 @@ collections:
         widget: "boolean"
         default: true
         required: false
+
+      - label: "Canonical URL"
+        name: "canonicalURL"
+        widget: "string"
+        required: false
+        hint: "Chỉ nhập khi bài research có URL gốc ở website khác."
 
       - label: "Content"
         name: "body"
