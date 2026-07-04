@@ -178,16 +178,17 @@
   text-align: center;
 }
 
-@media (max-width: 900px) {
-  .ks-focus-grid {
+@media (max-width: 768px) {
+  .ks-card-grid--three {
     grid-template-columns: 1fr;
   }
 
   .ks-home {
-    padding: 0 18px;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
-  .ks-card {
-    padding: 24px;
+  .ks-home-hero {
+    padding-top: 2rem;
   }
 }
