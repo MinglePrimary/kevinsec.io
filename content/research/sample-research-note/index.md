@@ -1,28 +1,30 @@
 ---
-title: "Research Note Template for Vulnerability Analysis"
-date: 2026-07-05T10:00:00+07:00
 draft: false
-description: "A sample research note template for vulnerability analysis on KevinSec."
-summary: "A structured template for vulnerability analysis and technical research notes."
+ShowCodeCopyButtons: true
+title: Research Note Template for Vulnerability Analysis
+date: 2026-07-05T15:07:00+07:00
+lastmod: 2026-07-05T15:07:00+07:00
+research_type: Case Study
+status: Archived
+description: A sample research note template for vulnerability analysis on KevinSec.
+summary: A structured template for vulnerability analysis and technical research notes.
+categories:
+  - research
+ShowToc: true
+TocOpen: true
+ShowPostNavLinks: true
+cover:
+  image: attacker_red.png
+  alt: KevinSec research cover
+  caption: ""
+  relative: true
 tags:
   - vulnerability-research
   - web-security
   - methodology
-categories:
-  - research
-cover:
-  image: "cover.png"
-  alt: "KevinSec research cover"
-  caption: ""
-  relative: true
-ShowToc: true
-TocOpen: true
 ShowReadingTime: true
 ShowBreadCrumbs: true
-ShowPostNavLinks: true
-ShowCodeCopyButtons: true
 ---
-
 ## Abstract
 
 This is a sample Research note for KevinSec.
@@ -35,10 +37,10 @@ Every research note should begin with enough context for the reader to understan
 
 For vulnerability analysis, this section should explain:
 
-- The affected component.
-- The trust boundary.
-- The relevant user-controlled or untrusted data.
-- The expected security behavior.
+* The affected component.
+* The trust boundary.
+* The relevant user-controlled or untrusted data.
+* The expected security behavior.
 
 ## Root Cause
 
@@ -46,11 +48,11 @@ Explain why the issue exists.
 
 For example:
 
-- Missing input validation.
-- Broken access control.
-- Unsafe deserialization.
-- Insecure default configuration.
-- Incorrect trust assumption.
+* Missing input validation.
+* Broken access control.
+* Unsafe deserialization.
+* Insecure default configuration.
+* Incorrect trust assumption.
 
 ## Methodology
 
@@ -58,11 +60,11 @@ Document the approach used to analyze or reproduce the issue.
 
 A good methodology section should include:
 
-- Test environment.
-- Tools used.
-- Steps performed.
-- Assumptions.
-- Limitations.
+* Test environment.
+* Tools used.
+* Steps performed.
+* Assumptions.
+* Limitations.
 
 ## Findings
 
@@ -101,6 +103,7 @@ Disable unsafe features.
 Patch the affected component.
 Add monitoring and detection rules.
 ```
+
 # Conclusion
 
 Summarize the finding and the practical lesson learned.
