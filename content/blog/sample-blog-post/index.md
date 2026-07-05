@@ -1,26 +1,27 @@
 ---
-title: "How I Structure Practical Security Notes"
-date: 2026-07-05T10:00:00+07:00
 draft: false
-description: "A short note on how I structure practical security writing for KevinSec."
-summary: "A short note on how I structure practical security writing for KevinSec."
+ShowCodeCopyButtons: true
+title: How I Structure Practical Security Notes
+date: 2026-07-05T14:54:00+07:00
+lastmod: 2026-07-05T14:54:00+07:00
+description: A short note on how I structure practical security writing for KevinSec.
+summary: A short note on how I structure practical security writing for KevinSec.
+categories:
+  - blog
+ShowToc: true
+TocOpen: false
+ShowPostNavLinks: true
+cover:
+  image: screenshot-2026-06-29-101758.png
+  alt: KevinSec blog cover
+  caption: ""
+  relative: true
 tags:
   - writing
   - offensive-security
   - kevinsec
-categories:
-  - blog
-cover:
-  image: "cover.png"
-  alt: "KevinSec blog cover"
-  caption: ""
-  relative: true
-ShowToc: true
-TocOpen: false
 ShowReadingTime: true
 ShowBreadCrumbs: true
-ShowPostNavLinks: true
-ShowCodeCopyButtons: true
 ---
 
 ## Introduction
