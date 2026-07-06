@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main class="not-found-page">
+  <section class="not-found-card">
+    <p class="not-found-code">404</p>
+
+    <h1 class="not-found-title">Oops! Page not found</h1>
+
+    <p class="not-found-description">
+      The page you are looking for does not exist, has been moved, or is temporarily unavailable.
+    </p>
+
+    <div class="not-found-actions">
+      <a href="{{ "/" | relURL }}" class="not-found-button">
+        Back to Home
+      </a>
+    </div>
+  </section>
+</main>
+{{ end }}

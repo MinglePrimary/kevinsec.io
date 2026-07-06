@@ -2,6 +2,7 @@ baseURL = "https://kevinsec.io/"
 languageCode = "en-us"
 title = "KevinSec"
 theme = "PaperMod"
+enableRobotsTXT = true
 
 [pagination]
 pagerSize = 10
@@ -10,12 +11,21 @@ pagerSize = 10
 home = ["HTML", "RSS", "JSON"]
 
 [params]
+env = "production"
+title = "KevinSec"
+description = "KevinSec is a cybersecurity blog focused on web security, penetration testing, red team research, and practical security engineering."
+keywords = ["cybersecurity", "penetration testing", "web security", "red team", "application security", "KevinSec"]
 author = "KevinSec"
-description = "Offensive Security Research | Pentesting | Red Teaming"
-defaultTheme = "dark"
+DateFormat = "January 2, 2006"
+defaultTheme = "Dark"
 ShowReadingTime = true
-ShowCodeCopyButtons = true
 ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowToc = true
+TocOpen = false
+
 
 [menu]
 [[menu.main]]

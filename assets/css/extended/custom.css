@@ -1,0 +1,78 @@
+/* Custom 404 Page */
+.not-found-page {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.not-found-card {
+  max-width: 560px;
+  text-align: center;
+}
+
+.not-found-code {
+  margin: 0 0 0.75rem;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--primary);
+}
+
+.not-found-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.not-found-description {
+  margin: 0 auto 1.5rem;
+  max-width: 460px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--secondary);
+}
+
+.not-found-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.not-found-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--theme);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.not-found-button:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
+  .not-found-page {
+    min-height: 50vh;
+    padding: 2rem 1rem;
+  }
+
+  .not-found-code {
+    font-size: 2.25rem;
+  }
+
+  .not-found-title {
+    font-size: 1.35rem;
+  }
+
+  .not-found-description {
+    font-size: 0.95rem;
+  }
+}
