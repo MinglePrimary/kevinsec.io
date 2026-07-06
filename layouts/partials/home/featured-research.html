@@ -1,27 +1,47 @@
-<section class="ks-home-section ks-home-featured-research">
-  <div class="ks-home-section__header">
-    <h2>Featured Research</h2>
-    <p>Vulnerability analysis, offensive security research, and practical case studies.</p>
+{{- $research := where .Site.RegularPages "Section" "research" -}}
+{{- $research = first 1 $research -}}
+
+{{- if gt (len $research) 0 }}
+<section class="home-section featured-research">
+  <div class="home-section-header">
+    <p class="section-kicker">Research</p>
+    <h2>Latest Research Notes</h2>
+    <p>Technical notes on vulnerabilities, attack surfaces, and defensive lessons learned.</p>
   </div>
 
-  {{ $research := first 3 (where site.RegularPages "Section" "research") }}
+  <div class="home-card-grid">
+    {{- range $research }}
+    {{- $page := . -}}
+    {{- $cover := "" -}}
 
-  {{ if $research }}
-    <div class="ks-card-grid ks-card-grid--three">
-      {{ range $research }}
-        <article class="ks-card">
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ with .Params.description }}
-            <p>{{ . }}</p>
-          {{ else }}
-            <p>{{ .Summary | plainify | truncate 150 }}</p>
-          {{ end }}
-          <a href="{{ .RelPermalink }}">View research →</a>
-        </article>
-      {{ end }}
-    </div>
-  {{ else }}
-    <p>No research notes published yet. Offensive security research and case studies will be published soon.</p>
-    <p><a href="/research/">View Research →</a></p>
-  {{ end }}
+    {{- with $page.Params.cover.image }}
+      {{- $cover = $page.Resources.GetMatch . -}}
+    {{- end }}
+
+    <article class="home-card">
+      {{- with $cover }}
+      <a href="{{ $page.RelPermalink }}" class="home-card-cover" aria-label="{{ $page.Title }}">
+        <img
+          src="{{ .RelPermalink }}"
+          alt="{{ $page.Params.cover.alt | default $page.Title }}"
+          loading="lazy"
+          decoding="async">
+      </a>
+      {{- end }}
+
+      <div class="home-card-body">
+        <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
+
+        {{- with $page.Date }}
+        <p class="home-card-meta">{{ .Format "2006-01-02" }}</p>
+        {{- end }}
+
+        {{- with $page.Summary }}
+        <p>{{ . | plainify | truncate 140 }}</p>
+        {{- end }}
+      </div>
+    </article>
+    {{- end }}
+  </div>
 </section>
+{{- end }}

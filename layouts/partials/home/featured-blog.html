@@ -1,27 +1,47 @@
-<section class="ks-home-section ks-home-featured-blog">
-  <div class="ks-home-section__header">
-    <h2>Featured Blog Posts</h2>
-    <p>Practical security notes, web pentest lessons, and technical write-ups.</p>
+{{- $posts := where .Site.RegularPages "Section" "blog" -}}
+{{- $posts = first 1 $posts -}}
+
+{{- if gt (len $posts) 0 }}
+<section class="home-section featured-blog">
+  <div class="home-section-header">
+    <p class="section-kicker">Blog</p>
+    <h2>Latest Blog Posts</h2>
+    <p>Practical notes on offensive security, web security, and field experience.</p>
   </div>
 
-  {{ $posts := first 3 (where site.RegularPages "Section" "blog") }}
+  <div class="home-card-grid">
+    {{- range $posts }}
+    {{- $page := . -}}
+    {{- $cover := "" -}}
 
-  {{ if $posts }}
-    <div class="ks-card-grid ks-card-grid--three">
-      {{ range $posts }}
-        <article class="ks-card">
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ with .Params.description }}
-            <p>{{ . }}</p>
-          {{ else }}
-            <p>{{ .Summary | plainify | truncate 150 }}</p>
-          {{ end }}
-          <a href="{{ .RelPermalink }}">Read more →</a>
-        </article>
-      {{ end }}
-    </div>
-  {{ else }}
-    <p>No blog posts published yet. New technical notes will be published soon.</p>
-    <p><a href="/blog/">Visit Blog →</a></p>
-  {{ end }}
+    {{- with $page.Params.cover.image }}
+      {{- $cover = $page.Resources.GetMatch . -}}
+    {{- end }}
+
+    <article class="home-card">
+      {{- with $cover }}
+      <a href="{{ $page.RelPermalink }}" class="home-card-cover" aria-label="{{ $page.Title }}">
+        <img
+          src="{{ .RelPermalink }}"
+          alt="{{ $page.Params.cover.alt | default $page.Title }}"
+          loading="lazy"
+          decoding="async">
+      </a>
+      {{- end }}
+
+      <div class="home-card-body">
+        <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
+
+        {{- with $page.Date }}
+        <p class="home-card-meta">{{ .Format "2006-01-02" }}</p>
+        {{- end }}
+
+        {{- with $page.Summary }}
+        <p>{{ . | plainify | truncate 140 }}</p>
+        {{- end }}
+      </div>
+    </article>
+    {{- end }}
+  </div>
 </section>
+{{- end }}
