@@ -43,6 +43,12 @@ url = "/about/"
 weight = 40
 
 [[menu.main]]
+identifier = "archive"
+name = "Archive"
+url = "/archive/"
+weight = 40
+
+[[menu.main]]
 identifier = "contact"
 name = "Contact"
 url = "/contact/"
