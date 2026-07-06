@@ -6,6 +6,9 @@ theme = "PaperMod"
 [pagination]
 pagerSize = 10
 
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
 [params]
 author = "KevinSec"
 description = "Offensive Security Research | Pentesting | Red Teaming"
@@ -44,6 +47,12 @@ identifier = "contact"
 name = "Contact"
 url = "/contact/"
 weight = 50
+
+[[menu.main]]
+identifier = "search"
+name = "Search"
+url = "/search/"
+weight = 90
 
 [markup]
   [markup.goldmark]
