@@ -1,0 +1,36 @@
+.kevinsec-img {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.kevinsec-img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+.kevinsec-img figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.75;
+  text-align: center;
+}
+
+.kevinsec-img.wide img {
+  width: 100%;
+}
+
+.kevinsec-img.small img {
+  max-width: 480px;
+}
+
+.kevinsec-img.medium img {
+  max-width: 720px;
+}
+
+.kevinsec-img.large img {
+  max-width: 960px;
+}

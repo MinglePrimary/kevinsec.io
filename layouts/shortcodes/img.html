@@ -1,0 +1,95 @@
+{{- /*
+KevinSec Image Shortcode
+
+Usage:
+{{< img src="burp-request.png" alt="Burp Suite HTTP request" caption="Figure 1. HTTP request captured in Burp Suite" >}}
+
+Optional:
+{{< img src="diagram.png" alt="Architecture diagram" caption="Figure 2. System architecture" class="wide" >}}
+*/ -}}
+
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" | default "" -}}
+{{- $title := .Get "title" | default $alt -}}
+{{- $class := .Get "class" | default "" -}}
+
+{{- if not $src -}}
+  {{- errorf "img shortcode error: missing src in %s" .Page.File.Path -}}
+{{- end -}}
+
+{{- $img := .Page.Resources.GetMatch $src -}}
+
+{{- if $img -}}
+  {{- $isProcessable := and (eq $img.ResourceType "image") (ne $img.MediaType.SubType "svg") -}}
+
+  {{- if $isProcessable -}}
+    {{- $small := "" -}}
+    {{- $medium := "" -}}
+    {{- $large := "" -}}
+
+    {{- if ge $img.Width 480 -}}
+      {{- $small = $img.Resize "480x" -}}
+    {{- else -}}
+      {{- $small = $img -}}
+    {{- end -}}
+
+    {{- if ge $img.Width 800 -}}
+      {{- $medium = $img.Resize "800x" -}}
+    {{- else -}}
+      {{- $medium = $img -}}
+    {{- end -}}
+
+    {{- if ge $img.Width 1200 -}}
+      {{- $large = $img.Resize "1200x" -}}
+    {{- else -}}
+      {{- $large = $img -}}
+    {{- end -}}
+
+<figure class="kevinsec-img {{ $class }}">
+  <img
+    src="{{ $medium.RelPermalink }}"
+    srcset="{{ $small.RelPermalink }} 480w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w"
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="{{ $alt }}"
+    title="{{ $title }}"
+    width="{{ $medium.Width }}"
+    height="{{ $medium.Height }}"
+    loading="lazy"
+    decoding="async">
+  {{- if $caption }}
+  <figcaption>{{ $caption | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+
+  {{- else -}}
+
+<figure class="kevinsec-img {{ $class }}">
+  <img
+    src="{{ $img.RelPermalink }}"
+    alt="{{ $alt }}"
+    title="{{ $title }}"
+    loading="lazy"
+    decoding="async">
+  {{- if $caption }}
+  <figcaption>{{ $caption | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+
+  {{- end -}}
+
+{{- else -}}
+
+<figure class="kevinsec-img {{ $class }}">
+  <img
+    src="{{ $src | relURL }}"
+    alt="{{ $alt }}"
+    title="{{ $title }}"
+    loading="lazy"
+    decoding="async">
+  {{- if $caption }}
+  <figcaption>{{ $caption | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+
+{{- end -}}

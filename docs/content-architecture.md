@@ -104,7 +104,12 @@ Quy tắc:
 - Ảnh cover và ảnh minh họa nên đặt cùng thư mục với bài viết.
 - Ưu tiên tên ảnh đơn giản: `cover.png`, `diagram.png`, `request.png`, `response.png`.
 - Không nên gom tất cả ảnh bài viết vào một thư mục global nếu ảnh chỉ dùng cho một bài.
-
+Chuẩn của bạn là: 
+content/blog/post-name/
+  ├── index.md
+  ├── cover.png
+  ├── request.png
+  └── response.png
 ---
 
 ## 5. Blog Collection
