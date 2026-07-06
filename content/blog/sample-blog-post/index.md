@@ -12,7 +12,7 @@ ShowToc: true
 TocOpen: false
 ShowPostNavLinks: true
 cover:
-  image: screenshot-2026-06-29-101758.png
+  image: cover.png
   alt: KevinSec blog cover
   caption: ""
   relative: true
