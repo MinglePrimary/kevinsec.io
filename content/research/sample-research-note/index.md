@@ -14,7 +14,7 @@ ShowToc: true
 TocOpen: true
 ShowPostNavLinks: true
 cover:
-  image: attacker_red.png
+  image: example.png
   alt: KevinSec research cover
   caption: ""
   relative: true
