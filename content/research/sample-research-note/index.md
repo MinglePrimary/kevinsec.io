@@ -55,6 +55,7 @@ For example:
 * Incorrect trust assumption.
 
 ## Methodology
+{{< img src="example.png" alt="Test" caption="Figure 1. Test Image" class="wide" >}}
 
 Document the approach used to analyze or reproduce the issue.
 
