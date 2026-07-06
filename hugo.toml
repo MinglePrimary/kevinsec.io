@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "KevinSec"
 theme = "PaperMod"
 enableRobotsTXT = true
+googleAnalytics = "G-XHWBGBB6JP"
 
 [pagination]
 pagerSize = 10
