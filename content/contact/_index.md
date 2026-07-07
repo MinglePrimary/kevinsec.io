@@ -6,10 +6,9 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: false
 ---
 
-# Contact
+## Overview
 
 KevinSec focuses on practical web security, offensive research, and security education.
-
 For professional inquiries, collaboration, or security-related discussion, use the channels below.
 
 ## Email
