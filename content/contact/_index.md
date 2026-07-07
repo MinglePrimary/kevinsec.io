@@ -6,33 +6,41 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: false
 ---
 
-## Project Inquiries
+# Contact
 
-For security assessment or advisory requests, please include:
+KevinSec focuses on practical web security, offensive research, and security education.
 
-- Company or project name
-- Target scope
-- Type of service needed
-- Expected timeline
-- Contact information
-- Any special requirements
-
-This helps make the initial discussion more accurate and efficient.
-
-## Collaboration
-
-KevinSec is open to relevant collaboration around:
-
-- Web application security
-- Vulnerability research
-- Security training
-- Technical writing
-- Open-source security projects
-- Cybersecurity community work
+For professional inquiries, collaboration, or security-related discussion, use the channels below.
 
 ## Email
 
-You can contact KevinSec via email:
-
 ```text
-contact@kevinsec.io
+minhld.official1@gmail.com
+```
+
+## Professional Profiles
+
+| Platform | Link |
+|---|---|
+| LinkedIn | [Connect on LinkedIn](https://www.linkedin.com/in/minh-ly-duc-b7a391237/) |
+| X | [Follow on X](https://x.com/MinhLD0x001) |
+
+## Resume
+
+For recruiters, partners, or professional opportunities:
+
+[Download KevinSec Resume PDF](/resume/KevinSec_Resume.pdf)
+
+## Work With KevinSec
+
+Currently available for:
+
+- Web Application Penetration Testing
+- API Security Assessment
+- Security Research
+- Security Awareness Training
+- Technical Writing
+
+## Time Zone
+
+GMT+7 — Vietnam.
