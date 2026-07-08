@@ -6,8 +6,50 @@
     <description>Recent content on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 15:07:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Authentication Testing Checklist for Web Applications</title>
+      <link>http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/</guid>
+      <description>A practical authentication testing checklist for web applications.</description>
+    </item>
+    <item>
+      <title>Broken Access Control: Why It Is Still Critical</title>
+      <link>http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/</guid>
+      <description>Understand why broken access control remains one of the most critical web application security risks.</description>
+    </item>
+    <item>
+      <title>How to Read an HTTP Request Like a Pentester</title>
+      <link>http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/</guid>
+      <description>A beginner-friendly guide to reading HTTP requests from a web pentesting perspective.</description>
+    </item>
+    <item>
+      <title>IDOR Explained with a Simple Lab Scenario</title>
+      <link>http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/</guid>
+      <description>A beginner-friendly explanation of IDOR using a safe lab scenario.</description>
+    </item>
+    <item>
+      <title>OWASP Top 10 2025 Explained for Beginners</title>
+      <link>http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/</guid>
+      <description>A beginner-friendly explanation of the OWASP Top 10 2025 web application security risks.</description>
+    </item>
+    <item>
+      <title>Untrusted Data: The Root of Most Web Vulnerabilities</title>
+      <link>http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/</guid>
+      <description>Understand why untrusted data is one of the most important concepts in web application security.</description>
+    </item>
     <item>
       <title>Research Note Template for Vulnerability Analysis</title>
       <link>http://localhost:1313/research/sample-research-note/</link>

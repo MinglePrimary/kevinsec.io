@@ -2,11 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/application-security/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/authentication/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/authorization/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/beginner/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/blog/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/broken-access-control/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/burp-suite/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2026-07-05T15:07:00+07:00</lastmod>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/checklist/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/http/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/idor/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/input-validation/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-07-05T15:07:00+07:00</lastmod>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/lab/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/owasp/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/owasp-top-10/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/owasp-wstg/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/secure-coding/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/untrusted-data/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/web-pentest/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/web-security/</loc>
+    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/methodology/</loc>
     <lastmod>2026-07-05T15:07:00+07:00</lastmod>
@@ -20,20 +101,8 @@
     <loc>http://localhost:1313/research/sample-research-note/</loc>
     <lastmod>2026-07-05T15:07:00+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-07-05T15:07:00+07:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/vulnerability-research/</loc>
     <lastmod>2026-07-05T15:07:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/web-security/</loc>
-    <lastmod>2026-07-05T15:07:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2026-07-05T14:54:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/blog/</loc>
-    <lastmod>2026-07-05T14:54:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/sample-blog-post/</loc>
     <lastmod>2026-07-05T14:54:00+07:00</lastmod>

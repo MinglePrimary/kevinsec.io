@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>OWASP Top 10 on KevinSec</title>
+    <link>http://localhost:1313/tags/owasp-top-10/</link>
+    <description>Recent content in OWASP Top 10 on KevinSec</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/owasp-top-10/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OWASP Top 10 2025 Explained for Beginners</title>
+      <link>http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <guid>http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/</guid>
+      <description>A beginner-friendly explanation of the OWASP Top 10 2025 web application security risks.</description>
+    </item>
+  </channel>
+</rss>
