@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Manual Testing | KevinSec</title>
+<meta name="keywords" content="">
+<meta name="description" content="KevinSec is a cybersecurity blog focused on web security, penetration testing, red team research, and practical security engineering.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/tags/manual-testing/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/manual-testing/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/manual-testing/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/tags/manual-testing/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="Manual Testing">
+  <meta property="og:description" content="KevinSec is a cybersecurity blog focused on web security, penetration testing, red team research, and practical security engineering.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Manual Testing">
+  <meta name="twitter:description" content="KevinSec is a cybersecurity blog focused on web security, penetration testing, red team research, and practical security engineering.">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    Manual Testing
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/cover_hu_f68142d37053e1ef.png 360w,http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/cover_hu_813971dc1fb1900f.png 480w,http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/cover_hu_a6f4278308d9b3e6.png 720w,http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/cover_hu_613bf3a88c2bcc37.png 1080w,http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/cover_hu_77895565bf679120.png 1500w,http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/cover.png 6048w'
+                src="http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="6048" height="4032"
+                alt="Burp Suite web pentest workflow with browser, proxy, repeater, and report notes">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Burp Suite Beginner Workflow for Web Pentest
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Burp Suite is most effective when used as a structured manual testing workspace, not just as an intercepting proxy.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Burp Suite Beginner Workflow for Web Pentest" href="http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_fbf4d4e3f4fdf14.png 360w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_556c3e380ab64e16.png 480w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_bda948abffe8c856.png 720w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_f6005c837c30c4c2.png 1080w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_f6f3f74b54b68dac.png 1500w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover.png 1794w'
+                src="http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1794" height="871"
+                alt="Manual web pentesting and automated scanning comparison">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Manual Testing vs Automated Scanning
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Automated scanners help with coverage and speed, but manual testing is required for context, business logic, and access control validation.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Manual Testing vs Automated Scanning" href="http://localhost:1313/blog/manual-testing-vs-automated-scanning/"></a>
+</article>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

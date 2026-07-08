@@ -6,8 +6,71 @@
     <description>Recent content in Beginner on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/beginner/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Burp Suite Beginner Workflow for Web Pentest</title>
+      <link>http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/</guid>
+      <description>A practical beginner workflow for using Burp Suite during web pentesting, from proxy setup to Repeater, Intruder, notes, and reporting evidence.</description>
+    </item>
+    <item>
+      <title>How to Recognize a Suspicious Email</title>
+      <link>http://localhost:1313/blog/how-to-recognize-a-suspicious-email/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/how-to-recognize-a-suspicious-email/</guid>
+      <description>A practical checklist for identifying suspicious emails, links, attachments, sender inconsistencies, and business process red flags.</description>
+    </item>
+    <item>
+      <title>Password Reset Vulnerabilities: Common Patterns</title>
+      <link>http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/</guid>
+      <description>A practical guide to common password reset vulnerabilities, how they appear in real applications, and how to test them safely.</description>
+    </item>
+    <item>
+      <title>Path Traversal and LFI: Reading Files You Should Not Read</title>
+      <link>http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/</guid>
+      <description>A practical introduction to path traversal and local file inclusion from a web pentesting perspective, with safe testing guidance and remediation patterns.</description>
+    </item>
+    <item>
+      <title>Phishing Awareness: How Attackers Abuse Trust</title>
+      <link>http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/</guid>
+      <description>A beginner-friendly explanation of phishing awareness, focused on how attackers exploit trust, urgency, authority, and routine behavior.</description>
+    </item>
+    <item>
+      <title>Reflected XSS Explained: Context, Root Cause, Impact</title>
+      <link>http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/</guid>
+      <description>A beginner-friendly explanation of reflected cross-site scripting from context to root cause, impact, testing, and remediation.</description>
+    </item>
+    <item>
+      <title>SQL Injection Lab: From Error Message to Root Cause</title>
+      <link>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</guid>
+      <description>A safe lab-style walkthrough showing how to reason from a SQL error message to the root cause of SQL injection.</description>
+    </item>
+    <item>
+      <title>SQL Injection: What Actually Happens Behind the Query</title>
+      <link>http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/</guid>
+      <description>A beginner-friendly explanation of SQL injection from the perspective of query construction, untrusted data, and database interaction.</description>
+    </item>
+    <item>
+      <title>Stored XSS vs Reflected XSS: Practical Differences</title>
+      <link>http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/</guid>
+      <description>A practical comparison of stored XSS and reflected XSS, including root cause, exploitability, impact, detection, and remediation.</description>
+    </item>
     <item>
       <title>How to Read an HTTP Request Like a Pentester</title>
       <link>http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/</link>

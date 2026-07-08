@@ -4,8 +4,6 @@ date: 2026-07-03T20:14:00+07:00
 lastmod: 2026-07-03T20:14:00+07:00
 draft: false
 description: KevinSec Updates
-cover:
-  relative: true
 categories:
   - KevinSec Updates
 tags:
@@ -15,6 +13,11 @@ ShowToc: true
 TocOpen: false
 ShowReadingTime: true
 ShowBreadCrumbs: true
+cover:
+  image: "cover.png"
+  alt: "Welcome"
+  caption: ""
+  relative: true
 ---
 # Welcome
 This is the first article created using Decap CMS.

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>CORS Misconfiguration: Simple Mistake, Serious Impact | KevinSec</title>
+<meta name="keywords" content="web security, cors, same origin policy, browser security, intermediate">
+<meta name="description" content="A practical explanation of CORS misconfiguration, why it matters, how to recognize risky patterns, and how to fix it safely.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="CORS Misconfiguration: Simple Mistake, Serious Impact">
+  <meta property="og:description" content="A practical explanation of CORS misconfiguration, why it matters, how to recognize risky patterns, and how to fix it safely.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:tag" content="Web-Security">
+    <meta property="article:tag" content="Cors">
+    <meta property="article:tag" content="Same Origin Policy">
+    <meta property="article:tag" content="Browser Security">
+    <meta property="article:tag" content="Intermediate">
+    <meta property="og:image" content="http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover.png">
+  <meta name="twitter:title" content="CORS Misconfiguration: Simple Mistake, Serious Impact">
+  <meta name="twitter:description" content="A practical explanation of CORS misconfiguration, why it matters, how to recognize risky patterns, and how to fix it safely.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "http://localhost:1313/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "CORS Misconfiguration: Simple Mistake, Serious Impact",
+      "item": "http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CORS Misconfiguration: Simple Mistake, Serious Impact",
+  "name": "CORS Misconfiguration: Simple Mistake, Serious Impact",
+  "description": "A practical explanation of CORS misconfiguration, why it matters, how to recognize risky patterns, and how to fix it safely.",
+  "keywords": [
+    "web security", "cors", "same origin policy", "browser security", "intermediate"
+  ],
+  "articleBody": "CORS Misconfiguration: Simple Mistake, Serious Impact Cross-Origin Resource Sharing (CORS) is often misunderstood.\nDevelopers see CORS errors in the browser and think CORS is blocking their frontend from working. They search for a quick fix, copy a permissive header, and the feature starts working. Unfortunately, that quick fix can turn into a data exposure issue.\nCORS is not an authentication mechanism. It is a browser-controlled policy that determines whether one origin is allowed to read responses from another origin.\nA safe CORS policy answers one question:\nWhich trusted origins are allowed to read this response in a browser?\nImage: Type: Context. Mô tả: “A browser diagram showing origin A attempting to read API responses from origin B, with CORS headers deciding whether access is allowed.” caption: “CORS controls browser-based cross-origin reads.”\nContext Browsers enforce the Same-Origin Policy (SOP). By default, a script running on one origin should not freely read sensitive responses from another origin.\nCORS creates a controlled exception.\nFor example, an API may return:\nAccess-Control-Allow-Origin: https://app.example.com Access-Control-Allow-Credentials: true This tells the browser that JavaScript running on https://app.example.com may read the API response, including credentialed responses if credentials are allowed.\nThe security problem appears when the API trusts origins too broadly.\nRoot Cause CORS misconfiguration usually comes from convenience:\nDevelopers want to remove browser errors quickly. The API reflects any Origin header. Wildcard origins are used without understanding the data sensitivity. Staging and production origins are mixed. Subdomain trust is too broad. Credentialed requests are enabled without strict origin validation. CORS is treated as an access control mechanism instead of a browser read policy. The most dangerous pattern is:\nUser sends Origin: https://attacker-controlled.example Server replies Access-Control-Allow-Origin: https://attacker-controlled.example Server also allows credentials If the victim is authenticated and visits a malicious page, the browser may send cookies to the API, and the malicious origin may be allowed to read the response.\nImpact CORS impact depends on what the API returns and whether credentials are involved.\nPossible impact includes:\nReading private user data from APIs Exposing account details Leaking CSRF tokens or profile data Reading internal admin data from a privileged browser session Increasing the impact of phishing or XSS chains Weakening browser isolation between trusted and untrusted origins A permissive CORS header on a public unauthenticated API may be low risk. A permissive CORS header on an authenticated API that returns sensitive user data can be high risk.\nImage: Type: Test case. Mô tả: “A Burp Suite Repeater test showing an Origin header and the API reflecting it in Access-Control-Allow-Origin. Use a lab or intentionally vulnerable environment.” caption: “Origin reflection is a common CORS misconfiguration pattern.”\nSignature Look for these response headers:\nAccess-Control-Allow-Origin: * Access-Control-Allow-Origin: https://some-origin.example Access-Control-Allow-Credentials: true Access-Control-Allow-Methods: GET, POST, PUT, DELETE Access-Control-Allow-Headers: Authorization, Content-Type Interesting signs:\nThe server reflects arbitrary Origin values. The server trusts null origins without a clear reason. The server allows credentials for too many origins. The CORS policy differs between production and staging. Sensitive authenticated endpoints return permissive CORS headers. CORS is enabled globally at the framework level. Candidate endpoints:\n/api/me /api/profile /api/account /api/users/current /api/billing /api/admin/* /graphql The best targets are endpoints that return sensitive data and rely on browser credentials.\nHow to Test Safely Only test CORS in authorized systems or labs.\nA safe testing workflow:\nFind an authenticated endpoint that returns non-public data. Send a request with a controlled Origin header. Observe whether the response includes Access-Control-Allow-Origin. Check whether the server reflects your supplied origin. Check whether Access-Control-Allow-Credentials: true is present. Confirm whether the response contains sensitive data. Avoid attempting to steal real user data; use your own test account or lab account. A strong report should show:\nThe request with the injected Origin The reflected CORS response header The sensitive response type The condition required for exploitation The exact remediation Image: Type: PoC. Mô tả: “A safe browser-based CORS lab page reading data from an intentionally vulnerable API using a test account.” caption: “A CORS PoC should use test data and prove browser-readable exposure.”\nCommon Misconfiguration Patterns 1. Reflecting Any Origin The backend reads the Origin header and returns it directly in Access-Control-Allow-Origin.\nThis is dangerous because the attacker controls the Origin value through a malicious website.\n2. Wildcard Origin on Sensitive APIs Access-Control-Allow-Origin: * may be acceptable for truly public, unauthenticated resources. It is not appropriate for sensitive authenticated APIs.\n3. Credentials with Weak Origin Validation Credentialed CORS is sensitive. If the browser sends cookies or authorization material and the API allows an untrusted origin to read the response, data exposure becomes possible.\n4. Trusting All Subdomains Trusting every subdomain may be risky if subdomain takeover, user-generated content, staging systems, or weakly controlled environments exist.\n5. Trusting null Origin The null origin can appear in special browser contexts such as sandboxed documents or local files. Trusting it should be a deliberate decision, not a default.\nRemediation Recommended defenses:\nMaintain a strict allowlist of trusted origins. Avoid reflecting arbitrary Origin values. Use exact origin matching, not loose substring matching. Do not allow credentials unless necessary. Apply CORS only to endpoints that need cross-origin browser access. Separate public APIs from authenticated sensitive APIs. Review CORS policies across staging, production, and admin surfaces. Do not rely on CORS as the only access control mechanism. Continue enforcing authentication and authorization server-side. A safer CORS decision flow:\nReceive Origin -\u003e exact match against trusted allowlist -\u003e set CORS headers only if matched -\u003e enforce authz separately Developer Mental Model CORS does not decide who the user is. Authentication does that.\nCORS does not decide what the user can access. Authorization does that.\nCORS only decides whether a browser script from another origin can read the response.\nThat makes CORS a browser data exposure boundary, not a backend access control system.\nReferences OWASP WSTG - Testing Cross Origin Resource Sharing: https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/07-Testing_Cross_Origin_Resource_Sharing PortSwigger Web Security Academy - CORS: https://portswigger.net/web-security/cors MDN Web Docs - CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS CTA KevinSec can help review browser-facing APIs, CORS policies, authentication boundaries, and sensitive data exposure risks. If your frontend and API run on different origins, CORS should be part of your security review.\n",
+  "wordCount" : "1011",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover.png","datePublished": "2026-07-08T00:00:00Z",
+  "dateModified": "2026-07-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "KevinSec"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "KevinSec",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/blog/">Blog</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      CORS Misconfiguration: Simple Mistake, Serious Impact
+    </h1>
+    <div class="post-description">
+      A practical explanation of CORS misconfiguration, why it matters, how to recognize risky patterns, and how to fix it safely.
+    </div>
+    <div class="post-meta">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover.png 3008w'
+                src="http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="Browser cross-origin request security concept">
+        <figcaption>CORS should grant cross-origin access deliberately, not accidentally.</figcaption>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#cors-misconfiguration-simple-mistake-serious-impact" aria-label="CORS Misconfiguration: Simple Mistake, Serious Impact">CORS Misconfiguration: Simple Mistake, Serious Impact</a><ul>
+                    
+            <li>
+                <a href="#context" aria-label="Context">Context</a></li>
+            <li>
+                <a href="#root-cause" aria-label="Root Cause">Root Cause</a></li>
+            <li>
+                <a href="#impact" aria-label="Impact">Impact</a></li>
+            <li>
+                <a href="#signature" aria-label="Signature">Signature</a></li>
+            <li>
+                <a href="#how-to-test-safely" aria-label="How to Test Safely">How to Test Safely</a></li>
+            <li>
+                <a href="#common-misconfiguration-patterns" aria-label="Common Misconfiguration Patterns">Common Misconfiguration Patterns</a><ul>
+                    
+            <li>
+                <a href="#1-reflecting-any-origin" aria-label="1. Reflecting Any Origin">1. Reflecting Any Origin</a></li>
+            <li>
+                <a href="#2-wildcard-origin-on-sensitive-apis" aria-label="2. Wildcard Origin on Sensitive APIs">2. Wildcard Origin on Sensitive APIs</a></li>
+            <li>
+                <a href="#3-credentials-with-weak-origin-validation" aria-label="3. Credentials with Weak Origin Validation">3. Credentials with Weak Origin Validation</a></li>
+            <li>
+                <a href="#4-trusting-all-subdomains" aria-label="4. Trusting All Subdomains">4. Trusting All Subdomains</a></li>
+            <li>
+                <a href="#5-trusting-null-origin" aria-label="5. Trusting null Origin">5. Trusting null Origin</a></li></ul>
+            </li>
+            <li>
+                <a href="#remediation" aria-label="Remediation">Remediation</a></li>
+            <li>
+                <a href="#developer-mental-model" aria-label="Developer Mental Model">Developer Mental Model</a></li>
+            <li>
+                <a href="#references" aria-label="References">References</a></li>
+            <li>
+                <a href="#cta" aria-label="CTA">CTA</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="cors-misconfiguration-simple-mistake-serious-impact">CORS Misconfiguration: Simple Mistake, Serious Impact<a hidden class="anchor" aria-hidden="true" href="#cors-misconfiguration-simple-mistake-serious-impact">#</a></h1>
+<p>Cross-Origin Resource Sharing (CORS) is often misunderstood.</p>
+<p>Developers see CORS errors in the browser and think CORS is blocking their frontend from working. They search for a quick fix, copy a permissive header, and the feature starts working. Unfortunately, that quick fix can turn into a data exposure issue.</p>
+<p>CORS is not an authentication mechanism. It is a browser-controlled policy that determines whether one origin is allowed to read responses from another origin.</p>
+<p>A safe CORS policy answers one question:</p>
+<blockquote>
+<p>Which trusted origins are allowed to read this response in a browser?</p>
+</blockquote>
+<p>Image: Type: Context. Mô tả: &ldquo;A browser diagram showing origin A attempting to read API responses from origin B, with CORS headers deciding whether access is allowed.&rdquo; caption: &ldquo;CORS controls browser-based cross-origin reads.&rdquo;</p>
+<h2 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h2>
+<p>Browsers enforce the Same-Origin Policy (SOP). By default, a script running on one origin should not freely read sensitive responses from another origin.</p>
+<p>CORS creates a controlled exception.</p>
+<p>For example, an API may return:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Access-Control-Allow-Origin: https://app.example.com
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Access-Control-Allow-Credentials: true
+</span></span></span></code></pre></div><p>This tells the browser that JavaScript running on <code>https://app.example.com</code> may read the API response, including credentialed responses if credentials are allowed.</p>
+<p>The security problem appears when the API trusts origins too broadly.</p>
+<h2 id="root-cause">Root Cause<a hidden class="anchor" aria-hidden="true" href="#root-cause">#</a></h2>
+<p>CORS misconfiguration usually comes from convenience:</p>
+<ul>
+<li>Developers want to remove browser errors quickly.</li>
+<li>The API reflects any <code>Origin</code> header.</li>
+<li>Wildcard origins are used without understanding the data sensitivity.</li>
+<li>Staging and production origins are mixed.</li>
+<li>Subdomain trust is too broad.</li>
+<li>Credentialed requests are enabled without strict origin validation.</li>
+<li>CORS is treated as an access control mechanism instead of a browser read policy.</li>
+</ul>
+<p>The most dangerous pattern is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User sends Origin: https://attacker-controlled.example
+</span></span><span style="display:flex;"><span>Server replies Access-Control-Allow-Origin: https://attacker-controlled.example
+</span></span><span style="display:flex;"><span>Server also allows credentials
+</span></span></code></pre></div><p>If the victim is authenticated and visits a malicious page, the browser may send cookies to the API, and the malicious origin may be allowed to read the response.</p>
+<h2 id="impact">Impact<a hidden class="anchor" aria-hidden="true" href="#impact">#</a></h2>
+<p>CORS impact depends on what the API returns and whether credentials are involved.</p>
+<p>Possible impact includes:</p>
+<ul>
+<li>Reading private user data from APIs</li>
+<li>Exposing account details</li>
+<li>Leaking CSRF tokens or profile data</li>
+<li>Reading internal admin data from a privileged browser session</li>
+<li>Increasing the impact of phishing or XSS chains</li>
+<li>Weakening browser isolation between trusted and untrusted origins</li>
+</ul>
+<p>A permissive CORS header on a public unauthenticated API may be low risk. A permissive CORS header on an authenticated API that returns sensitive user data can be high risk.</p>
+<p>Image: Type: Test case. Mô tả: &ldquo;A Burp Suite Repeater test showing an Origin header and the API reflecting it in Access-Control-Allow-Origin. Use a lab or intentionally vulnerable environment.&rdquo; caption: &ldquo;Origin reflection is a common CORS misconfiguration pattern.&rdquo;</p>
+<h2 id="signature">Signature<a hidden class="anchor" aria-hidden="true" href="#signature">#</a></h2>
+<p>Look for these response headers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Access-Control-Allow-Origin: *
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Access-Control-Allow-Origin: https://some-origin.example
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Access-Control-Allow-Credentials: true
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Access-Control-Allow-Headers: Authorization, Content-Type
+</span></span></span></code></pre></div><p>Interesting signs:</p>
+<ul>
+<li>The server reflects arbitrary <code>Origin</code> values.</li>
+<li>The server trusts <code>null</code> origins without a clear reason.</li>
+<li>The server allows credentials for too many origins.</li>
+<li>The CORS policy differs between production and staging.</li>
+<li>Sensitive authenticated endpoints return permissive CORS headers.</li>
+<li>CORS is enabled globally at the framework level.</li>
+</ul>
+<p>Candidate endpoints:</p>
+<ul>
+<li><code>/api/me</code></li>
+<li><code>/api/profile</code></li>
+<li><code>/api/account</code></li>
+<li><code>/api/users/current</code></li>
+<li><code>/api/billing</code></li>
+<li><code>/api/admin/*</code></li>
+<li><code>/graphql</code></li>
+</ul>
+<p>The best targets are endpoints that return sensitive data and rely on browser credentials.</p>
+<h2 id="how-to-test-safely">How to Test Safely<a hidden class="anchor" aria-hidden="true" href="#how-to-test-safely">#</a></h2>
+<p>Only test CORS in authorized systems or labs.</p>
+<p>A safe testing workflow:</p>
+<ol>
+<li>Find an authenticated endpoint that returns non-public data.</li>
+<li>Send a request with a controlled <code>Origin</code> header.</li>
+<li>Observe whether the response includes <code>Access-Control-Allow-Origin</code>.</li>
+<li>Check whether the server reflects your supplied origin.</li>
+<li>Check whether <code>Access-Control-Allow-Credentials: true</code> is present.</li>
+<li>Confirm whether the response contains sensitive data.</li>
+<li>Avoid attempting to steal real user data; use your own test account or lab account.</li>
+</ol>
+<p>A strong report should show:</p>
+<ul>
+<li>The request with the injected <code>Origin</code></li>
+<li>The reflected CORS response header</li>
+<li>The sensitive response type</li>
+<li>The condition required for exploitation</li>
+<li>The exact remediation</li>
+</ul>
+<p>Image: Type: PoC. Mô tả: &ldquo;A safe browser-based CORS lab page reading data from an intentionally vulnerable API using a test account.&rdquo; caption: &ldquo;A CORS PoC should use test data and prove browser-readable exposure.&rdquo;</p>
+<h2 id="common-misconfiguration-patterns">Common Misconfiguration Patterns<a hidden class="anchor" aria-hidden="true" href="#common-misconfiguration-patterns">#</a></h2>
+<h3 id="1-reflecting-any-origin">1. Reflecting Any Origin<a hidden class="anchor" aria-hidden="true" href="#1-reflecting-any-origin">#</a></h3>
+<p>The backend reads the <code>Origin</code> header and returns it directly in <code>Access-Control-Allow-Origin</code>.</p>
+<p>This is dangerous because the attacker controls the <code>Origin</code> value through a malicious website.</p>
+<h3 id="2-wildcard-origin-on-sensitive-apis">2. Wildcard Origin on Sensitive APIs<a hidden class="anchor" aria-hidden="true" href="#2-wildcard-origin-on-sensitive-apis">#</a></h3>
+<p><code>Access-Control-Allow-Origin: *</code> may be acceptable for truly public, unauthenticated resources. It is not appropriate for sensitive authenticated APIs.</p>
+<h3 id="3-credentials-with-weak-origin-validation">3. Credentials with Weak Origin Validation<a hidden class="anchor" aria-hidden="true" href="#3-credentials-with-weak-origin-validation">#</a></h3>
+<p>Credentialed CORS is sensitive. If the browser sends cookies or authorization material and the API allows an untrusted origin to read the response, data exposure becomes possible.</p>
+<h3 id="4-trusting-all-subdomains">4. Trusting All Subdomains<a hidden class="anchor" aria-hidden="true" href="#4-trusting-all-subdomains">#</a></h3>
+<p>Trusting every subdomain may be risky if subdomain takeover, user-generated content, staging systems, or weakly controlled environments exist.</p>
+<h3 id="5-trusting-null-origin">5. Trusting <code>null</code> Origin<a hidden class="anchor" aria-hidden="true" href="#5-trusting-null-origin">#</a></h3>
+<p>The <code>null</code> origin can appear in special browser contexts such as sandboxed documents or local files. Trusting it should be a deliberate decision, not a default.</p>
+<h2 id="remediation">Remediation<a hidden class="anchor" aria-hidden="true" href="#remediation">#</a></h2>
+<p>Recommended defenses:</p>
+<ul>
+<li>Maintain a strict allowlist of trusted origins.</li>
+<li>Avoid reflecting arbitrary <code>Origin</code> values.</li>
+<li>Use exact origin matching, not loose substring matching.</li>
+<li>Do not allow credentials unless necessary.</li>
+<li>Apply CORS only to endpoints that need cross-origin browser access.</li>
+<li>Separate public APIs from authenticated sensitive APIs.</li>
+<li>Review CORS policies across staging, production, and admin surfaces.</li>
+<li>Do not rely on CORS as the only access control mechanism.</li>
+<li>Continue enforcing authentication and authorization server-side.</li>
+</ul>
+<p>A safer CORS decision flow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Receive Origin -&gt; exact match against trusted allowlist -&gt; set CORS headers only if matched -&gt; enforce authz separately
+</span></span></code></pre></div><h2 id="developer-mental-model">Developer Mental Model<a hidden class="anchor" aria-hidden="true" href="#developer-mental-model">#</a></h2>
+<p>CORS does not decide who the user is. Authentication does that.</p>
+<p>CORS does not decide what the user can access. Authorization does that.</p>
+<p>CORS only decides whether a browser script from another origin can read the response.</p>
+<p>That makes CORS a browser data exposure boundary, not a backend access control system.</p>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ul>
+<li>OWASP WSTG - Testing Cross Origin Resource Sharing: <a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/07-Testing_Cross_Origin_Resource_Sharing">https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/07-Testing_Cross_Origin_Resource_Sharing</a></li>
+<li>PortSwigger Web Security Academy - CORS: <a href="https://portswigger.net/web-security/cors">https://portswigger.net/web-security/cors</a></li>
+<li>MDN Web Docs - CORS: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS</a></li>
+</ul>
+<h2 id="cta">CTA<a hidden class="anchor" aria-hidden="true" href="#cta">#</a></h2>
+<p>KevinSec can help review browser-facing APIs, CORS policies, authentication boundaries, and sensitive data exposure risks. If your frontend and API run on different origins, CORS should be part of your security review.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/web-security/">Web-Security</a></li>
+      <li><a href="http://localhost:1313/tags/cors/">Cors</a></li>
+      <li><a href="http://localhost:1313/tags/same-origin-policy/">Same Origin Policy</a></li>
+      <li><a href="http://localhost:1313/tags/browser-security/">Browser Security</a></li>
+      <li><a href="http://localhost:1313/tags/intermediate/">Intermediate</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/">
+    <span class="title">« Prev</span>
+    <span>Burp Suite Beginner Workflow for Web Pentest</span>
+  </a>
+  <a class="next" href="http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/">
+    <span class="title">Next »</span>
+    <span>Credential Phishing: Defensive Lessons for Employees</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CORS Misconfiguration: Simple Mistake, Serious Impact on x"
+            href="https://x.com/intent/tweet/?text=CORS%20Misconfiguration%3a%20Simple%20Mistake%2c%20Serious%20Impact&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fcors-misconfiguration-simple-mistake-serious-impact%2f&amp;hashtags=websecurity%2ccors%2csameoriginpolicy%2cbrowsersecurity%2cintermediate">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CORS Misconfiguration: Simple Mistake, Serious Impact on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fcors-misconfiguration-simple-mistake-serious-impact%2f&amp;title=CORS%20Misconfiguration%3a%20Simple%20Mistake%2c%20Serious%20Impact&amp;summary=CORS%20Misconfiguration%3a%20Simple%20Mistake%2c%20Serious%20Impact&amp;source=http%3a%2f%2flocalhost%3a1313%2fblog%2fcors-misconfiguration-simple-mistake-serious-impact%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CORS Misconfiguration: Simple Mistake, Serious Impact on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fblog%2fcors-misconfiguration-simple-mistake-serious-impact%2f&title=CORS%20Misconfiguration%3a%20Simple%20Mistake%2c%20Serious%20Impact">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CORS Misconfiguration: Simple Mistake, Serious Impact on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2fcors-misconfiguration-simple-mistake-serious-impact%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CORS Misconfiguration: Simple Mistake, Serious Impact on whatsapp"
+            href="https://api.whatsapp.com/send?text=CORS%20Misconfiguration%3a%20Simple%20Mistake%2c%20Serious%20Impact%20-%20http%3a%2f%2flocalhost%3a1313%2fblog%2fcors-misconfiguration-simple-mistake-serious-impact%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CORS Misconfiguration: Simple Mistake, Serious Impact on telegram"
+            href="https://telegram.me/share/url?text=CORS%20Misconfiguration%3a%20Simple%20Mistake%2c%20Serious%20Impact&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fcors-misconfiguration-simple-mistake-serious-impact%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share CORS Misconfiguration: Simple Mistake, Serious Impact on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=CORS%20Misconfiguration%3a%20Simple%20Mistake%2c%20Serious%20Impact&u=http%3a%2f%2flocalhost%3a1313%2fblog%2fcors-misconfiguration-simple-mistake-serious-impact%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

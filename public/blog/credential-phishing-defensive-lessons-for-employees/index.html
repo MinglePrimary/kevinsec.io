@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Credential Phishing: Defensive Lessons for Employees | KevinSec</title>
+<meta name="keywords" content="credential phishing, mfa, password security, security awareness, identity security">
+<meta name="description" content="A defensive guide for employees on credential phishing, password hygiene, MFA, phishing-resistant authentication, and reporting compromised credentials.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="Credential Phishing: Defensive Lessons for Employees">
+  <meta property="og:description" content="A defensive guide for employees on credential phishing, password hygiene, MFA, phishing-resistant authentication, and reporting compromised credentials.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:tag" content="Credential Phishing">
+    <meta property="article:tag" content="Mfa">
+    <meta property="article:tag" content="Password Security">
+    <meta property="article:tag" content="Security Awareness">
+    <meta property="article:tag" content="Identity Security">
+    <meta property="og:image" content="http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover.png">
+  <meta name="twitter:title" content="Credential Phishing: Defensive Lessons for Employees">
+  <meta name="twitter:description" content="A defensive guide for employees on credential phishing, password hygiene, MFA, phishing-resistant authentication, and reporting compromised credentials.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "http://localhost:1313/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Credential Phishing: Defensive Lessons for Employees",
+      "item": "http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Credential Phishing: Defensive Lessons for Employees",
+  "name": "Credential Phishing: Defensive Lessons for Employees",
+  "description": "A defensive guide for employees on credential phishing, password hygiene, MFA, phishing-resistant authentication, and reporting compromised credentials.",
+  "keywords": [
+    "credential phishing", "mfa", "password security", "security awareness", "identity security"
+  ],
+  "articleBody": "Credential Phishing: Defensive Lessons for Employees Credential phishing is one of the most direct ways attackers gain access to business systems.\nInstead of exploiting a software vulnerability, the attacker tricks a user into giving away something that proves identity: a password, session token, MFA code, or approval response.\nThis article is written for employees and security awareness teams. It focuses on defense, not attack execution.\nImage: Type: Context. Mô tả: “A visual showing a user login screen, an MFA prompt, and a warning sign between the user and a fake login page.”. caption: “Credential phishing targets the identity layer of the organization.”\nContext Many companies rely on cloud identity providers, SaaS applications, VPN portals, email systems, customer platforms, and internal dashboards.\nThat means one compromised account can create access to many systems.\nCredential phishing is dangerous because it can lead to:\nMailbox compromise Cloud storage access Internal application access Unauthorized data download Business email compromise Lateral movement Fraudulent approvals Further phishing from a trusted account When an attacker controls a real account, their next message may look much more believable.\nRoot Cause Credential phishing succeeds when users trust a login prompt without verifying where it came from.\nCommon contributing factors include:\nPassword reuse Weak passwords Lack of MFA Push-based MFA fatigue Users typing passwords into pages reached from email links Lack of password manager adoption Lack of phishing-resistant authentication Poor reporting process Excessive access tied to normal user accounts Lack of session monitoring The problem is not only user behavior. The organization must design systems that limit damage when credentials are exposed.\nCommon Credential Phishing Scenarios Fake Login Page The user receives a message that appears to come from a known service. The link leads to a page that looks like a normal login page.\nDefensive habit:\nDo not log in through unexpected email links. Open the service directly from a trusted bookmark or official app. Use a password manager. It usually will not autofill credentials on the wrong domain. Shared Document Lure The user receives a cloud document notification and is asked to sign in to view it.\nDefensive habit:\nVerify whether the shared document is expected. Check the sender and domain. Access the document through the official cloud application. MFA Fatigue The user receives repeated MFA prompts and eventually approves one to stop the noise.\nDefensive habit:\nNever approve an MFA prompt you did not initiate. Report unexpected MFA prompts immediately. Treat repeated prompts as a potential active attack. Fake IT Support The attacker pretends to be IT and asks the user to confirm credentials, install a tool, or approve access.\nDefensive habit:\nIT should never ask for your password. Verify support requests through the official helpdesk channel. Do not move to personal chat channels for account support. Image: Type: Test case. Mô tả: “A defensive training example showing a fake cloud login prompt beside a legitimate bookmarked login flow, with the domain highlighted.”. caption: “The domain is often the difference between a legitimate login and a credential theft attempt.”\nWhat Employees Should Do Use a Password Manager Password managers help users create unique passwords and reduce password reuse.\nThey also provide a practical anti-phishing benefit: a password manager normally autofills only on the correct domain.\nIf the page looks right but the password manager does not autofill, stop and inspect the domain.\nEnable MFA MFA adds a second layer of protection when a password is stolen.\nHowever, not all MFA methods provide the same protection. Push approvals and one-time codes can still be tricked out of users in some phishing scenarios.\nFor high-risk accounts, organizations should consider phishing-resistant methods such as FIDO2/WebAuthn security keys or passkeys when appropriate.\nVerify Login Prompts Before entering credentials, ask:\nDid I initiate this login? Is this the official domain? Did I reach this page from a trusted bookmark? Is the request expected? Is my password manager recognizing the site? Report Quickly If you entered credentials into a suspicious page, report immediately.\nDo not wait to see whether something bad happens.\nFast reporting allows security teams to:\nReset passwords Revoke sessions Review login logs Disable suspicious access Check mailbox rules Investigate data access Block related domains Warn other employees What Security Teams Should Do Security teams should not treat credential phishing as a user-only problem.\nRecommended controls include:\nMFA for all important accounts Phishing-resistant MFA for privileged users Password manager adoption Conditional access policies Impossible travel detection Risk-based sign-in monitoring Session revocation capability Mailbox rule monitoring Clear phishing reporting process Safe simulations Just-in-time employee guidance Least privilege for normal accounts Remediation After Credential Entry If a user reports credential entry into a suspicious page:\nReset the password. Revoke active sessions and refresh tokens. Review recent logins. Check MFA methods for unauthorized additions. Check mailbox forwarding and inbox rules. Review cloud file access. Look for suspicious OAuth grants. Search for related phishing messages across mailboxes. Notify affected teams if needed. Capture lessons learned without blaming the reporter. Practical Takeaway Credential phishing is an identity security problem.\nEmployees can help by verifying login prompts, using password managers, refusing unexpected MFA prompts, and reporting quickly. Organizations must help by deploying strong identity controls and making safe behavior easy.\nReferences CISA: Recognize and Report Phishing NIST SP 800-63B: Authentication and Authenticator Management NIST: Phishing Resistance - Protecting the Keys to Your Kingdom FTC: How To Recognize and Avoid Phishing Scams CTA KevinSec helps organizations improve identity security awareness through practical training, phishing simulation design, and defensive reporting workflows.\nIf your team wants to reduce credential phishing risk, contact KevinSec for a focused phishing awareness and identity security review.\n",
+  "wordCount" : "932",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover.png","datePublished": "2026-07-08T00:00:00Z",
+  "dateModified": "2026-07-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "KevinSec"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "KevinSec",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/blog/">Blog</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      Credential Phishing: Defensive Lessons for Employees
+    </h1>
+    <div class="post-description">
+      A defensive guide for employees on credential phishing, password hygiene, MFA, phishing-resistant authentication, and reporting compromised credentials.
+    </div>
+    <div class="post-meta">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover_hu_fbf4d4e3f4fdf14.png 360w,http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover_hu_556c3e380ab64e16.png 480w,http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover_hu_bda948abffe8c856.png 720w,http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover_hu_f6005c837c30c4c2.png 1080w,http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover_hu_f6f3f74b54b68dac.png 1500w,http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover.png 1794w'
+                src="http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1794" height="871"
+                alt="Login security concept with password field, MFA prompt, and phishing warning">
+        <figcaption>Credential phishing targets identity, not just email behavior.</figcaption>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#credential-phishing-defensive-lessons-for-employees" aria-label="Credential Phishing: Defensive Lessons for Employees">Credential Phishing: Defensive Lessons for Employees</a><ul>
+                    
+            <li>
+                <a href="#context" aria-label="Context">Context</a></li>
+            <li>
+                <a href="#root-cause" aria-label="Root Cause">Root Cause</a></li>
+            <li>
+                <a href="#common-credential-phishing-scenarios" aria-label="Common Credential Phishing Scenarios">Common Credential Phishing Scenarios</a><ul>
+                    
+            <li>
+                <a href="#fake-login-page" aria-label="Fake Login Page">Fake Login Page</a></li>
+            <li>
+                <a href="#shared-document-lure" aria-label="Shared Document Lure">Shared Document Lure</a></li>
+            <li>
+                <a href="#mfa-fatigue" aria-label="MFA Fatigue">MFA Fatigue</a></li>
+            <li>
+                <a href="#fake-it-support" aria-label="Fake IT Support">Fake IT Support</a></li></ul>
+            </li>
+            <li>
+                <a href="#what-employees-should-do" aria-label="What Employees Should Do">What Employees Should Do</a><ul>
+                    
+            <li>
+                <a href="#use-a-password-manager" aria-label="Use a Password Manager">Use a Password Manager</a></li>
+            <li>
+                <a href="#enable-mfa" aria-label="Enable MFA">Enable MFA</a></li>
+            <li>
+                <a href="#verify-login-prompts" aria-label="Verify Login Prompts">Verify Login Prompts</a></li>
+            <li>
+                <a href="#report-quickly" aria-label="Report Quickly">Report Quickly</a></li></ul>
+            </li>
+            <li>
+                <a href="#what-security-teams-should-do" aria-label="What Security Teams Should Do">What Security Teams Should Do</a></li>
+            <li>
+                <a href="#remediation-after-credential-entry" aria-label="Remediation After Credential Entry">Remediation After Credential Entry</a></li>
+            <li>
+                <a href="#practical-takeaway" aria-label="Practical Takeaway">Practical Takeaway</a></li>
+            <li>
+                <a href="#references" aria-label="References">References</a></li>
+            <li>
+                <a href="#cta" aria-label="CTA">CTA</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="credential-phishing-defensive-lessons-for-employees">Credential Phishing: Defensive Lessons for Employees<a hidden class="anchor" aria-hidden="true" href="#credential-phishing-defensive-lessons-for-employees">#</a></h1>
+<p>Credential phishing is one of the most direct ways attackers gain access to business systems.</p>
+<p>Instead of exploiting a software vulnerability, the attacker tricks a user into giving away something that proves identity: a password, session token, MFA code, or approval response.</p>
+<p>This article is written for employees and security awareness teams. It focuses on defense, not attack execution.</p>
+<p>Image: Type: Context. Mô tả: &ldquo;A visual showing a user login screen, an MFA prompt, and a warning sign between the user and a fake login page.&rdquo;. caption: &ldquo;Credential phishing targets the identity layer of the organization.&rdquo;</p>
+<h2 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h2>
+<p>Many companies rely on cloud identity providers, SaaS applications, VPN portals, email systems, customer platforms, and internal dashboards.</p>
+<p>That means one compromised account can create access to many systems.</p>
+<p>Credential phishing is dangerous because it can lead to:</p>
+<ul>
+<li>Mailbox compromise</li>
+<li>Cloud storage access</li>
+<li>Internal application access</li>
+<li>Unauthorized data download</li>
+<li>Business email compromise</li>
+<li>Lateral movement</li>
+<li>Fraudulent approvals</li>
+<li>Further phishing from a trusted account</li>
+</ul>
+<p>When an attacker controls a real account, their next message may look much more believable.</p>
+<h2 id="root-cause">Root Cause<a hidden class="anchor" aria-hidden="true" href="#root-cause">#</a></h2>
+<p>Credential phishing succeeds when users trust a login prompt without verifying where it came from.</p>
+<p>Common contributing factors include:</p>
+<ul>
+<li>Password reuse</li>
+<li>Weak passwords</li>
+<li>Lack of MFA</li>
+<li>Push-based MFA fatigue</li>
+<li>Users typing passwords into pages reached from email links</li>
+<li>Lack of password manager adoption</li>
+<li>Lack of phishing-resistant authentication</li>
+<li>Poor reporting process</li>
+<li>Excessive access tied to normal user accounts</li>
+<li>Lack of session monitoring</li>
+</ul>
+<p>The problem is not only user behavior. The organization must design systems that limit damage when credentials are exposed.</p>
+<h2 id="common-credential-phishing-scenarios">Common Credential Phishing Scenarios<a hidden class="anchor" aria-hidden="true" href="#common-credential-phishing-scenarios">#</a></h2>
+<h3 id="fake-login-page">Fake Login Page<a hidden class="anchor" aria-hidden="true" href="#fake-login-page">#</a></h3>
+<p>The user receives a message that appears to come from a known service. The link leads to a page that looks like a normal login page.</p>
+<p>Defensive habit:</p>
+<ul>
+<li>Do not log in through unexpected email links.</li>
+<li>Open the service directly from a trusted bookmark or official app.</li>
+<li>Use a password manager. It usually will not autofill credentials on the wrong domain.</li>
+</ul>
+<h3 id="shared-document-lure">Shared Document Lure<a hidden class="anchor" aria-hidden="true" href="#shared-document-lure">#</a></h3>
+<p>The user receives a cloud document notification and is asked to sign in to view it.</p>
+<p>Defensive habit:</p>
+<ul>
+<li>Verify whether the shared document is expected.</li>
+<li>Check the sender and domain.</li>
+<li>Access the document through the official cloud application.</li>
+</ul>
+<h3 id="mfa-fatigue">MFA Fatigue<a hidden class="anchor" aria-hidden="true" href="#mfa-fatigue">#</a></h3>
+<p>The user receives repeated MFA prompts and eventually approves one to stop the noise.</p>
+<p>Defensive habit:</p>
+<ul>
+<li>Never approve an MFA prompt you did not initiate.</li>
+<li>Report unexpected MFA prompts immediately.</li>
+<li>Treat repeated prompts as a potential active attack.</li>
+</ul>
+<h3 id="fake-it-support">Fake IT Support<a hidden class="anchor" aria-hidden="true" href="#fake-it-support">#</a></h3>
+<p>The attacker pretends to be IT and asks the user to confirm credentials, install a tool, or approve access.</p>
+<p>Defensive habit:</p>
+<ul>
+<li>IT should never ask for your password.</li>
+<li>Verify support requests through the official helpdesk channel.</li>
+<li>Do not move to personal chat channels for account support.</li>
+</ul>
+<p>Image: Type: Test case. Mô tả: &ldquo;A defensive training example showing a fake cloud login prompt beside a legitimate bookmarked login flow, with the domain highlighted.&rdquo;. caption: &ldquo;The domain is often the difference between a legitimate login and a credential theft attempt.&rdquo;</p>
+<h2 id="what-employees-should-do">What Employees Should Do<a hidden class="anchor" aria-hidden="true" href="#what-employees-should-do">#</a></h2>
+<h3 id="use-a-password-manager">Use a Password Manager<a hidden class="anchor" aria-hidden="true" href="#use-a-password-manager">#</a></h3>
+<p>Password managers help users create unique passwords and reduce password reuse.</p>
+<p>They also provide a practical anti-phishing benefit: a password manager normally autofills only on the correct domain.</p>
+<p>If the page looks right but the password manager does not autofill, stop and inspect the domain.</p>
+<h3 id="enable-mfa">Enable MFA<a hidden class="anchor" aria-hidden="true" href="#enable-mfa">#</a></h3>
+<p>MFA adds a second layer of protection when a password is stolen.</p>
+<p>However, not all MFA methods provide the same protection. Push approvals and one-time codes can still be tricked out of users in some phishing scenarios.</p>
+<p>For high-risk accounts, organizations should consider phishing-resistant methods such as FIDO2/WebAuthn security keys or passkeys when appropriate.</p>
+<h3 id="verify-login-prompts">Verify Login Prompts<a hidden class="anchor" aria-hidden="true" href="#verify-login-prompts">#</a></h3>
+<p>Before entering credentials, ask:</p>
+<ul>
+<li>Did I initiate this login?</li>
+<li>Is this the official domain?</li>
+<li>Did I reach this page from a trusted bookmark?</li>
+<li>Is the request expected?</li>
+<li>Is my password manager recognizing the site?</li>
+</ul>
+<h3 id="report-quickly">Report Quickly<a hidden class="anchor" aria-hidden="true" href="#report-quickly">#</a></h3>
+<p>If you entered credentials into a suspicious page, report immediately.</p>
+<p>Do not wait to see whether something bad happens.</p>
+<p>Fast reporting allows security teams to:</p>
+<ul>
+<li>Reset passwords</li>
+<li>Revoke sessions</li>
+<li>Review login logs</li>
+<li>Disable suspicious access</li>
+<li>Check mailbox rules</li>
+<li>Investigate data access</li>
+<li>Block related domains</li>
+<li>Warn other employees</li>
+</ul>
+<h2 id="what-security-teams-should-do">What Security Teams Should Do<a hidden class="anchor" aria-hidden="true" href="#what-security-teams-should-do">#</a></h2>
+<p>Security teams should not treat credential phishing as a user-only problem.</p>
+<p>Recommended controls include:</p>
+<ul>
+<li>MFA for all important accounts</li>
+<li>Phishing-resistant MFA for privileged users</li>
+<li>Password manager adoption</li>
+<li>Conditional access policies</li>
+<li>Impossible travel detection</li>
+<li>Risk-based sign-in monitoring</li>
+<li>Session revocation capability</li>
+<li>Mailbox rule monitoring</li>
+<li>Clear phishing reporting process</li>
+<li>Safe simulations</li>
+<li>Just-in-time employee guidance</li>
+<li>Least privilege for normal accounts</li>
+</ul>
+<h2 id="remediation-after-credential-entry">Remediation After Credential Entry<a hidden class="anchor" aria-hidden="true" href="#remediation-after-credential-entry">#</a></h2>
+<p>If a user reports credential entry into a suspicious page:</p>
+<ol>
+<li>Reset the password.</li>
+<li>Revoke active sessions and refresh tokens.</li>
+<li>Review recent logins.</li>
+<li>Check MFA methods for unauthorized additions.</li>
+<li>Check mailbox forwarding and inbox rules.</li>
+<li>Review cloud file access.</li>
+<li>Look for suspicious OAuth grants.</li>
+<li>Search for related phishing messages across mailboxes.</li>
+<li>Notify affected teams if needed.</li>
+<li>Capture lessons learned without blaming the reporter.</li>
+</ol>
+<h2 id="practical-takeaway">Practical Takeaway<a hidden class="anchor" aria-hidden="true" href="#practical-takeaway">#</a></h2>
+<p>Credential phishing is an identity security problem.</p>
+<p>Employees can help by verifying login prompts, using password managers, refusing unexpected MFA prompts, and reporting quickly. Organizations must help by deploying strong identity controls and making safe behavior easy.</p>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ul>
+<li><a href="https://www.cisa.gov/secure-our-world/recognize-and-report-phishing">CISA: Recognize and Report Phishing</a></li>
+<li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html">NIST SP 800-63B: Authentication and Authenticator Management</a></li>
+<li><a href="https://www.nist.gov/blogs/cybersecurity-insights/phishing-resistance-protecting-keys-your-kingdom">NIST: Phishing Resistance - Protecting the Keys to Your Kingdom</a></li>
+<li><a href="https://consumer.ftc.gov/articles/how-recognize-avoid-phishing-scams">FTC: How To Recognize and Avoid Phishing Scams</a></li>
+</ul>
+<h2 id="cta">CTA<a hidden class="anchor" aria-hidden="true" href="#cta">#</a></h2>
+<p>KevinSec helps organizations improve identity security awareness through practical training, phishing simulation design, and defensive reporting workflows.</p>
+<p>If your team wants to reduce credential phishing risk, contact KevinSec for a focused phishing awareness and identity security review.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/credential-phishing/">Credential Phishing</a></li>
+      <li><a href="http://localhost:1313/tags/mfa/">Mfa</a></li>
+      <li><a href="http://localhost:1313/tags/password-security/">Password Security</a></li>
+      <li><a href="http://localhost:1313/tags/security-awareness/">Security Awareness</a></li>
+      <li><a href="http://localhost:1313/tags/identity-security/">Identity Security</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/">
+    <span class="title">« Prev</span>
+    <span>CORS Misconfiguration: Simple Mistake, Serious Impact</span>
+  </a>
+  <a class="next" href="http://localhost:1313/blog/cvss-for-pentesters-how-to-think-about-severity/">
+    <span class="title">Next »</span>
+    <span>CVSS for Pentesters: How to Think About Severity</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Credential Phishing: Defensive Lessons for Employees on x"
+            href="https://x.com/intent/tweet/?text=Credential%20Phishing%3a%20Defensive%20Lessons%20for%20Employees&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fcredential-phishing-defensive-lessons-for-employees%2f&amp;hashtags=credentialphishing%2cmfa%2cpasswordsecurity%2csecurityawareness%2cidentitysecurity">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Credential Phishing: Defensive Lessons for Employees on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fcredential-phishing-defensive-lessons-for-employees%2f&amp;title=Credential%20Phishing%3a%20Defensive%20Lessons%20for%20Employees&amp;summary=Credential%20Phishing%3a%20Defensive%20Lessons%20for%20Employees&amp;source=http%3a%2f%2flocalhost%3a1313%2fblog%2fcredential-phishing-defensive-lessons-for-employees%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Credential Phishing: Defensive Lessons for Employees on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fblog%2fcredential-phishing-defensive-lessons-for-employees%2f&title=Credential%20Phishing%3a%20Defensive%20Lessons%20for%20Employees">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Credential Phishing: Defensive Lessons for Employees on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2fcredential-phishing-defensive-lessons-for-employees%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Credential Phishing: Defensive Lessons for Employees on whatsapp"
+            href="https://api.whatsapp.com/send?text=Credential%20Phishing%3a%20Defensive%20Lessons%20for%20Employees%20-%20http%3a%2f%2flocalhost%3a1313%2fblog%2fcredential-phishing-defensive-lessons-for-employees%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Credential Phishing: Defensive Lessons for Employees on telegram"
+            href="https://telegram.me/share/url?text=Credential%20Phishing%3a%20Defensive%20Lessons%20for%20Employees&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fcredential-phishing-defensive-lessons-for-employees%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Credential Phishing: Defensive Lessons for Employees on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Credential%20Phishing%3a%20Defensive%20Lessons%20for%20Employees&u=http%3a%2f%2flocalhost%3a1313%2fblog%2fcredential-phishing-defensive-lessons-for-employees%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

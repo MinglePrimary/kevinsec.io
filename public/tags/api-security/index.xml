@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Api Security on KevinSec</title>
+    <link>http://localhost:1313/tags/api-security/</link>
+    <description>Recent content in Api Security on KevinSec</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/api-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API BOLA Explained with Realistic Examples</title>
+      <link>http://localhost:1313/blog/api-bola-explained-with-realistic-examples/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/api-bola-explained-with-realistic-examples/</guid>
+      <description>A practical explanation of Broken Object Level Authorization in APIs, with realistic examples, testing mindset, and remediation guidance.</description>
+    </item>
+    <item>
+      <title>API Broken Authentication: Common Testing Patterns</title>
+      <link>http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/</guid>
+      <description>A practical checklist for identifying broken authentication patterns in APIs, from token handling to weak login flows and session lifecycle issues.</description>
+    </item>
+    <item>
+      <title>JWT Security Testing Checklist</title>
+      <link>http://localhost:1313/blog/jwt-security-testing-checklist/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/jwt-security-testing-checklist/</guid>
+      <description>A practical checklist for testing JSON Web Token security in web applications and APIs.</description>
+    </item>
+    <item>
+      <title>Rate Limiting: The Control That Many Apps Forget</title>
+      <link>http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/</guid>
+      <description>A practical guide to rate limiting as a security control for login, OTP, password reset, API, and resource-intensive endpoints.</description>
+    </item>
+  </channel>
+</rss>

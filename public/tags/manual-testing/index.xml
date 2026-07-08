@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Manual Testing on KevinSec</title>
+    <link>http://localhost:1313/tags/manual-testing/</link>
+    <description>Recent content in Manual Testing on KevinSec</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/manual-testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Burp Suite Beginner Workflow for Web Pentest</title>
+      <link>http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/</guid>
+      <description>A practical beginner workflow for using Burp Suite during web pentesting, from proxy setup to Repeater, Intruder, notes, and reporting evidence.</description>
+    </item>
+    <item>
+      <title>Manual Testing vs Automated Scanning</title>
+      <link>http://localhost:1313/blog/manual-testing-vs-automated-scanning/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/manual-testing-vs-automated-scanning/</guid>
+      <description>A practical comparison of manual web security testing and automated scanning, including when to use each and why both matter.</description>
+    </item>
+  </channel>
+</rss>

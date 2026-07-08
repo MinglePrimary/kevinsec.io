@@ -6,8 +6,22 @@
     <description>Recent content in Methodology on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 15:07:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/methodology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Legal Recon for Web Pentesting</title>
+      <link>http://localhost:1313/blog/legal-recon-for-web-pentesting/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/legal-recon-for-web-pentesting/</guid>
+      <description>A practical guide to performing legal, scope-aware reconnaissance before a web pentest, without crossing authorization boundaries.</description>
+    </item>
+    <item>
+      <title>Manual Testing vs Automated Scanning</title>
+      <link>http://localhost:1313/blog/manual-testing-vs-automated-scanning/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/manual-testing-vs-automated-scanning/</guid>
+      <description>A practical comparison of manual web security testing and automated scanning, including when to use each and why both matter.</description>
+    </item>
     <item>
       <title>Research Note Template for Vulnerability Analysis</title>
       <link>http://localhost:1313/research/sample-research-note/</link>

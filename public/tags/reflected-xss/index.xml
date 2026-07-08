@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Reflected Xss on KevinSec</title>
+    <link>http://localhost:1313/tags/reflected-xss/</link>
+    <description>Recent content in Reflected Xss on KevinSec</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/reflected-xss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reflected XSS Explained: Context, Root Cause, Impact</title>
+      <link>http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/</guid>
+      <description>A beginner-friendly explanation of reflected cross-site scripting from context to root cause, impact, testing, and remediation.</description>
+    </item>
+    <item>
+      <title>Stored XSS vs Reflected XSS: Practical Differences</title>
+      <link>http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/</guid>
+      <description>A practical comparison of stored XSS and reflected XSS, including root cause, exploitability, impact, detection, and remediation.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My 15-Day Content Sprint for KevinSec | KevinSec</title>
+<meta name="keywords" content="kevinsec, content strategy, personal brand, web security, security consulting">
+<meta name="description" content="A transparent look at the 15-day content sprint used to build the first 30 KevinSec blog posts around web security, phishing awareness, and pentest methodology.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="My 15-Day Content Sprint for KevinSec">
+  <meta property="og:description" content="A transparent look at the 15-day content sprint used to build the first 30 KevinSec blog posts around web security, phishing awareness, and pentest methodology.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:tag" content="Kevinsec">
+    <meta property="article:tag" content="Content Strategy">
+    <meta property="article:tag" content="Personal Brand">
+    <meta property="article:tag" content="Web-Security">
+    <meta property="article:tag" content="Security Consulting">
+    <meta property="og:image" content="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover.png">
+  <meta name="twitter:title" content="My 15-Day Content Sprint for KevinSec">
+  <meta name="twitter:description" content="A transparent look at the 15-day content sprint used to build the first 30 KevinSec blog posts around web security, phishing awareness, and pentest methodology.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "http://localhost:1313/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "My 15-Day Content Sprint for KevinSec",
+      "item": "http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "My 15-Day Content Sprint for KevinSec",
+  "name": "My 15-Day Content Sprint for KevinSec",
+  "description": "A transparent look at the 15-day content sprint used to build the first 30 KevinSec blog posts around web security, phishing awareness, and pentest methodology.",
+  "keywords": [
+    "kevinsec", "content strategy", "personal brand", "web security", "security consulting"
+  ],
+  "articleBody": "My 15-Day Content Sprint for KevinSec KevinSec is being built around a simple idea:\nTechnical trust should be demonstrated through clear, practical, and useful security work.\nA cybersecurity blog is not only a place to publish opinions. For a security consultant, it is proof-of-work. It shows how you think, how you explain risk, how you structure technical evidence, and how you communicate with developers and business stakeholders.\nThis article documents the first KevinSec content sprint: 30 blog posts in 15 days.\nImage: Type: Context. Mô tả: “A clean content sprint board showing 30 blog cards grouped into Web Security, API Security, Phishing Awareness, Methodology, and Personal Branding.”. caption: “The first KevinSec sprint focuses on building technical trust through consistent writing.”\nWhy a Content Sprint? A new security brand needs credibility.\nCredibility can come from certifications, job history, client references, public research, conference talks, tools, reports, or technical writing.\nFor KevinSec, the fastest practical path is technical writing.\nThe goals of this sprint are:\nBuild the foundation of the blog Create beginner-friendly security content Demonstrate web pentest methodology Explain common vulnerabilities clearly Publish defensive phishing awareness content Support future service pages Create material that can be reused on LinkedIn and proposals Show consistency and professionalism The target is ambitious but manageable: 30 posts in 15 days.\nThe Content Pillars The sprint is organized around five pillars.\n1. Web Security Fundamentals This pillar covers the basic thinking model behind web pentesting.\nTopics include:\nHTTP requests Untrusted data OWASP Top 10 Broken access control IDOR XSS SQL injection File upload security Path traversal SSRF CORS JWT These posts are designed for readers who want to understand the root cause, not just memorize payloads.\n2. API Security Modern applications rely heavily on APIs.\nThis pillar covers:\nBOLA Broken authentication Rate limiting Authorization mistakes Object ownership Token handling API security content is important because many real business applications expose sensitive logic through APIs.\n3. Pentest Methodology Technical findings are only valuable when they are tested, documented, and communicated professionally.\nThis pillar covers:\nLegal recon Burp Suite workflow Manual testing vs automated scanning Vulnerability reporting CVSS thinking Lessons learned from engagements This content supports KevinSec as a practical consulting brand, not only a technical blog.\n4. Phishing Awareness Phishing remains one of the most common ways attackers gain initial access.\nThe KevinSec approach to phishing content is defensive and ethical.\nTopics include:\nHow attackers abuse trust How to recognize suspicious emails Credential phishing defense Safe phishing simulation design The goal is to help organizations build awareness without shaming employees.\n5. Personal Brand and Trust A personal brand in cybersecurity should not be built on hype.\nIt should be built on useful output.\nThis sprint is part of that process: consistent publishing, clear structure, and practical guidance.\nImage: Type: Funny. Mô tả: “A light meme-style image of a security consultant surrounded by sticky notes labeled ‘XSS’, ‘IDOR’, ‘Report’, ‘CTA’, and ‘Publish’ while holding coffee.”. caption: “Thirty posts in fifteen days is not magic. It is scope control and repeatable workflow.”\nThe Writing Template Most KevinSec technical posts follow this structure:\nContext → Root Cause → Impact → Signature → How to Test Safely → Remediation → CTA This structure keeps the writing consistent.\nIt also mirrors how a pentester should think:\nWhat is the feature doing? Where is trust being misplaced? What can an attacker gain? What signals reveal the issue? How can it be tested safely? How should it be fixed? How does the reader take the next step? Why English-First? KevinSec uses an English-first content strategy.\nThe reasons are practical:\nCybersecurity terminology is naturally English-heavy. Global clients search in English. Technical articles can support freelance proposals. LinkedIn and portfolio reuse becomes easier. Security references such as OWASP, NIST, CISA, and PortSwigger are primarily English. Vietnamese summaries can still be added when the topic is especially useful for the Vietnamese community.\nPublishing Workflow The workflow for each post is simple:\nChoose title. Define reader level. Draft using the KevinSec structure. Add image placeholders. Add references. Add CTA. Create cover image. Publish through the blog workflow. Share on LinkedIn or X. Track performance in analytics. The goal is not perfection on day one. The goal is a consistent publishing system that can improve over time.\nWhat Makes This Sprint Useful? The sprint is useful because it creates multiple assets at once:\nBlog content SEO landing material LinkedIn post ideas Client education material Training outline Future newsletter topics Internal knowledge base Proof-of-work portfolio A single article can become a LinkedIn post, a slide, a checklist, or a section in a client proposal.\nSuccess Metrics For the first 90 days, useful metrics include:\nNumber of posts published Search impressions Organic clicks Average position Most visited articles LinkedIn engagement Contact page visits Service page visits Inquiries generated Topics worth expanding Early traffic may be small. That is normal.\nThe more important early metric is consistency.\nLessons From the Sprint A few lessons are already clear:\nA blog needs structure before volume. Technical writing should be practical, not theatrical. Good titles matter. Cover images should be consistent. Every article should support a clear audience. CTA should match the topic. Writing creates clarity in your own thinking. The Next Step After the first 30 posts, KevinSec can expand into:\nResearch writeups Lab walkthroughs Vulnerability deep dives Case studies Service pages Downloadable checklists Security awareness material Interview handbook content Web pentest training modules The blog becomes the base layer for a larger security brand.\nPractical Takeaway A content sprint is not just about publishing fast.\nIt is about building a repeatable system for trust, visibility, and technical clarity.\nFor KevinSec, the first 15-day sprint is the foundation: 30 practical posts that explain web security, API risk, phishing awareness, and pentest methodology in a clear professional voice.\nCTA KevinSec is building practical cybersecurity content, web pentest services, phishing awareness training, and security consulting resources.\nIf you are looking for a security partner who communicates clearly and focuses on actionable risk reduction, contact KevinSec to start a discussion.\n",
+  "wordCount" : "1003",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover.png","datePublished": "2026-07-08T00:00:00Z",
+  "dateModified": "2026-07-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "KevinSec"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "KevinSec",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/blog/">Blog</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      My 15-Day Content Sprint for KevinSec
+    </h1>
+    <div class="post-description">
+      A transparent look at the 15-day content sprint used to build the first 30 KevinSec blog posts around web security, phishing awareness, and pentest methodology.
+    </div>
+    <div class="post-meta">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_8595e9f3a65e384c.png 360w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_29c61aa4ddb9c1a8.png 480w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_5d1a66dbb84ed81a.png 720w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_d316a00309d852c3.png 1080w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_18bc11554f18e97e.png 1500w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover.png 1644w'
+                src="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1644" height="880"
+                alt="KevinSec content sprint board with blog topics, publishing workflow, and cybersecurity themes">
+        <figcaption>Technical writing is proof-of-work for a security consultant.</figcaption>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#my-15-day-content-sprint-for-kevinsec" aria-label="My 15-Day Content Sprint for KevinSec">My 15-Day Content Sprint for KevinSec</a><ul>
+                    
+            <li>
+                <a href="#why-a-content-sprint" aria-label="Why a Content Sprint?">Why a Content Sprint?</a></li>
+            <li>
+                <a href="#the-content-pillars" aria-label="The Content Pillars">The Content Pillars</a></li>
+            <li>
+                <a href="#1-web-security-fundamentals" aria-label="1. Web Security Fundamentals">1. Web Security Fundamentals</a></li>
+            <li>
+                <a href="#2-api-security" aria-label="2. API Security">2. API Security</a></li>
+            <li>
+                <a href="#3-pentest-methodology" aria-label="3. Pentest Methodology">3. Pentest Methodology</a></li>
+            <li>
+                <a href="#4-phishing-awareness" aria-label="4. Phishing Awareness">4. Phishing Awareness</a></li>
+            <li>
+                <a href="#5-personal-brand-and-trust" aria-label="5. Personal Brand and Trust">5. Personal Brand and Trust</a></li>
+            <li>
+                <a href="#the-writing-template" aria-label="The Writing Template">The Writing Template</a></li>
+            <li>
+                <a href="#why-english-first" aria-label="Why English-First?">Why English-First?</a></li>
+            <li>
+                <a href="#publishing-workflow" aria-label="Publishing Workflow">Publishing Workflow</a></li>
+            <li>
+                <a href="#what-makes-this-sprint-useful" aria-label="What Makes This Sprint Useful?">What Makes This Sprint Useful?</a></li>
+            <li>
+                <a href="#success-metrics" aria-label="Success Metrics">Success Metrics</a></li>
+            <li>
+                <a href="#lessons-from-the-sprint" aria-label="Lessons From the Sprint">Lessons From the Sprint</a></li>
+            <li>
+                <a href="#the-next-step" aria-label="The Next Step">The Next Step</a></li>
+            <li>
+                <a href="#practical-takeaway" aria-label="Practical Takeaway">Practical Takeaway</a></li>
+            <li>
+                <a href="#cta" aria-label="CTA">CTA</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="my-15-day-content-sprint-for-kevinsec">My 15-Day Content Sprint for KevinSec<a hidden class="anchor" aria-hidden="true" href="#my-15-day-content-sprint-for-kevinsec">#</a></h1>
+<p>KevinSec is being built around a simple idea:</p>
+<blockquote>
+<p>Technical trust should be demonstrated through clear, practical, and useful security work.</p>
+</blockquote>
+<p>A cybersecurity blog is not only a place to publish opinions. For a security consultant, it is proof-of-work. It shows how you think, how you explain risk, how you structure technical evidence, and how you communicate with developers and business stakeholders.</p>
+<p>This article documents the first KevinSec content sprint: 30 blog posts in 15 days.</p>
+<p>Image: Type: Context. Mô tả: &ldquo;A clean content sprint board showing 30 blog cards grouped into Web Security, API Security, Phishing Awareness, Methodology, and Personal Branding.&rdquo;. caption: &ldquo;The first KevinSec sprint focuses on building technical trust through consistent writing.&rdquo;</p>
+<h2 id="why-a-content-sprint">Why a Content Sprint?<a hidden class="anchor" aria-hidden="true" href="#why-a-content-sprint">#</a></h2>
+<p>A new security brand needs credibility.</p>
+<p>Credibility can come from certifications, job history, client references, public research, conference talks, tools, reports, or technical writing.</p>
+<p>For KevinSec, the fastest practical path is technical writing.</p>
+<p>The goals of this sprint are:</p>
+<ul>
+<li>Build the foundation of the blog</li>
+<li>Create beginner-friendly security content</li>
+<li>Demonstrate web pentest methodology</li>
+<li>Explain common vulnerabilities clearly</li>
+<li>Publish defensive phishing awareness content</li>
+<li>Support future service pages</li>
+<li>Create material that can be reused on LinkedIn and proposals</li>
+<li>Show consistency and professionalism</li>
+</ul>
+<p>The target is ambitious but manageable: 30 posts in 15 days.</p>
+<h2 id="the-content-pillars">The Content Pillars<a hidden class="anchor" aria-hidden="true" href="#the-content-pillars">#</a></h2>
+<p>The sprint is organized around five pillars.</p>
+<h2 id="1-web-security-fundamentals">1. Web Security Fundamentals<a hidden class="anchor" aria-hidden="true" href="#1-web-security-fundamentals">#</a></h2>
+<p>This pillar covers the basic thinking model behind web pentesting.</p>
+<p>Topics include:</p>
+<ul>
+<li>HTTP requests</li>
+<li>Untrusted data</li>
+<li>OWASP Top 10</li>
+<li>Broken access control</li>
+<li>IDOR</li>
+<li>XSS</li>
+<li>SQL injection</li>
+<li>File upload security</li>
+<li>Path traversal</li>
+<li>SSRF</li>
+<li>CORS</li>
+<li>JWT</li>
+</ul>
+<p>These posts are designed for readers who want to understand the root cause, not just memorize payloads.</p>
+<h2 id="2-api-security">2. API Security<a hidden class="anchor" aria-hidden="true" href="#2-api-security">#</a></h2>
+<p>Modern applications rely heavily on APIs.</p>
+<p>This pillar covers:</p>
+<ul>
+<li>BOLA</li>
+<li>Broken authentication</li>
+<li>Rate limiting</li>
+<li>Authorization mistakes</li>
+<li>Object ownership</li>
+<li>Token handling</li>
+</ul>
+<p>API security content is important because many real business applications expose sensitive logic through APIs.</p>
+<h2 id="3-pentest-methodology">3. Pentest Methodology<a hidden class="anchor" aria-hidden="true" href="#3-pentest-methodology">#</a></h2>
+<p>Technical findings are only valuable when they are tested, documented, and communicated professionally.</p>
+<p>This pillar covers:</p>
+<ul>
+<li>Legal recon</li>
+<li>Burp Suite workflow</li>
+<li>Manual testing vs automated scanning</li>
+<li>Vulnerability reporting</li>
+<li>CVSS thinking</li>
+<li>Lessons learned from engagements</li>
+</ul>
+<p>This content supports KevinSec as a practical consulting brand, not only a technical blog.</p>
+<h2 id="4-phishing-awareness">4. Phishing Awareness<a hidden class="anchor" aria-hidden="true" href="#4-phishing-awareness">#</a></h2>
+<p>Phishing remains one of the most common ways attackers gain initial access.</p>
+<p>The KevinSec approach to phishing content is defensive and ethical.</p>
+<p>Topics include:</p>
+<ul>
+<li>How attackers abuse trust</li>
+<li>How to recognize suspicious emails</li>
+<li>Credential phishing defense</li>
+<li>Safe phishing simulation design</li>
+</ul>
+<p>The goal is to help organizations build awareness without shaming employees.</p>
+<h2 id="5-personal-brand-and-trust">5. Personal Brand and Trust<a hidden class="anchor" aria-hidden="true" href="#5-personal-brand-and-trust">#</a></h2>
+<p>A personal brand in cybersecurity should not be built on hype.</p>
+<p>It should be built on useful output.</p>
+<p>This sprint is part of that process: consistent publishing, clear structure, and practical guidance.</p>
+<p>Image: Type: Funny. Mô tả: &ldquo;A light meme-style image of a security consultant surrounded by sticky notes labeled &lsquo;XSS&rsquo;, &lsquo;IDOR&rsquo;, &lsquo;Report&rsquo;, &lsquo;CTA&rsquo;, and &lsquo;Publish&rsquo; while holding coffee.&rdquo;. caption: &ldquo;Thirty posts in fifteen days is not magic. It is scope control and repeatable workflow.&rdquo;</p>
+<h2 id="the-writing-template">The Writing Template<a hidden class="anchor" aria-hidden="true" href="#the-writing-template">#</a></h2>
+<p>Most KevinSec technical posts follow this structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Context → Root Cause → Impact → Signature → How to Test Safely → Remediation → CTA
+</span></span></code></pre></div><p>This structure keeps the writing consistent.</p>
+<p>It also mirrors how a pentester should think:</p>
+<ul>
+<li>What is the feature doing?</li>
+<li>Where is trust being misplaced?</li>
+<li>What can an attacker gain?</li>
+<li>What signals reveal the issue?</li>
+<li>How can it be tested safely?</li>
+<li>How should it be fixed?</li>
+<li>How does the reader take the next step?</li>
+</ul>
+<h2 id="why-english-first">Why English-First?<a hidden class="anchor" aria-hidden="true" href="#why-english-first">#</a></h2>
+<p>KevinSec uses an English-first content strategy.</p>
+<p>The reasons are practical:</p>
+<ul>
+<li>Cybersecurity terminology is naturally English-heavy.</li>
+<li>Global clients search in English.</li>
+<li>Technical articles can support freelance proposals.</li>
+<li>LinkedIn and portfolio reuse becomes easier.</li>
+<li>Security references such as OWASP, NIST, CISA, and PortSwigger are primarily English.</li>
+</ul>
+<p>Vietnamese summaries can still be added when the topic is especially useful for the Vietnamese community.</p>
+<h2 id="publishing-workflow">Publishing Workflow<a hidden class="anchor" aria-hidden="true" href="#publishing-workflow">#</a></h2>
+<p>The workflow for each post is simple:</p>
+<ol>
+<li>Choose title.</li>
+<li>Define reader level.</li>
+<li>Draft using the KevinSec structure.</li>
+<li>Add image placeholders.</li>
+<li>Add references.</li>
+<li>Add CTA.</li>
+<li>Create cover image.</li>
+<li>Publish through the blog workflow.</li>
+<li>Share on LinkedIn or X.</li>
+<li>Track performance in analytics.</li>
+</ol>
+<p>The goal is not perfection on day one. The goal is a consistent publishing system that can improve over time.</p>
+<h2 id="what-makes-this-sprint-useful">What Makes This Sprint Useful?<a hidden class="anchor" aria-hidden="true" href="#what-makes-this-sprint-useful">#</a></h2>
+<p>The sprint is useful because it creates multiple assets at once:</p>
+<ul>
+<li>Blog content</li>
+<li>SEO landing material</li>
+<li>LinkedIn post ideas</li>
+<li>Client education material</li>
+<li>Training outline</li>
+<li>Future newsletter topics</li>
+<li>Internal knowledge base</li>
+<li>Proof-of-work portfolio</li>
+</ul>
+<p>A single article can become a LinkedIn post, a slide, a checklist, or a section in a client proposal.</p>
+<h2 id="success-metrics">Success Metrics<a hidden class="anchor" aria-hidden="true" href="#success-metrics">#</a></h2>
+<p>For the first 90 days, useful metrics include:</p>
+<ul>
+<li>Number of posts published</li>
+<li>Search impressions</li>
+<li>Organic clicks</li>
+<li>Average position</li>
+<li>Most visited articles</li>
+<li>LinkedIn engagement</li>
+<li>Contact page visits</li>
+<li>Service page visits</li>
+<li>Inquiries generated</li>
+<li>Topics worth expanding</li>
+</ul>
+<p>Early traffic may be small. That is normal.</p>
+<p>The more important early metric is consistency.</p>
+<h2 id="lessons-from-the-sprint">Lessons From the Sprint<a hidden class="anchor" aria-hidden="true" href="#lessons-from-the-sprint">#</a></h2>
+<p>A few lessons are already clear:</p>
+<ul>
+<li>A blog needs structure before volume.</li>
+<li>Technical writing should be practical, not theatrical.</li>
+<li>Good titles matter.</li>
+<li>Cover images should be consistent.</li>
+<li>Every article should support a clear audience.</li>
+<li>CTA should match the topic.</li>
+<li>Writing creates clarity in your own thinking.</li>
+</ul>
+<h2 id="the-next-step">The Next Step<a hidden class="anchor" aria-hidden="true" href="#the-next-step">#</a></h2>
+<p>After the first 30 posts, KevinSec can expand into:</p>
+<ul>
+<li>Research writeups</li>
+<li>Lab walkthroughs</li>
+<li>Vulnerability deep dives</li>
+<li>Case studies</li>
+<li>Service pages</li>
+<li>Downloadable checklists</li>
+<li>Security awareness material</li>
+<li>Interview handbook content</li>
+<li>Web pentest training modules</li>
+</ul>
+<p>The blog becomes the base layer for a larger security brand.</p>
+<h2 id="practical-takeaway">Practical Takeaway<a hidden class="anchor" aria-hidden="true" href="#practical-takeaway">#</a></h2>
+<p>A content sprint is not just about publishing fast.</p>
+<p>It is about building a repeatable system for trust, visibility, and technical clarity.</p>
+<p>For KevinSec, the first 15-day sprint is the foundation: 30 practical posts that explain web security, API risk, phishing awareness, and pentest methodology in a clear professional voice.</p>
+<h2 id="cta">CTA<a hidden class="anchor" aria-hidden="true" href="#cta">#</a></h2>
+<p>KevinSec is building practical cybersecurity content, web pentest services, phishing awareness training, and security consulting resources.</p>
+<p>If you are looking for a security partner who communicates clearly and focuses on actionable risk reduction, contact KevinSec to start a discussion.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/kevinsec/">Kevinsec</a></li>
+      <li><a href="http://localhost:1313/tags/content-strategy/">Content Strategy</a></li>
+      <li><a href="http://localhost:1313/tags/personal-brand/">Personal Brand</a></li>
+      <li><a href="http://localhost:1313/tags/web-security/">Web-Security</a></li>
+      <li><a href="http://localhost:1313/tags/security-consulting/">Security Consulting</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/blog/manual-testing-vs-automated-scanning/">
+    <span class="title">« Prev</span>
+    <span>Manual Testing vs Automated Scanning</span>
+  </a>
+  <a class="next" href="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/">
+    <span class="title">Next »</span>
+    <span>Password Reset Vulnerabilities: Common Patterns</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My 15-Day Content Sprint for KevinSec on x"
+            href="https://x.com/intent/tweet/?text=My%2015-Day%20Content%20Sprint%20for%20KevinSec&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fmy-15-day-content-sprint-for-kevinsec%2f&amp;hashtags=kevinsec%2ccontentstrategy%2cpersonalbrand%2cwebsecurity%2csecurityconsulting">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My 15-Day Content Sprint for KevinSec on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fmy-15-day-content-sprint-for-kevinsec%2f&amp;title=My%2015-Day%20Content%20Sprint%20for%20KevinSec&amp;summary=My%2015-Day%20Content%20Sprint%20for%20KevinSec&amp;source=http%3a%2f%2flocalhost%3a1313%2fblog%2fmy-15-day-content-sprint-for-kevinsec%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My 15-Day Content Sprint for KevinSec on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fblog%2fmy-15-day-content-sprint-for-kevinsec%2f&title=My%2015-Day%20Content%20Sprint%20for%20KevinSec">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My 15-Day Content Sprint for KevinSec on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2fmy-15-day-content-sprint-for-kevinsec%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My 15-Day Content Sprint for KevinSec on whatsapp"
+            href="https://api.whatsapp.com/send?text=My%2015-Day%20Content%20Sprint%20for%20KevinSec%20-%20http%3a%2f%2flocalhost%3a1313%2fblog%2fmy-15-day-content-sprint-for-kevinsec%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My 15-Day Content Sprint for KevinSec on telegram"
+            href="https://telegram.me/share/url?text=My%2015-Day%20Content%20Sprint%20for%20KevinSec&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fmy-15-day-content-sprint-for-kevinsec%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My 15-Day Content Sprint for KevinSec on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=My%2015-Day%20Content%20Sprint%20for%20KevinSec&u=http%3a%2f%2flocalhost%3a1313%2fblog%2fmy-15-day-content-sprint-for-kevinsec%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

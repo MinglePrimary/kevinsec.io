@@ -6,8 +6,22 @@
     <description>Recent content in Application Security on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/application-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>File Upload Security: What Can Go Wrong?</title>
+      <link>http://localhost:1313/blog/file-upload-security-what-can-go-wrong/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/file-upload-security-what-can-go-wrong/</guid>
+      <description>A practical overview of file upload vulnerabilities, common failure patterns, testing ideas, and secure design recommendations.</description>
+    </item>
+    <item>
+      <title>Lessons Learned from a Web Pentest Engagement</title>
+      <link>http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/</guid>
+      <description>Practical lessons from web pentest engagements: scope discipline, recon quality, business logic testing, evidence, reporting, and remediation clarity.</description>
+    </item>
     <item>
       <title>OWASP Top 10 2025 Explained for Beginners</title>
       <link>http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/</link>

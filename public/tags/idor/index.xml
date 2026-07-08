@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>IDOR on KevinSec</title>
+    <title>Idor on KevinSec</title>
     <link>http://localhost:1313/tags/idor/</link>
-    <description>Recent content in IDOR on KevinSec</description>
+    <description>Recent content in Idor on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/idor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API BOLA Explained with Realistic Examples</title>
+      <link>http://localhost:1313/blog/api-bola-explained-with-realistic-examples/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/api-bola-explained-with-realistic-examples/</guid>
+      <description>A practical explanation of Broken Object Level Authorization in APIs, with realistic examples, testing mindset, and remediation guidance.</description>
+    </item>
     <item>
       <title>Broken Access Control: Why It Is Still Critical</title>
       <link>http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/</link>

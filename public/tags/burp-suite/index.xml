@@ -6,8 +6,22 @@
     <description>Recent content in Burp Suite on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/burp-suite/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Burp Suite Beginner Workflow for Web Pentest</title>
+      <link>http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/</guid>
+      <description>A practical beginner workflow for using Burp Suite during web pentesting, from proxy setup to Repeater, Intruder, notes, and reporting evidence.</description>
+    </item>
+    <item>
+      <title>SQL Injection Lab: From Error Message to Root Cause</title>
+      <link>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</guid>
+      <description>A safe lab-style walkthrough showing how to reason from a SQL error message to the root cause of SQL injection.</description>
+    </item>
     <item>
       <title>How to Read an HTTP Request Like a Pentester</title>
       <link>http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/</link>

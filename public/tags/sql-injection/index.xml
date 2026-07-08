@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sql Injection on KevinSec</title>
+    <link>http://localhost:1313/tags/sql-injection/</link>
+    <description>Recent content in Sql Injection on KevinSec</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sql-injection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL Injection Lab: From Error Message to Root Cause</title>
+      <link>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</guid>
+      <description>A safe lab-style walkthrough showing how to reason from a SQL error message to the root cause of SQL injection.</description>
+    </item>
+    <item>
+      <title>SQL Injection: What Actually Happens Behind the Query</title>
+      <link>http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/</guid>
+      <description>A beginner-friendly explanation of SQL injection from the perspective of query construction, untrusted data, and database interaction.</description>
+    </item>
+  </channel>
+</rss>

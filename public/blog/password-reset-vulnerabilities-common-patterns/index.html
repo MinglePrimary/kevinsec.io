@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Password Reset Vulnerabilities: Common Patterns | KevinSec</title>
+<meta name="keywords" content="web security, authentication, password reset, account takeover, beginner">
+<meta name="description" content="A practical guide to common password reset vulnerabilities, how they appear in real applications, and how to test them safely.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="Password Reset Vulnerabilities: Common Patterns">
+  <meta property="og:description" content="A practical guide to common password reset vulnerabilities, how they appear in real applications, and how to test them safely.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:tag" content="Web-Security">
+    <meta property="article:tag" content="Authentication">
+    <meta property="article:tag" content="Password Reset">
+    <meta property="article:tag" content="Account Takeover">
+    <meta property="article:tag" content="Beginner">
+    <meta property="og:image" content="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover.png">
+  <meta name="twitter:title" content="Password Reset Vulnerabilities: Common Patterns">
+  <meta name="twitter:description" content="A practical guide to common password reset vulnerabilities, how they appear in real applications, and how to test them safely.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "http://localhost:1313/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Password Reset Vulnerabilities: Common Patterns",
+      "item": "http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Password Reset Vulnerabilities: Common Patterns",
+  "name": "Password Reset Vulnerabilities: Common Patterns",
+  "description": "A practical guide to common password reset vulnerabilities, how they appear in real applications, and how to test them safely.",
+  "keywords": [
+    "web security", "authentication", "password reset", "account takeover", "beginner"
+  ],
+  "articleBody": "Password Reset Vulnerabilities: Common Patterns Password reset is one of the most sensitive features in a web application.\nIt looks simple: a user forgets a password, requests a reset link, receives a token, sets a new password, and logs in again. From a security perspective, however, password reset is an alternative authentication path. If an attacker can abuse it, they may not need the original password at all.\nA strong login page does not matter much if the recovery flow is weak.\nThis article explains common password reset vulnerability patterns from a web pentesting perspective.\nImage: Type: Context. Mô tả: “A simple flow diagram showing user requests password reset, application generates token, email is sent, user sets new password.” caption: “A password reset flow is an authentication flow with a different entry point.”\nContext A password reset flow typically includes several steps:\nThe user submits an email or username. The application checks whether the account exists. The application generates a reset token. The token is sent to the registered email address. The user opens the link and sets a new password. The application invalidates the token and updates the credential. Each step introduces a possible attack surface.\nA pentester should not only check whether the reset link works. The real question is: can an attacker influence, predict, reuse, intercept, or misdirect the recovery process?\nRoot Cause Most password reset vulnerabilities come from one of these design mistakes:\nThe application treats password reset as a support feature instead of a security-critical authentication flow. Reset tokens are weak, reusable, long-lived, or not bound to the correct account. The flow leaks whether an account exists. The application trusts user-controlled input when building the reset link. The reset process fails to invalidate old sessions or old tokens. Password policy is inconsistent between registration, password change, and password reset. In short, the application allows untrusted data or weak state management to influence account recovery.\nCommon Vulnerability Patterns 1. Account Enumeration Account enumeration occurs when the application reveals whether an email or username exists.\nFor example:\nExisting account: We sent you a reset link. Non-existing account: This email is not registered. This may look harmless, but it allows an attacker to build a list of valid users. In targeted attacks, this is useful for phishing, credential stuffing, and social engineering.\nA safer response is generic:\nIf an account exists for this email, a reset link will be sent.\nHowever, the application must also avoid side-channel leaks such as response time differences, status code differences, or different redirect behavior.\nImage: Type: Test case. Mô tả: “Two password reset responses side by side: one for an existing account and one for a non-existing account, showing why different messages leak information.” caption: “Different responses can expose valid accounts.”\n2. Weak or Predictable Reset Tokens A reset token must be cryptographically strong. If the token is short, sequential, timestamp-based, or derived from predictable user data, it may be guessable.\nExamples of weak token design include:\nIncremental numeric IDs Base64-encoded user IDs Tokens derived only from email and timestamp Short random strings Tokens generated using insecure randomness A secure reset token should be high-entropy, random, single-use, and stored server-side in a hashed form if possible.\n3. Token Reuse A reset token should become invalid immediately after use.\nIf the same token can be used multiple times, an attacker who obtains the link once may reset the password again later. This can also create confusing account recovery behavior where old emails remain dangerous.\nTest safely in a lab by using a reset link once, then attempting to reuse the same link. The expected behavior is that the second attempt fails.\n4. Long Token Expiration Password reset tokens should have a short lifetime. A token that remains valid for days or weeks increases the risk window if an email inbox is compromised or a reset link is logged somewhere.\nThere is no universal expiration time for every application, but the principle is clear: the token should be valid long enough for legitimate recovery, but not longer than necessary.\n5. Host Header Poisoning in Reset Links Some applications build password reset URLs based on request headers such as Host or X-Forwarded-Host.\nIf these headers are not validated, an attacker may be able to make the application generate a reset link pointing to an attacker-controlled domain.\nThe user receives a legitimate email from the real application, but the link may lead elsewhere.\nThis is dangerous because the attack abuses trust in the application email itself.\nImage: Type: PoC. Mô tả: “In Burp Suite Repeater, show a password reset request where the Host header is modified in a lab environment, and the generated reset link reflects the modified host.” caption: “Reset link generation must not trust user-controlled host headers.”\n6. Password Reset Token Not Bound to the Correct Account In some broken implementations, the reset token is valid but the account being updated is controlled by a parameter in the request body.\nFor example, the reset form may submit:\nPOST /reset-password token=VALID_TOKEN\u0026email=victim@example.com\u0026new_password=... If the application validates only the token but trusts the email parameter, the reset may apply to the wrong account.\nThe secure design is to bind the token server-side to a specific account and never trust the account identifier from the client at the final password update step.\n7. Missing Session Invalidation After a password reset, old active sessions should usually be invalidated or at least reviewed.\nIf a user resets a password because of suspected compromise, but the attacker remains logged in through an existing session, the reset has not fully solved the problem.\nFor sensitive applications, password reset should trigger:\nSession rotation Logout from other devices Notification to the user Optional review of recent login activity 8. Inconsistent Password Policy The password policy should be consistent across registration, password change, and password reset.\nA common mistake is enforcing strong passwords during registration but allowing weak passwords during password reset. This creates a downgrade path.\nThe reset flow should use the same password strength rules as the rest of the authentication system.\nImpact Password reset vulnerabilities can lead to:\nAccount enumeration Account takeover Credential stuffing support Phishing enablement Long-term unauthorized access Loss of trust in authentication controls The impact depends on the application. For a simple forum account, the risk may be moderate. For banking, SaaS admin panels, healthcare, or internal enterprise portals, the impact can be critical.\nSignature Look for these signals during testing:\nDifferent response messages for valid and invalid accounts Reset tokens that are short or predictable Reset links that remain valid after use Reset links that stay valid for too long Reset URLs reflecting the Host header Reset form containing editable user identifiers Password reset does not invalidate existing sessions Password policy weaker than registration or password change No notification after password reset How to Test Safely Only test password reset flows in applications where you have authorization.\nA safe test approach:\nCreate two test accounts that you control. Request password reset for account A. Observe the reset email, token structure, expiration, and link format. Try to reuse the token after a successful reset. Check whether account identifiers can be modified. Test whether the response leaks account existence. Check whether old sessions remain valid after reset. Confirm whether password policy is consistent. Do not test against real user accounts unless the scope explicitly allows it.\nImage: Type: Test case. Mô tả: “A checklist table for password reset testing with columns: test case, expected secure behavior, result.” caption: “Password reset testing should be structured and controlled.”\nRemediation A secure password reset flow should include:\nGeneric responses for reset requests Strong random reset tokens Short token expiration Single-use tokens Server-side token-to-account binding No trust in user-controlled account identifiers Validated canonical domain for reset links Consistent password policy Session invalidation after reset User notification after successful password reset Logging and monitoring for abnormal reset attempts References OWASP Forgot Password Cheat Sheet OWASP Authentication Cheat Sheet OWASP WSTG: Testing for Weak Password Change or Reset Functionalities Final Thoughts Password reset is not a secondary feature. It is a second door into the account.\nIf that door is weak, attackers do not need to break the main login flow.\nA mature security review should always include password reset testing as part of authentication testing.\nNeed help reviewing your authentication and account recovery flows? KevinSec provides practical web application security reviews focused on real-world account takeover risks, authentication weaknesses, and business-impact findings.\n",
+  "wordCount" : "1407",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover.png","datePublished": "2026-07-08T00:00:00Z",
+  "dateModified": "2026-07-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "KevinSec"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "KevinSec",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/blog/">Blog</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      Password Reset Vulnerabilities: Common Patterns
+    </h1>
+    <div class="post-description">
+      A practical guide to common password reset vulnerabilities, how they appear in real applications, and how to test them safely.
+    </div>
+    <div class="post-meta">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>KevinSec</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_74a1e0b5d2656025.png 360w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_bd4cb3a2a2b1d8be.png 480w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_eb8c430aa8217a09.png 720w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_1fd37c933f324795.png 1080w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_24ceecc2be01a6ca.png 1500w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover.png 2316w'
+                src="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="2316" height="1542"
+                alt="Password reset security concept with login form and lock icon">
+        <figcaption>Password reset flows must be treated as authentication flows, not support features.</figcaption>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#password-reset-vulnerabilities-common-patterns" aria-label="Password Reset Vulnerabilities: Common Patterns">Password Reset Vulnerabilities: Common Patterns</a><ul>
+                    
+            <li>
+                <a href="#context" aria-label="Context">Context</a></li>
+            <li>
+                <a href="#root-cause" aria-label="Root Cause">Root Cause</a></li>
+            <li>
+                <a href="#common-vulnerability-patterns" aria-label="Common Vulnerability Patterns">Common Vulnerability Patterns</a><ul>
+                    
+            <li>
+                <a href="#1-account-enumeration" aria-label="1. Account Enumeration">1. Account Enumeration</a></li>
+            <li>
+                <a href="#2-weak-or-predictable-reset-tokens" aria-label="2. Weak or Predictable Reset Tokens">2. Weak or Predictable Reset Tokens</a></li>
+            <li>
+                <a href="#3-token-reuse" aria-label="3. Token Reuse">3. Token Reuse</a></li>
+            <li>
+                <a href="#4-long-token-expiration" aria-label="4. Long Token Expiration">4. Long Token Expiration</a></li>
+            <li>
+                <a href="#5-host-header-poisoning-in-reset-links" aria-label="5. Host Header Poisoning in Reset Links">5. Host Header Poisoning in Reset Links</a></li>
+            <li>
+                <a href="#6-password-reset-token-not-bound-to-the-correct-account" aria-label="6. Password Reset Token Not Bound to the Correct Account">6. Password Reset Token Not Bound to the Correct Account</a></li>
+            <li>
+                <a href="#7-missing-session-invalidation" aria-label="7. Missing Session Invalidation">7. Missing Session Invalidation</a></li>
+            <li>
+                <a href="#8-inconsistent-password-policy" aria-label="8. Inconsistent Password Policy">8. Inconsistent Password Policy</a></li></ul>
+            </li>
+            <li>
+                <a href="#impact" aria-label="Impact">Impact</a></li>
+            <li>
+                <a href="#signature" aria-label="Signature">Signature</a></li>
+            <li>
+                <a href="#how-to-test-safely" aria-label="How to Test Safely">How to Test Safely</a></li>
+            <li>
+                <a href="#remediation" aria-label="Remediation">Remediation</a></li>
+            <li>
+                <a href="#references" aria-label="References">References</a></li>
+            <li>
+                <a href="#final-thoughts" aria-label="Final Thoughts">Final Thoughts</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="password-reset-vulnerabilities-common-patterns">Password Reset Vulnerabilities: Common Patterns<a hidden class="anchor" aria-hidden="true" href="#password-reset-vulnerabilities-common-patterns">#</a></h1>
+<p>Password reset is one of the most sensitive features in a web application.</p>
+<p>It looks simple: a user forgets a password, requests a reset link, receives a token, sets a new password, and logs in again. From a security perspective, however, password reset is an alternative authentication path. If an attacker can abuse it, they may not need the original password at all.</p>
+<p>A strong login page does not matter much if the recovery flow is weak.</p>
+<p>This article explains common password reset vulnerability patterns from a web pentesting perspective.</p>
+<p>Image: Type: Context. Mô tả: &ldquo;A simple flow diagram showing user requests password reset, application generates token, email is sent, user sets new password.&rdquo; caption: &ldquo;A password reset flow is an authentication flow with a different entry point.&rdquo;</p>
+<h2 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h2>
+<p>A password reset flow typically includes several steps:</p>
+<ol>
+<li>The user submits an email or username.</li>
+<li>The application checks whether the account exists.</li>
+<li>The application generates a reset token.</li>
+<li>The token is sent to the registered email address.</li>
+<li>The user opens the link and sets a new password.</li>
+<li>The application invalidates the token and updates the credential.</li>
+</ol>
+<p>Each step introduces a possible attack surface.</p>
+<p>A pentester should not only check whether the reset link works. The real question is: <strong>can an attacker influence, predict, reuse, intercept, or misdirect the recovery process?</strong></p>
+<h2 id="root-cause">Root Cause<a hidden class="anchor" aria-hidden="true" href="#root-cause">#</a></h2>
+<p>Most password reset vulnerabilities come from one of these design mistakes:</p>
+<ul>
+<li>The application treats password reset as a support feature instead of a security-critical authentication flow.</li>
+<li>Reset tokens are weak, reusable, long-lived, or not bound to the correct account.</li>
+<li>The flow leaks whether an account exists.</li>
+<li>The application trusts user-controlled input when building the reset link.</li>
+<li>The reset process fails to invalidate old sessions or old tokens.</li>
+<li>Password policy is inconsistent between registration, password change, and password reset.</li>
+</ul>
+<p>In short, the application allows untrusted data or weak state management to influence account recovery.</p>
+<h2 id="common-vulnerability-patterns">Common Vulnerability Patterns<a hidden class="anchor" aria-hidden="true" href="#common-vulnerability-patterns">#</a></h2>
+<h3 id="1-account-enumeration">1. Account Enumeration<a hidden class="anchor" aria-hidden="true" href="#1-account-enumeration">#</a></h3>
+<p>Account enumeration occurs when the application reveals whether an email or username exists.</p>
+<p>For example:</p>
+<ul>
+<li>Existing account: <code>We sent you a reset link.</code></li>
+<li>Non-existing account: <code>This email is not registered.</code></li>
+</ul>
+<p>This may look harmless, but it allows an attacker to build a list of valid users. In targeted attacks, this is useful for phishing, credential stuffing, and social engineering.</p>
+<p>A safer response is generic:</p>
+<blockquote>
+<p>If an account exists for this email, a reset link will be sent.</p>
+</blockquote>
+<p>However, the application must also avoid side-channel leaks such as response time differences, status code differences, or different redirect behavior.</p>
+<p>Image: Type: Test case. Mô tả: &ldquo;Two password reset responses side by side: one for an existing account and one for a non-existing account, showing why different messages leak information.&rdquo; caption: &ldquo;Different responses can expose valid accounts.&rdquo;</p>
+<h3 id="2-weak-or-predictable-reset-tokens">2. Weak or Predictable Reset Tokens<a hidden class="anchor" aria-hidden="true" href="#2-weak-or-predictable-reset-tokens">#</a></h3>
+<p>A reset token must be cryptographically strong. If the token is short, sequential, timestamp-based, or derived from predictable user data, it may be guessable.</p>
+<p>Examples of weak token design include:</p>
+<ul>
+<li>Incremental numeric IDs</li>
+<li>Base64-encoded user IDs</li>
+<li>Tokens derived only from email and timestamp</li>
+<li>Short random strings</li>
+<li>Tokens generated using insecure randomness</li>
+</ul>
+<p>A secure reset token should be high-entropy, random, single-use, and stored server-side in a hashed form if possible.</p>
+<h3 id="3-token-reuse">3. Token Reuse<a hidden class="anchor" aria-hidden="true" href="#3-token-reuse">#</a></h3>
+<p>A reset token should become invalid immediately after use.</p>
+<p>If the same token can be used multiple times, an attacker who obtains the link once may reset the password again later. This can also create confusing account recovery behavior where old emails remain dangerous.</p>
+<p>Test safely in a lab by using a reset link once, then attempting to reuse the same link. The expected behavior is that the second attempt fails.</p>
+<h3 id="4-long-token-expiration">4. Long Token Expiration<a hidden class="anchor" aria-hidden="true" href="#4-long-token-expiration">#</a></h3>
+<p>Password reset tokens should have a short lifetime. A token that remains valid for days or weeks increases the risk window if an email inbox is compromised or a reset link is logged somewhere.</p>
+<p>There is no universal expiration time for every application, but the principle is clear: the token should be valid long enough for legitimate recovery, but not longer than necessary.</p>
+<h3 id="5-host-header-poisoning-in-reset-links">5. Host Header Poisoning in Reset Links<a hidden class="anchor" aria-hidden="true" href="#5-host-header-poisoning-in-reset-links">#</a></h3>
+<p>Some applications build password reset URLs based on request headers such as <code>Host</code> or <code>X-Forwarded-Host</code>.</p>
+<p>If these headers are not validated, an attacker may be able to make the application generate a reset link pointing to an attacker-controlled domain.</p>
+<p>The user receives a legitimate email from the real application, but the link may lead elsewhere.</p>
+<p>This is dangerous because the attack abuses trust in the application email itself.</p>
+<p>Image: Type: PoC. Mô tả: &ldquo;In Burp Suite Repeater, show a password reset request where the Host header is modified in a lab environment, and the generated reset link reflects the modified host.&rdquo; caption: &ldquo;Reset link generation must not trust user-controlled host headers.&rdquo;</p>
+<h3 id="6-password-reset-token-not-bound-to-the-correct-account">6. Password Reset Token Not Bound to the Correct Account<a hidden class="anchor" aria-hidden="true" href="#6-password-reset-token-not-bound-to-the-correct-account">#</a></h3>
+<p>In some broken implementations, the reset token is valid but the account being updated is controlled by a parameter in the request body.</p>
+<p>For example, the reset form may submit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">POST /reset-password
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">token=VALID_TOKEN&amp;email=victim@example.com&amp;new_password=...
+</span></span></span></code></pre></div><p>If the application validates only the token but trusts the <code>email</code> parameter, the reset may apply to the wrong account.</p>
+<p>The secure design is to bind the token server-side to a specific account and never trust the account identifier from the client at the final password update step.</p>
+<h3 id="7-missing-session-invalidation">7. Missing Session Invalidation<a hidden class="anchor" aria-hidden="true" href="#7-missing-session-invalidation">#</a></h3>
+<p>After a password reset, old active sessions should usually be invalidated or at least reviewed.</p>
+<p>If a user resets a password because of suspected compromise, but the attacker remains logged in through an existing session, the reset has not fully solved the problem.</p>
+<p>For sensitive applications, password reset should trigger:</p>
+<ul>
+<li>Session rotation</li>
+<li>Logout from other devices</li>
+<li>Notification to the user</li>
+<li>Optional review of recent login activity</li>
+</ul>
+<h3 id="8-inconsistent-password-policy">8. Inconsistent Password Policy<a hidden class="anchor" aria-hidden="true" href="#8-inconsistent-password-policy">#</a></h3>
+<p>The password policy should be consistent across registration, password change, and password reset.</p>
+<p>A common mistake is enforcing strong passwords during registration but allowing weak passwords during password reset. This creates a downgrade path.</p>
+<p>The reset flow should use the same password strength rules as the rest of the authentication system.</p>
+<h2 id="impact">Impact<a hidden class="anchor" aria-hidden="true" href="#impact">#</a></h2>
+<p>Password reset vulnerabilities can lead to:</p>
+<ul>
+<li>Account enumeration</li>
+<li>Account takeover</li>
+<li>Credential stuffing support</li>
+<li>Phishing enablement</li>
+<li>Long-term unauthorized access</li>
+<li>Loss of trust in authentication controls</li>
+</ul>
+<p>The impact depends on the application. For a simple forum account, the risk may be moderate. For banking, SaaS admin panels, healthcare, or internal enterprise portals, the impact can be critical.</p>
+<h2 id="signature">Signature<a hidden class="anchor" aria-hidden="true" href="#signature">#</a></h2>
+<p>Look for these signals during testing:</p>
+<ul>
+<li>Different response messages for valid and invalid accounts</li>
+<li>Reset tokens that are short or predictable</li>
+<li>Reset links that remain valid after use</li>
+<li>Reset links that stay valid for too long</li>
+<li>Reset URLs reflecting the <code>Host</code> header</li>
+<li>Reset form containing editable user identifiers</li>
+<li>Password reset does not invalidate existing sessions</li>
+<li>Password policy weaker than registration or password change</li>
+<li>No notification after password reset</li>
+</ul>
+<h2 id="how-to-test-safely">How to Test Safely<a hidden class="anchor" aria-hidden="true" href="#how-to-test-safely">#</a></h2>
+<p>Only test password reset flows in applications where you have authorization.</p>
+<p>A safe test approach:</p>
+<ol>
+<li>Create two test accounts that you control.</li>
+<li>Request password reset for account A.</li>
+<li>Observe the reset email, token structure, expiration, and link format.</li>
+<li>Try to reuse the token after a successful reset.</li>
+<li>Check whether account identifiers can be modified.</li>
+<li>Test whether the response leaks account existence.</li>
+<li>Check whether old sessions remain valid after reset.</li>
+<li>Confirm whether password policy is consistent.</li>
+</ol>
+<p>Do not test against real user accounts unless the scope explicitly allows it.</p>
+<p>Image: Type: Test case. Mô tả: &ldquo;A checklist table for password reset testing with columns: test case, expected secure behavior, result.&rdquo; caption: &ldquo;Password reset testing should be structured and controlled.&rdquo;</p>
+<h2 id="remediation">Remediation<a hidden class="anchor" aria-hidden="true" href="#remediation">#</a></h2>
+<p>A secure password reset flow should include:</p>
+<ul>
+<li>Generic responses for reset requests</li>
+<li>Strong random reset tokens</li>
+<li>Short token expiration</li>
+<li>Single-use tokens</li>
+<li>Server-side token-to-account binding</li>
+<li>No trust in user-controlled account identifiers</li>
+<li>Validated canonical domain for reset links</li>
+<li>Consistent password policy</li>
+<li>Session invalidation after reset</li>
+<li>User notification after successful password reset</li>
+<li>Logging and monitoring for abnormal reset attempts</li>
+</ul>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ul>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html">OWASP Forgot Password Cheat Sheet</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></li>
+<li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/09-Testing_for_Weak_Password_Change_or_Reset_Functionalities">OWASP WSTG: Testing for Weak Password Change or Reset Functionalities</a></li>
+</ul>
+<h2 id="final-thoughts">Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#final-thoughts">#</a></h2>
+<p>Password reset is not a secondary feature. It is a second door into the account.</p>
+<p>If that door is weak, attackers do not need to break the main login flow.</p>
+<p>A mature security review should always include password reset testing as part of authentication testing.</p>
+<hr>
+<p><strong>Need help reviewing your authentication and account recovery flows?</strong> KevinSec provides practical web application security reviews focused on real-world account takeover risks, authentication weaknesses, and business-impact findings.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/web-security/">Web-Security</a></li>
+      <li><a href="http://localhost:1313/tags/authentication/">Authentication</a></li>
+      <li><a href="http://localhost:1313/tags/password-reset/">Password Reset</a></li>
+      <li><a href="http://localhost:1313/tags/account-takeover/">Account Takeover</a></li>
+      <li><a href="http://localhost:1313/tags/beginner/">Beginner</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/">
+    <span class="title">« Prev</span>
+    <span>My 15-Day Content Sprint for KevinSec</span>
+  </a>
+  <a class="next" href="http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/">
+    <span class="title">Next »</span>
+    <span>Path Traversal and LFI: Reading Files You Should Not Read</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Password Reset Vulnerabilities: Common Patterns on x"
+            href="https://x.com/intent/tweet/?text=Password%20Reset%20Vulnerabilities%3a%20Common%20Patterns&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fpassword-reset-vulnerabilities-common-patterns%2f&amp;hashtags=websecurity%2cauthentication%2cpasswordreset%2caccounttakeover%2cbeginner">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Password Reset Vulnerabilities: Common Patterns on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fpassword-reset-vulnerabilities-common-patterns%2f&amp;title=Password%20Reset%20Vulnerabilities%3a%20Common%20Patterns&amp;summary=Password%20Reset%20Vulnerabilities%3a%20Common%20Patterns&amp;source=http%3a%2f%2flocalhost%3a1313%2fblog%2fpassword-reset-vulnerabilities-common-patterns%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Password Reset Vulnerabilities: Common Patterns on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fblog%2fpassword-reset-vulnerabilities-common-patterns%2f&title=Password%20Reset%20Vulnerabilities%3a%20Common%20Patterns">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Password Reset Vulnerabilities: Common Patterns on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2fpassword-reset-vulnerabilities-common-patterns%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Password Reset Vulnerabilities: Common Patterns on whatsapp"
+            href="https://api.whatsapp.com/send?text=Password%20Reset%20Vulnerabilities%3a%20Common%20Patterns%20-%20http%3a%2f%2flocalhost%3a1313%2fblog%2fpassword-reset-vulnerabilities-common-patterns%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Password Reset Vulnerabilities: Common Patterns on telegram"
+            href="https://telegram.me/share/url?text=Password%20Reset%20Vulnerabilities%3a%20Common%20Patterns&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fpassword-reset-vulnerabilities-common-patterns%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Password Reset Vulnerabilities: Common Patterns on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Password%20Reset%20Vulnerabilities%3a%20Common%20Patterns&u=http%3a%2f%2flocalhost%3a1313%2fblog%2fpassword-reset-vulnerabilities-common-patterns%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

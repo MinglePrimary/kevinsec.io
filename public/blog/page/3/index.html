@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Blog | KevinSec</title>
+<meta name="keywords" content="">
+<meta name="description" content="Practical notes on offensive security, web application security, attack surface management, and security engineering.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/blog/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/blog/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/blog/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="Blog">
+  <meta property="og:description" content="Practical notes on offensive security, web application security, attack surface management, and security engineering.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blog">
+  <meta name="twitter:description" content="Practical notes on offensive security, web application security, attack surface management, and security engineering.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "http://localhost:1313/blog/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span class="active">Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    Blog
+  </h1>
+  <div class="post-description">
+    Practical notes on offensive security, web application security, attack surface management, and security engineering.
+  </div>
+</header>
+<div class="post-content md-content"><p>Welcome to the KevinSec Blog.</p>
+<p>This section contains practical notes, technical breakdowns, lessons learned, and field observations from offensive security work.</p>
+
+
+</div>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/cover.png 3008w'
+                src="http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="SQL error message investigation in a web security lab">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">SQL Injection Lab: From Error Message to Root Cause
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A SQL error message is not the vulnerability itself. It is a clue that the application may be building queries unsafely.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to SQL Injection Lab: From Error Message to Root Cause" href="http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/cover.png 3008w'
+                src="http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="Database query and web application security concept">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">SQL Injection: What Actually Happens Behind the Query
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>SQL injection happens when untrusted input becomes part of a database query structure instead of remaining data.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to SQL Injection: What Actually Happens Behind the Query" href="http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/cover.png 3008w'
+                src="http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="Server-side request flow security diagram">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">SSRF Explained for Developers and Pentesters
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>SSRF happens when a web application can be tricked into making server-side requests to unintended locations.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to SSRF Explained for Developers and Pentesters" href="http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/cover.png 3008w'
+                src="http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="Comparison between stored and reflected XSS flows">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Stored XSS vs Reflected XSS: Practical Differences
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Stored and reflected XSS share the same browser-side risk, but they differ in persistence, delivery, and business impact.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Stored XSS vs Reflected XSS: Practical Differences" href="http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/cover_hu_99c573d16a4d66c6.png 360w,http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/cover_hu_1a634f0ae7830d19.png 480w,http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/cover_hu_f1166e3bd1b5a391.png 720w,http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/cover_hu_33bff49682e13a3d.png 1080w,http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/cover_hu_df89653fb3800224.png 1500w,http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/cover.png 3500w'
+                src="http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3500" height="2333"
+                alt="Authentication testing checklist for web applications">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Authentication Testing Checklist for Web Applications
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Use this checklist to review login, registration, password reset, session management, MFA, and account recovery flows.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0700 +07'>July 8, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Authentication Testing Checklist for Web Applications" href="http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/cover_hu_9ca2b40e7f5d8ff6.png 360w,http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/cover_hu_71639a11fa9cd3ae.png 480w,http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/cover_hu_e80eff9c859b3f54.png 720w,http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/cover_hu_bc268db9ebc052f8.png 1080w,http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/cover_hu_fbbabcc9e5e41d2d.png 1500w,http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/cover.png 6000w'
+                src="http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="6000" height="4000"
+                alt="Broken access control in web applications">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Broken Access Control: Why It Is Still Critical
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Broken access control allows authenticated users to access data or actions they should not be allowed to access.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0700 +07'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Broken Access Control: Why It Is Still Critical" href="http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/cover_hu_23fe452f51f559fe.png 360w,http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/cover_hu_9add3a92eaa5fc6d.png 480w,http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/cover_hu_e0d78612370ecf4e.png 720w,http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/cover_hu_41d6540fddcfd7f4.png 1080w,http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/cover.png 1200w'
+                src="http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1200" height="798"
+                alt="HTTP request anatomy for web pentesting">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">How to Read an HTTP Request Like a Pentester
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Learn how pentesters inspect HTTP methods, paths, parameters, headers, cookies, and request bodies to identify potential security risks.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0700 +07'>July 8, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to How to Read an HTTP Request Like a Pentester" href="http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/cover_hu_6bf540f0249fd77b.png 360w,http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/cover_hu_dcde4b249025be12.png 480w,http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/cover_hu_8c34d0d99f4039cb.png 720w,http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/cover_hu_aa4a5dc1faa44b8b.png 1080w,http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/cover_hu_eb52cac56aa6c971.png 1500w,http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/cover.png 1741w'
+                src="http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1741" height="991"
+                alt="IDOR lab scenario explained">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">IDOR Explained with a Simple Lab Scenario
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Learn how Insecure Direct Object Reference works, why it happens, and how to test it safely in labs such as PortSwigger, DVWA, or OWASP Juice Shop.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0700 +07'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to IDOR Explained with a Simple Lab Scenario" href="http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/cover_hu_8a5d1b671b22f46c.png 360w,http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/cover_hu_177fe6c7248ad3c1.png 480w,http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/cover_hu_6fc51f918325ca14.png 720w,http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/cover.png 1000w'
+                src="http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1000" height="523"
+                alt="OWASP Top 10 2025 explained for beginners">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OWASP Top 10 2025 Explained for Beginners
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Understand the OWASP Top 10 2025 categories, what they mean, and how beginners should use them in web security learning.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0700 +07'>July 8, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to OWASP Top 10 2025 Explained for Beginners" href="http://localhost:1313/blog/owasp-top-10-2025-explained-for-beginners/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/cover_hu_1c0f63c3a6fd8fe1.png 360w,http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/cover_hu_57f51f7976331d31.png 480w,http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/cover_hu_6b777fa800396dc8.png 720w,http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/cover_hu_c99e8b43898b7bba.png 1080w,http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/cover_hu_c78e070de8cc2e9b.png 1500w,http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/cover.png 6048w'
+                src="http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="6048" height="4032"
+                alt="Untrusted data in web application security">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Untrusted Data: The Root of Most Web Vulnerabilities
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Most web vulnerabilities happen when applications trust data controlled by users, browsers, integrations, or external systems.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0700 +07'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Untrusted Data: The Root of Most Web Vulnerabilities" href="http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/blog/page/2/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/blog/page/4/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

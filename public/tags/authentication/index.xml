@@ -6,8 +6,36 @@
     <description>Recent content in Authentication on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API Broken Authentication: Common Testing Patterns</title>
+      <link>http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/</guid>
+      <description>A practical checklist for identifying broken authentication patterns in APIs, from token handling to weak login flows and session lifecycle issues.</description>
+    </item>
+    <item>
+      <title>JWT Security Testing Checklist</title>
+      <link>http://localhost:1313/blog/jwt-security-testing-checklist/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/jwt-security-testing-checklist/</guid>
+      <description>A practical checklist for testing JSON Web Token security in web applications and APIs.</description>
+    </item>
+    <item>
+      <title>Password Reset Vulnerabilities: Common Patterns</title>
+      <link>http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/</guid>
+      <description>A practical guide to common password reset vulnerabilities, how they appear in real applications, and how to test them safely.</description>
+    </item>
+    <item>
+      <title>Rate Limiting: The Control That Many Apps Forget</title>
+      <link>http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/</guid>
+      <description>A practical guide to rate limiting as a security control for login, OTP, password reset, API, and resource-intensive endpoints.</description>
+    </item>
     <item>
       <title>Authentication Testing Checklist for Web Applications</title>
       <link>http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/</link>

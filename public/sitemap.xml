@@ -2,25 +2,313 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/abuse-prevention/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/access-control/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/account-takeover/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/api-bola-explained-with-realistic-examples/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/api-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/application-security/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/attack-surface/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/authentication/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/automated-scanning/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/beginner/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/blog/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/bola/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/broken-authentication/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/browser-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/burp-suite/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/checklist/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/client-side-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/consulting/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/content-strategy/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/cors/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/credential-phishing/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/cvss/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/cvss-for-pentesters-how-to-think-about-severity/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/cybersecurity/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/database-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/defense/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/email-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ethical-testing/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/experience/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/file-inclusion/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/file-upload/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/file-upload-security-what-can-go-wrong/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/how-to-recognize-a-suspicious-email/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/how-to-write-a-professional-vulnerability-report/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/identity-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/idor/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/injection/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/intermediate/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/jwt/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/jwt-security-testing-checklist/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/kevinsec/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/lab/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/legal-recon-for-web-pentesting/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/lfi/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/manual-testing/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/manual-testing-vs-automated-scanning/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/methodology/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/mfa/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/owasp-api-top-10/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/password-reset/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/password-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/path-traversal/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/pentest/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/pentest-methodology/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/personal-brand/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/phishing/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/phishing-simulation/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/rate-limiting/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/recon/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/reflected-xss/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/risk/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/same-origin-policy/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/scope/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/security-awareness/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/security-consulting/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/security-reporting/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/security-testing/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/security-training/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/server-side-request-forgery/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/severity/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/social-engineering/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/sql-injection/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ssrf/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/stored-xss/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/upload-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/vulnerability-management/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/vulnerability-report/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/web-pentest/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/web-security/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/workflow/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/xss/</loc>
+    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/authorization/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/beginner/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/blog/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/broken-access-control/</loc>
@@ -29,34 +317,16 @@
     <loc>http://localhost:1313/blog/broken-access-control-why-it-is-still-critical/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/burp-suite/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/checklist/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/blog/how-to-read-an-http-request-like-a-pentester/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/http/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/idor/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/blog/idor-explained-with-a-simple-lab-scenario/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/input-validation/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/lab/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/owasp/</loc>
@@ -74,23 +344,11 @@
     <loc>http://localhost:1313/tags/secure-coding/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/untrusted-data/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/untrusted-data-root-of-most-web-vulnerabilities/</loc>
     <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/web-pentest/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/web-security/</loc>
-    <lastmod>2026-07-08T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/methodology/</loc>
-    <lastmod>2026-07-05T15:07:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/research/</loc>
     <lastmod>2026-07-05T15:07:00+07:00</lastmod>
@@ -105,9 +363,6 @@
     <lastmod>2026-07-05T15:07:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/sample-blog-post/</loc>
-    <lastmod>2026-07-05T14:54:00+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/kevinsec/</loc>
     <lastmod>2026-07-05T14:54:00+07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/offensive-security/</loc>

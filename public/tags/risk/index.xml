@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Risk on KevinSec</title>
+    <link>http://localhost:1313/tags/risk/</link>
+    <description>Recent content in Risk on KevinSec</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/risk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVSS for Pentesters: How to Think About Severity</title>
+      <link>http://localhost:1313/blog/cvss-for-pentesters-how-to-think-about-severity/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/cvss-for-pentesters-how-to-think-about-severity/</guid>
+      <description>A practical guide for pentesters on using CVSS as a severity framework while still explaining real business impact clearly.</description>
+    </item>
+  </channel>
+</rss>

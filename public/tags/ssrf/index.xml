@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ssrf on KevinSec</title>
+    <link>http://localhost:1313/tags/ssrf/</link>
+    <description>Recent content in Ssrf on KevinSec</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ssrf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSRF Explained for Developers and Pentesters</title>
+      <link>http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/</guid>
+      <description>A practical explanation of Server-Side Request Forgery, why it happens, how to test it safely, and how developers can prevent it.</description>
+    </item>
+  </channel>
+</rss>

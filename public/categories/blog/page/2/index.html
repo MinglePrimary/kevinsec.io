@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Blog | KevinSec</title>
+<meta name="keywords" content="">
+<meta name="description" content="KevinSec is a cybersecurity blog focused on web security, penetration testing, red team research, and practical security engineering.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/categories/blog/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/blog/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/blog/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/categories/blog/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="Blog">
+  <meta property="og:description" content="KevinSec is a cybersecurity blog focused on web security, penetration testing, red team research, and practical security engineering.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blog">
+  <meta name="twitter:description" content="KevinSec is a cybersecurity blog focused on web security, penetration testing, red team research, and practical security engineering.">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/categories/">Categories</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    Blog
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/jwt-security-testing-checklist/cover_hu_2357c6d48523a336.png 360w,http://localhost:1313/blog/jwt-security-testing-checklist/cover_hu_5e6369587cc12099.png 480w,http://localhost:1313/blog/jwt-security-testing-checklist/cover_hu_a56244293190dc66.png 720w,http://localhost:1313/blog/jwt-security-testing-checklist/cover_hu_3ea2131f153b050d.png 1080w,http://localhost:1313/blog/jwt-security-testing-checklist/cover_hu_91f3ade9f3253aec.png 1500w,http://localhost:1313/blog/jwt-security-testing-checklist/cover.png 6720w'
+                src="http://localhost:1313/blog/jwt-security-testing-checklist/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="6720" height="4480"
+                alt="JSON Web Token security concept with token and lock">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">JWT Security Testing Checklist
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>JWTs are compact signed tokens, but implementation mistakes can turn them into authentication and authorization weaknesses.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to JWT Security Testing Checklist" href="http://localhost:1313/blog/jwt-security-testing-checklist/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/legal-recon-for-web-pentesting/cover_hu_6bf540f0249fd77b.png 360w,http://localhost:1313/blog/legal-recon-for-web-pentesting/cover_hu_dcde4b249025be12.png 480w,http://localhost:1313/blog/legal-recon-for-web-pentesting/cover_hu_8c34d0d99f4039cb.png 720w,http://localhost:1313/blog/legal-recon-for-web-pentesting/cover_hu_aa4a5dc1faa44b8b.png 1080w,http://localhost:1313/blog/legal-recon-for-web-pentesting/cover_hu_eb52cac56aa6c971.png 1500w,http://localhost:1313/blog/legal-recon-for-web-pentesting/cover.png 1741w'
+                src="http://localhost:1313/blog/legal-recon-for-web-pentesting/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1741" height="991"
+                alt="Web pentest reconnaissance map with domains, subdomains, and application entry points">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Legal Recon for Web Pentesting
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Legal recon is the process of mapping public information and application entry points inside an approved scope before deeper testing begins.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Legal Recon for Web Pentesting" href="http://localhost:1313/blog/legal-recon-for-web-pentesting/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/cover.png 3008w'
+                src="http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="Web pentest engagement notes showing scope, findings, evidence, and remediation workflow">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Lessons Learned from a Web Pentest Engagement
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A strong web pentest is not just about finding bugs. It is about understanding scope, testing logic, proving impact, and communicating risk clearly.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Lessons Learned from a Web Pentest Engagement" href="http://localhost:1313/blog/lessons-learned-from-a-web-pentest-engagement/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_fbf4d4e3f4fdf14.png 360w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_556c3e380ab64e16.png 480w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_bda948abffe8c856.png 720w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_f6005c837c30c4c2.png 1080w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover_hu_f6f3f74b54b68dac.png 1500w,http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover.png 1794w'
+                src="http://localhost:1313/blog/manual-testing-vs-automated-scanning/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1794" height="871"
+                alt="Manual web pentesting and automated scanning comparison">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Manual Testing vs Automated Scanning
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Automated scanners help with coverage and speed, but manual testing is required for context, business logic, and access control validation.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Manual Testing vs Automated Scanning" href="http://localhost:1313/blog/manual-testing-vs-automated-scanning/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_8595e9f3a65e384c.png 360w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_29c61aa4ddb9c1a8.png 480w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_5d1a66dbb84ed81a.png 720w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_d316a00309d852c3.png 1080w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover_hu_18bc11554f18e97e.png 1500w,http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover.png 1644w'
+                src="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1644" height="880"
+                alt="KevinSec content sprint board with blog topics, publishing workflow, and cybersecurity themes">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">My 15-Day Content Sprint for KevinSec
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This article documents the first KevinSec content sprint: 30 blog posts in 15 days, focused on building trust through practical security writing.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to My 15-Day Content Sprint for KevinSec" href="http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_74a1e0b5d2656025.png 360w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_bd4cb3a2a2b1d8be.png 480w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_eb8c430aa8217a09.png 720w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_1fd37c933f324795.png 1080w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover_hu_24ceecc2be01a6ca.png 1500w,http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover.png 2316w'
+                src="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="2316" height="1542"
+                alt="Password reset security concept with login form and lock icon">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Password Reset Vulnerabilities: Common Patterns
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Password reset is an account recovery feature, but small design flaws can turn it into an account takeover path.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Password Reset Vulnerabilities: Common Patterns" href="http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/cover.png 3008w'
+                src="http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="File system path security concept with folders and a lock">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Path Traversal and LFI: Reading Files You Should Not Read
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Path traversal and LFI happen when applications let untrusted input influence file paths or file inclusion behavior.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Path Traversal and LFI: Reading Files You Should Not Read" href="http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/cover_hu_cea07f0491e202d0.png 360w,http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/cover_hu_62ee0073031fd58d.png 480w,http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/cover_hu_e856dffc5cf8f922.png 720w,http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/cover_hu_d0e509e4f58b9de6.png 1080w,http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/cover_hu_794dfb3b226d57d3.png 1500w,http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/cover.png 3008w'
+                src="http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="Security awareness concept showing email, trust signals, and warning indicators">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Phishing Awareness: How Attackers Abuse Trust
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Phishing is not only a technical problem. It is a trust-abuse problem that targets human habits, business processes, and weak verification culture.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Phishing Awareness: How Attackers Abuse Trust" href="http://localhost:1313/blog/phishing-awareness-how-attackers-abuse-trust/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/cover_hu_74a1e0b5d2656025.png 360w,http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/cover_hu_bd4cb3a2a2b1d8be.png 480w,http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/cover_hu_eb8c430aa8217a09.png 720w,http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/cover_hu_1fd37c933f324795.png 1080w,http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/cover_hu_24ceecc2be01a6ca.png 1500w,http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/cover.png 2316w'
+                src="http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="2316" height="1542"
+                alt="API request traffic passing through a rate limiting control">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Rate Limiting: The Control That Many Apps Forget
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Rate limiting is not only a performance control. It is a security boundary for authentication, abuse prevention, and API resource protection.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Rate Limiting: The Control That Many Apps Forget" href="http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy"
+                srcset='http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/cover.png 3008w'
+                src="http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="Browser search page reflecting user input into a response">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Reflected XSS Explained: Context, Root Cause, Impact
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Reflected XSS happens when user-controlled input is returned in an immediate response without safe output handling.</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span></footer>
+  <a class="entry-link" aria-label="post link to Reflected XSS Explained: Context, Root Cause, Impact" href="http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/categories/blog/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/categories/blog/page/3/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

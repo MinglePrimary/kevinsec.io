@@ -6,8 +6,22 @@
     <description>Recent content in Checklist on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/checklist/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Recognize a Suspicious Email</title>
+      <link>http://localhost:1313/blog/how-to-recognize-a-suspicious-email/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/how-to-recognize-a-suspicious-email/</guid>
+      <description>A practical checklist for identifying suspicious emails, links, attachments, sender inconsistencies, and business process red flags.</description>
+    </item>
+    <item>
+      <title>JWT Security Testing Checklist</title>
+      <link>http://localhost:1313/blog/jwt-security-testing-checklist/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/jwt-security-testing-checklist/</guid>
+      <description>A practical checklist for testing JSON Web Token security in web applications and APIs.</description>
+    </item>
     <item>
       <title>Authentication Testing Checklist for Web Applications</title>
       <link>http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/</link>

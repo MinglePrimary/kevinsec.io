@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Password Security on KevinSec</title>
+    <link>http://localhost:1313/tags/password-security/</link>
+    <description>Recent content in Password Security on KevinSec</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/password-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Credential Phishing: Defensive Lessons for Employees</title>
+      <link>http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/credential-phishing-defensive-lessons-for-employees/</guid>
+      <description>A defensive guide for employees on credential phishing, password hygiene, MFA, phishing-resistant authentication, and reporting compromised credentials.</description>
+    </item>
+  </channel>
+</rss>

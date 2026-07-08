@@ -6,8 +6,15 @@
     <description>Recent content in Kevinsec on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2026 14:54:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/kevinsec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My 15-Day Content Sprint for KevinSec</title>
+      <link>http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/</guid>
+      <description>A transparent look at the 15-day content sprint used to build the first 30 KevinSec blog posts around web security, phishing awareness, and pentest methodology.</description>
+    </item>
     <item>
       <title>How I Structure Practical Security Notes</title>
       <link>http://localhost:1313/blog/sample-blog-post/</link>

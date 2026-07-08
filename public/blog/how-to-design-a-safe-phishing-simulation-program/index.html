@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>How to Design a Safe Phishing Simulation Program | KevinSec</title>
+<meta name="keywords" content="phishing simulation, security awareness, ethical testing, security training, defense">
+<meta name="description" content="A practical guide to designing ethical, safe, and useful phishing simulations that improve resilience without shaming employees.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="How to Design a Safe Phishing Simulation Program">
+  <meta property="og:description" content="A practical guide to designing ethical, safe, and useful phishing simulations that improve resilience without shaming employees.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:tag" content="Phishing Simulation">
+    <meta property="article:tag" content="Security Awareness">
+    <meta property="article:tag" content="Ethical Testing">
+    <meta property="article:tag" content="Security Training">
+    <meta property="article:tag" content="Defense">
+    <meta property="og:image" content="http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover.png">
+  <meta name="twitter:title" content="How to Design a Safe Phishing Simulation Program">
+  <meta name="twitter:description" content="A practical guide to designing ethical, safe, and useful phishing simulations that improve resilience without shaming employees.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "http://localhost:1313/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "How to Design a Safe Phishing Simulation Program",
+      "item": "http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Design a Safe Phishing Simulation Program",
+  "name": "How to Design a Safe Phishing Simulation Program",
+  "description": "A practical guide to designing ethical, safe, and useful phishing simulations that improve resilience without shaming employees.",
+  "keywords": [
+    "phishing simulation", "security awareness", "ethical testing", "security training", "defense"
+  ],
+  "articleBody": "How to Design a Safe Phishing Simulation Program A phishing simulation program should improve security behavior, not embarrass employees.\nThe goal is not to “catch” people. The goal is to measure organizational risk, teach safer habits, and improve reporting workflows before a real attacker uses the same path.\nThis guide focuses on safe, ethical, defensive simulation design. It intentionally avoids deceptive operational detail that would help someone run unauthorized phishing.\nImage: Type: Context. Mô tả: “A program design diagram showing scope, approval, training goals, simulation scenario, reporting workflow, metrics, and lessons learned.”. caption: “A safe phishing simulation starts with governance, not with templates.”\nContext Many organizations know phishing is a risk but do not know whether employees can recognize and report suspicious messages in practice.\nA phishing simulation can help answer questions such as:\nDo employees report suspicious emails? Which departments need more support? Are users comfortable verifying urgent requests? Does the reporting process work? Are security teams able to triage reports quickly? Are high-risk roles exposed to tailored social engineering? Are existing controls reducing risk? The simulation should produce useful learning, not fear.\nCore Principles 1. Get Authorization Never run a phishing simulation without approval.\nAt minimum, define:\nExecutive sponsor Legal approval HR awareness Security owner Approved target groups Simulation window Allowed message types Data handling rules Escalation process Employee support plan If authorization is unclear, do not run the simulation.\n2. Define a Training Objective A simulation should not exist only to generate a click-rate report.\nExamples of good objectives:\nImprove reporting behavior Teach link verification Reduce credential entry risk Test MFA prompt awareness Improve suspicious attachment handling Validate incident response workflow Measure readiness of high-risk roles The scenario should match the objective.\n3. Avoid Harmful Themes Do not use emotionally harmful bait.\nAvoid simulations that exploit:\nLayoff announcements Medical emergencies Personal tragedy Payroll panic Immigration or legal fear Sensitive personal topics Public embarrassment Security training should protect trust, not damage it.\n4. Do Not Collect Real Credentials A safe simulation should never collect real passwords.\nIf a user reaches a training landing page, it should educate immediately or after a controlled interaction, depending on the approved design. The system should minimize data collection and avoid storing sensitive information.\n5. Do Not Shame Employees Do not publish names of users who clicked.\nMeasure group-level trends where possible. Use individual follow-up only when necessary and with a coaching mindset.\nThe worst outcome is employees becoming afraid to report mistakes.\nImage: Type: Funny. Mô tả: “A light meme-style illustration of a suspicious email wearing a fake mustache and holding a clipboard labeled ‘Urgent Request’.”. caption: “If the email is trying too hard to sound urgent, slow down.”\nProgram Design Step 1: Choose the Audience Start with a small pilot group.\nPossible groups:\nIT team Finance team HR team Sales team Executives New employees General staff High-risk teams should receive more tailored training, but the first program should be controlled and measurable.\nStep 2: Select the Scenario Type Use defensive scenario categories, not weaponized templates.\nExamples:\nSuspicious login notification Fake shared document notification Invoice approval request Password reset prompt MFA prompt awareness training QR code awareness exercise Vendor impersonation awareness Each scenario should map to one behavior you want to improve.\nStep 3: Build the Reporting Flow Before sending any simulation, ensure employees know how to report suspicious messages.\nOptions include:\nReport phishing button Security mailbox Helpdesk ticket Internal chat channel SOC triage queue A simulation without a reporting workflow measures clicks but does not build resilience.\nStep 4: Define Metrics Useful metrics include:\nReport rate Time to first report Repeat reporting behavior Click rate Credential entry simulation rate Department-level trends Training completion False positive reporting quality SOC triage time Do not over-focus on click rate. A team with high reporting can still be improving even if some users click.\nStep 5: Provide Immediate Training When users interact with a simulation, training should be short and practical.\nGood training explains:\nWhat signal was suspicious What the user should verify How to report next time Why the behavior matters What not to do in a real incident Avoid long lectures. Make the lesson specific.\nStep 6: Review Results with Context A high click rate does not automatically mean employees are careless.\nIt may indicate:\nThe scenario matched a real workflow Employees lack a clear reporting channel Processes rely too heavily on email MFA prompts are poorly understood The organization lacks verification culture Training is too generic Use results to improve systems, not blame users.\nImage: Type: Test case. Mô tả: “A sample metrics dashboard showing report rate, click rate, time to first report, and training completion by department without individual names.”. caption: “Measure resilience trends, not employee embarrassment.”\nSafety Guardrails A safe program should include:\nWritten authorization Defined scope Limited data collection No real credential capture No malware or unsafe attachments No sensitive emotional bait No public shaming Clear support channel Training landing page Post-campaign debrief Improvement plan Remediation After the Simulation After each campaign:\nSummarize results. Identify patterns. Improve reporting workflow. Update employee guidance. Strengthen technical controls. Provide targeted coaching. Share positive examples. Plan the next scenario based on observed gaps. A simulation is only valuable if it changes behavior or improves controls.\nPractical Takeaway A safe phishing simulation is a defensive exercise.\nIt should be authorized, scoped, respectful, measurable, and connected to training. The success metric is not “how many people failed.” The success metric is whether the organization becomes harder to phish after the program.\nReferences NCSC: Phishing attacks - defending your organisation CISA: Recognize and Report Phishing OWASP Application Security Awareness Campaigns NIST: Phishing Resistance - Protecting the Keys to Your Kingdom CTA KevinSec can help design phishing simulations that are safe, ethical, and useful for improving real organizational resilience.\nIf your company wants a practical phishing awareness program without shaming employees, contact KevinSec to plan a scoped simulation and training workflow.\n",
+  "wordCount" : "984",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover.png","datePublished": "2026-07-08T00:00:00Z",
+  "dateModified": "2026-07-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "KevinSec"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "KevinSec",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/blog/">Blog</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      How to Design a Safe Phishing Simulation Program
+    </h1>
+    <div class="post-description">
+      A practical guide to designing ethical, safe, and useful phishing simulations that improve resilience without shaming employees.
+    </div>
+    <div class="post-meta">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>KevinSec</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover_hu_fbf4d4e3f4fdf14.png 360w,http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover_hu_556c3e380ab64e16.png 480w,http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover_hu_bda948abffe8c856.png 720w,http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover_hu_f6005c837c30c4c2.png 1080w,http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover_hu_f6f3f74b54b68dac.png 1500w,http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover.png 1794w'
+                src="http://localhost:1313/blog/how-to-design-a-safe-phishing-simulation-program/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1794" height="871"
+                alt="Phishing simulation dashboard concept with training metrics and safety guardrails">
+        <figcaption>A good phishing simulation improves behavior without punishing employees.</figcaption>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#how-to-design-a-safe-phishing-simulation-program" aria-label="How to Design a Safe Phishing Simulation Program">How to Design a Safe Phishing Simulation Program</a><ul>
+                    
+            <li>
+                <a href="#context" aria-label="Context">Context</a></li>
+            <li>
+                <a href="#core-principles" aria-label="Core Principles">Core Principles</a><ul>
+                    
+            <li>
+                <a href="#1-get-authorization" aria-label="1. Get Authorization">1. Get Authorization</a></li>
+            <li>
+                <a href="#2-define-a-training-objective" aria-label="2. Define a Training Objective">2. Define a Training Objective</a></li>
+            <li>
+                <a href="#3-avoid-harmful-themes" aria-label="3. Avoid Harmful Themes">3. Avoid Harmful Themes</a></li>
+            <li>
+                <a href="#4-do-not-collect-real-credentials" aria-label="4. Do Not Collect Real Credentials">4. Do Not Collect Real Credentials</a></li>
+            <li>
+                <a href="#5-do-not-shame-employees" aria-label="5. Do Not Shame Employees">5. Do Not Shame Employees</a></li></ul>
+            </li>
+            <li>
+                <a href="#program-design" aria-label="Program Design">Program Design</a></li>
+            <li>
+                <a href="#step-1-choose-the-audience" aria-label="Step 1: Choose the Audience">Step 1: Choose the Audience</a></li>
+            <li>
+                <a href="#step-2-select-the-scenario-type" aria-label="Step 2: Select the Scenario Type">Step 2: Select the Scenario Type</a></li>
+            <li>
+                <a href="#step-3-build-the-reporting-flow" aria-label="Step 3: Build the Reporting Flow">Step 3: Build the Reporting Flow</a></li>
+            <li>
+                <a href="#step-4-define-metrics" aria-label="Step 4: Define Metrics">Step 4: Define Metrics</a></li>
+            <li>
+                <a href="#step-5-provide-immediate-training" aria-label="Step 5: Provide Immediate Training">Step 5: Provide Immediate Training</a></li>
+            <li>
+                <a href="#step-6-review-results-with-context" aria-label="Step 6: Review Results with Context">Step 6: Review Results with Context</a></li>
+            <li>
+                <a href="#safety-guardrails" aria-label="Safety Guardrails">Safety Guardrails</a></li>
+            <li>
+                <a href="#remediation-after-the-simulation" aria-label="Remediation After the Simulation">Remediation After the Simulation</a></li>
+            <li>
+                <a href="#practical-takeaway" aria-label="Practical Takeaway">Practical Takeaway</a></li>
+            <li>
+                <a href="#references" aria-label="References">References</a></li>
+            <li>
+                <a href="#cta" aria-label="CTA">CTA</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="how-to-design-a-safe-phishing-simulation-program">How to Design a Safe Phishing Simulation Program<a hidden class="anchor" aria-hidden="true" href="#how-to-design-a-safe-phishing-simulation-program">#</a></h1>
+<p>A phishing simulation program should improve security behavior, not embarrass employees.</p>
+<p>The goal is not to “catch” people. The goal is to measure organizational risk, teach safer habits, and improve reporting workflows before a real attacker uses the same path.</p>
+<p>This guide focuses on safe, ethical, defensive simulation design. It intentionally avoids deceptive operational detail that would help someone run unauthorized phishing.</p>
+<p>Image: Type: Context. Mô tả: &ldquo;A program design diagram showing scope, approval, training goals, simulation scenario, reporting workflow, metrics, and lessons learned.&rdquo;. caption: &ldquo;A safe phishing simulation starts with governance, not with templates.&rdquo;</p>
+<h2 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h2>
+<p>Many organizations know phishing is a risk but do not know whether employees can recognize and report suspicious messages in practice.</p>
+<p>A phishing simulation can help answer questions such as:</p>
+<ul>
+<li>Do employees report suspicious emails?</li>
+<li>Which departments need more support?</li>
+<li>Are users comfortable verifying urgent requests?</li>
+<li>Does the reporting process work?</li>
+<li>Are security teams able to triage reports quickly?</li>
+<li>Are high-risk roles exposed to tailored social engineering?</li>
+<li>Are existing controls reducing risk?</li>
+</ul>
+<p>The simulation should produce useful learning, not fear.</p>
+<h2 id="core-principles">Core Principles<a hidden class="anchor" aria-hidden="true" href="#core-principles">#</a></h2>
+<h3 id="1-get-authorization">1. Get Authorization<a hidden class="anchor" aria-hidden="true" href="#1-get-authorization">#</a></h3>
+<p>Never run a phishing simulation without approval.</p>
+<p>At minimum, define:</p>
+<ul>
+<li>Executive sponsor</li>
+<li>Legal approval</li>
+<li>HR awareness</li>
+<li>Security owner</li>
+<li>Approved target groups</li>
+<li>Simulation window</li>
+<li>Allowed message types</li>
+<li>Data handling rules</li>
+<li>Escalation process</li>
+<li>Employee support plan</li>
+</ul>
+<p>If authorization is unclear, do not run the simulation.</p>
+<h3 id="2-define-a-training-objective">2. Define a Training Objective<a hidden class="anchor" aria-hidden="true" href="#2-define-a-training-objective">#</a></h3>
+<p>A simulation should not exist only to generate a click-rate report.</p>
+<p>Examples of good objectives:</p>
+<ul>
+<li>Improve reporting behavior</li>
+<li>Teach link verification</li>
+<li>Reduce credential entry risk</li>
+<li>Test MFA prompt awareness</li>
+<li>Improve suspicious attachment handling</li>
+<li>Validate incident response workflow</li>
+<li>Measure readiness of high-risk roles</li>
+</ul>
+<p>The scenario should match the objective.</p>
+<h3 id="3-avoid-harmful-themes">3. Avoid Harmful Themes<a hidden class="anchor" aria-hidden="true" href="#3-avoid-harmful-themes">#</a></h3>
+<p>Do not use emotionally harmful bait.</p>
+<p>Avoid simulations that exploit:</p>
+<ul>
+<li>Layoff announcements</li>
+<li>Medical emergencies</li>
+<li>Personal tragedy</li>
+<li>Payroll panic</li>
+<li>Immigration or legal fear</li>
+<li>Sensitive personal topics</li>
+<li>Public embarrassment</li>
+</ul>
+<p>Security training should protect trust, not damage it.</p>
+<h3 id="4-do-not-collect-real-credentials">4. Do Not Collect Real Credentials<a hidden class="anchor" aria-hidden="true" href="#4-do-not-collect-real-credentials">#</a></h3>
+<p>A safe simulation should never collect real passwords.</p>
+<p>If a user reaches a training landing page, it should educate immediately or after a controlled interaction, depending on the approved design. The system should minimize data collection and avoid storing sensitive information.</p>
+<h3 id="5-do-not-shame-employees">5. Do Not Shame Employees<a hidden class="anchor" aria-hidden="true" href="#5-do-not-shame-employees">#</a></h3>
+<p>Do not publish names of users who clicked.</p>
+<p>Measure group-level trends where possible. Use individual follow-up only when necessary and with a coaching mindset.</p>
+<p>The worst outcome is employees becoming afraid to report mistakes.</p>
+<p>Image: Type: Funny. Mô tả: &ldquo;A light meme-style illustration of a suspicious email wearing a fake mustache and holding a clipboard labeled &lsquo;Urgent Request&rsquo;.&rdquo;. caption: &ldquo;If the email is trying too hard to sound urgent, slow down.&rdquo;</p>
+<h2 id="program-design">Program Design<a hidden class="anchor" aria-hidden="true" href="#program-design">#</a></h2>
+<h2 id="step-1-choose-the-audience">Step 1: Choose the Audience<a hidden class="anchor" aria-hidden="true" href="#step-1-choose-the-audience">#</a></h2>
+<p>Start with a small pilot group.</p>
+<p>Possible groups:</p>
+<ul>
+<li>IT team</li>
+<li>Finance team</li>
+<li>HR team</li>
+<li>Sales team</li>
+<li>Executives</li>
+<li>New employees</li>
+<li>General staff</li>
+</ul>
+<p>High-risk teams should receive more tailored training, but the first program should be controlled and measurable.</p>
+<h2 id="step-2-select-the-scenario-type">Step 2: Select the Scenario Type<a hidden class="anchor" aria-hidden="true" href="#step-2-select-the-scenario-type">#</a></h2>
+<p>Use defensive scenario categories, not weaponized templates.</p>
+<p>Examples:</p>
+<ul>
+<li>Suspicious login notification</li>
+<li>Fake shared document notification</li>
+<li>Invoice approval request</li>
+<li>Password reset prompt</li>
+<li>MFA prompt awareness training</li>
+<li>QR code awareness exercise</li>
+<li>Vendor impersonation awareness</li>
+</ul>
+<p>Each scenario should map to one behavior you want to improve.</p>
+<h2 id="step-3-build-the-reporting-flow">Step 3: Build the Reporting Flow<a hidden class="anchor" aria-hidden="true" href="#step-3-build-the-reporting-flow">#</a></h2>
+<p>Before sending any simulation, ensure employees know how to report suspicious messages.</p>
+<p>Options include:</p>
+<ul>
+<li>Report phishing button</li>
+<li>Security mailbox</li>
+<li>Helpdesk ticket</li>
+<li>Internal chat channel</li>
+<li>SOC triage queue</li>
+</ul>
+<p>A simulation without a reporting workflow measures clicks but does not build resilience.</p>
+<h2 id="step-4-define-metrics">Step 4: Define Metrics<a hidden class="anchor" aria-hidden="true" href="#step-4-define-metrics">#</a></h2>
+<p>Useful metrics include:</p>
+<ul>
+<li>Report rate</li>
+<li>Time to first report</li>
+<li>Repeat reporting behavior</li>
+<li>Click rate</li>
+<li>Credential entry simulation rate</li>
+<li>Department-level trends</li>
+<li>Training completion</li>
+<li>False positive reporting quality</li>
+<li>SOC triage time</li>
+</ul>
+<p>Do not over-focus on click rate. A team with high reporting can still be improving even if some users click.</p>
+<h2 id="step-5-provide-immediate-training">Step 5: Provide Immediate Training<a hidden class="anchor" aria-hidden="true" href="#step-5-provide-immediate-training">#</a></h2>
+<p>When users interact with a simulation, training should be short and practical.</p>
+<p>Good training explains:</p>
+<ul>
+<li>What signal was suspicious</li>
+<li>What the user should verify</li>
+<li>How to report next time</li>
+<li>Why the behavior matters</li>
+<li>What not to do in a real incident</li>
+</ul>
+<p>Avoid long lectures. Make the lesson specific.</p>
+<h2 id="step-6-review-results-with-context">Step 6: Review Results with Context<a hidden class="anchor" aria-hidden="true" href="#step-6-review-results-with-context">#</a></h2>
+<p>A high click rate does not automatically mean employees are careless.</p>
+<p>It may indicate:</p>
+<ul>
+<li>The scenario matched a real workflow</li>
+<li>Employees lack a clear reporting channel</li>
+<li>Processes rely too heavily on email</li>
+<li>MFA prompts are poorly understood</li>
+<li>The organization lacks verification culture</li>
+<li>Training is too generic</li>
+</ul>
+<p>Use results to improve systems, not blame users.</p>
+<p>Image: Type: Test case. Mô tả: &ldquo;A sample metrics dashboard showing report rate, click rate, time to first report, and training completion by department without individual names.&rdquo;. caption: &ldquo;Measure resilience trends, not employee embarrassment.&rdquo;</p>
+<h2 id="safety-guardrails">Safety Guardrails<a hidden class="anchor" aria-hidden="true" href="#safety-guardrails">#</a></h2>
+<p>A safe program should include:</p>
+<ul>
+<li>Written authorization</li>
+<li>Defined scope</li>
+<li>Limited data collection</li>
+<li>No real credential capture</li>
+<li>No malware or unsafe attachments</li>
+<li>No sensitive emotional bait</li>
+<li>No public shaming</li>
+<li>Clear support channel</li>
+<li>Training landing page</li>
+<li>Post-campaign debrief</li>
+<li>Improvement plan</li>
+</ul>
+<h2 id="remediation-after-the-simulation">Remediation After the Simulation<a hidden class="anchor" aria-hidden="true" href="#remediation-after-the-simulation">#</a></h2>
+<p>After each campaign:</p>
+<ol>
+<li>Summarize results.</li>
+<li>Identify patterns.</li>
+<li>Improve reporting workflow.</li>
+<li>Update employee guidance.</li>
+<li>Strengthen technical controls.</li>
+<li>Provide targeted coaching.</li>
+<li>Share positive examples.</li>
+<li>Plan the next scenario based on observed gaps.</li>
+</ol>
+<p>A simulation is only valuable if it changes behavior or improves controls.</p>
+<h2 id="practical-takeaway">Practical Takeaway<a hidden class="anchor" aria-hidden="true" href="#practical-takeaway">#</a></h2>
+<p>A safe phishing simulation is a defensive exercise.</p>
+<p>It should be authorized, scoped, respectful, measurable, and connected to training. The success metric is not “how many people failed.” The success metric is whether the organization becomes harder to phish after the program.</p>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ul>
+<li><a href="https://www.ncsc.gov.uk/guidance/phishing">NCSC: Phishing attacks - defending your organisation</a></li>
+<li><a href="https://www.cisa.gov/secure-our-world/recognize-and-report-phishing">CISA: Recognize and Report Phishing</a></li>
+<li><a href="https://owasp.org/www-project-application-security-awareness-campaigns/">OWASP Application Security Awareness Campaigns</a></li>
+<li><a href="https://www.nist.gov/blogs/cybersecurity-insights/phishing-resistance-protecting-keys-your-kingdom">NIST: Phishing Resistance - Protecting the Keys to Your Kingdom</a></li>
+</ul>
+<h2 id="cta">CTA<a hidden class="anchor" aria-hidden="true" href="#cta">#</a></h2>
+<p>KevinSec can help design phishing simulations that are safe, ethical, and useful for improving real organizational resilience.</p>
+<p>If your company wants a practical phishing awareness program without shaming employees, contact KevinSec to plan a scoped simulation and training workflow.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/phishing-simulation/">Phishing Simulation</a></li>
+      <li><a href="http://localhost:1313/tags/security-awareness/">Security Awareness</a></li>
+      <li><a href="http://localhost:1313/tags/ethical-testing/">Ethical Testing</a></li>
+      <li><a href="http://localhost:1313/tags/security-training/">Security Training</a></li>
+      <li><a href="http://localhost:1313/tags/defense/">Defense</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/blog/file-upload-security-what-can-go-wrong/">
+    <span class="title">« Prev</span>
+    <span>File Upload Security: What Can Go Wrong?</span>
+  </a>
+  <a class="next" href="http://localhost:1313/blog/how-to-recognize-a-suspicious-email/">
+    <span class="title">Next »</span>
+    <span>How to Recognize a Suspicious Email</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Design a Safe Phishing Simulation Program on x"
+            href="https://x.com/intent/tweet/?text=How%20to%20Design%20a%20Safe%20Phishing%20Simulation%20Program&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-design-a-safe-phishing-simulation-program%2f&amp;hashtags=phishingsimulation%2csecurityawareness%2cethicaltesting%2csecuritytraining%2cdefense">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Design a Safe Phishing Simulation Program on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-design-a-safe-phishing-simulation-program%2f&amp;title=How%20to%20Design%20a%20Safe%20Phishing%20Simulation%20Program&amp;summary=How%20to%20Design%20a%20Safe%20Phishing%20Simulation%20Program&amp;source=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-design-a-safe-phishing-simulation-program%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Design a Safe Phishing Simulation Program on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-design-a-safe-phishing-simulation-program%2f&title=How%20to%20Design%20a%20Safe%20Phishing%20Simulation%20Program">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Design a Safe Phishing Simulation Program on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-design-a-safe-phishing-simulation-program%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Design a Safe Phishing Simulation Program on whatsapp"
+            href="https://api.whatsapp.com/send?text=How%20to%20Design%20a%20Safe%20Phishing%20Simulation%20Program%20-%20http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-design-a-safe-phishing-simulation-program%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Design a Safe Phishing Simulation Program on telegram"
+            href="https://telegram.me/share/url?text=How%20to%20Design%20a%20Safe%20Phishing%20Simulation%20Program&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-design-a-safe-phishing-simulation-program%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Design a Safe Phishing Simulation Program on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=How%20to%20Design%20a%20Safe%20Phishing%20Simulation%20Program&u=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-design-a-safe-phishing-simulation-program%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

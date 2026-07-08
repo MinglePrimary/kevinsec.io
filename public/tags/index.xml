@@ -6,20 +6,510 @@
     <description>Recent content in Tags on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abuse Prevention</title>
+      <link>http://localhost:1313/tags/abuse-prevention/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/abuse-prevention/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Access Control</title>
+      <link>http://localhost:1313/tags/access-control/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/access-control/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Account Takeover</title>
+      <link>http://localhost:1313/tags/account-takeover/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/account-takeover/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Api Security</title>
+      <link>http://localhost:1313/tags/api-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/api-security/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Application Security</title>
       <link>http://localhost:1313/tags/application-security/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/application-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Attack Surface</title>
+      <link>http://localhost:1313/tags/attack-surface/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/attack-surface/</guid>
       <description></description>
     </item>
     <item>
       <title>Authentication</title>
       <link>http://localhost:1313/tags/authentication/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/authentication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automated Scanning</title>
+      <link>http://localhost:1313/tags/automated-scanning/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/automated-scanning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Beginner</title>
+      <link>http://localhost:1313/tags/beginner/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/beginner/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bola</title>
+      <link>http://localhost:1313/tags/bola/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/bola/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Broken Authentication</title>
+      <link>http://localhost:1313/tags/broken-authentication/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/broken-authentication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Browser Security</title>
+      <link>http://localhost:1313/tags/browser-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/browser-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Burp Suite</title>
+      <link>http://localhost:1313/tags/burp-suite/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/burp-suite/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Checklist</title>
+      <link>http://localhost:1313/tags/checklist/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/checklist/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Client-Side Security</title>
+      <link>http://localhost:1313/tags/client-side-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/client-side-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Consulting</title>
+      <link>http://localhost:1313/tags/consulting/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/consulting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Content Strategy</title>
+      <link>http://localhost:1313/tags/content-strategy/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/content-strategy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cors</title>
+      <link>http://localhost:1313/tags/cors/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cors/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Credential Phishing</title>
+      <link>http://localhost:1313/tags/credential-phishing/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/credential-phishing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cvss</title>
+      <link>http://localhost:1313/tags/cvss/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cvss/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cybersecurity</title>
+      <link>http://localhost:1313/tags/cybersecurity/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cybersecurity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database Security</title>
+      <link>http://localhost:1313/tags/database-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/database-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Defense</title>
+      <link>http://localhost:1313/tags/defense/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/defense/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Email Security</title>
+      <link>http://localhost:1313/tags/email-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/email-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ethical Testing</title>
+      <link>http://localhost:1313/tags/ethical-testing/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ethical-testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Experience</title>
+      <link>http://localhost:1313/tags/experience/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/experience/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>File Inclusion</title>
+      <link>http://localhost:1313/tags/file-inclusion/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/file-inclusion/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>File Upload</title>
+      <link>http://localhost:1313/tags/file-upload/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/file-upload/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Identity Security</title>
+      <link>http://localhost:1313/tags/identity-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/identity-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Idor</title>
+      <link>http://localhost:1313/tags/idor/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/idor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Injection</title>
+      <link>http://localhost:1313/tags/injection/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/injection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Intermediate</title>
+      <link>http://localhost:1313/tags/intermediate/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/intermediate/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jwt</title>
+      <link>http://localhost:1313/tags/jwt/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/jwt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kevinsec</title>
+      <link>http://localhost:1313/tags/kevinsec/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kevinsec/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lab</title>
+      <link>http://localhost:1313/tags/lab/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/lab/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lfi</title>
+      <link>http://localhost:1313/tags/lfi/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/lfi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Manual Testing</title>
+      <link>http://localhost:1313/tags/manual-testing/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/manual-testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Methodology</title>
+      <link>http://localhost:1313/tags/methodology/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/methodology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mfa</title>
+      <link>http://localhost:1313/tags/mfa/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mfa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Owasp Api Top 10</title>
+      <link>http://localhost:1313/tags/owasp-api-top-10/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/owasp-api-top-10/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Password Reset</title>
+      <link>http://localhost:1313/tags/password-reset/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/password-reset/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Password Security</title>
+      <link>http://localhost:1313/tags/password-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/password-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Path Traversal</title>
+      <link>http://localhost:1313/tags/path-traversal/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/path-traversal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pentest</title>
+      <link>http://localhost:1313/tags/pentest/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/pentest/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pentest Methodology</title>
+      <link>http://localhost:1313/tags/pentest-methodology/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/pentest-methodology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Personal Brand</title>
+      <link>http://localhost:1313/tags/personal-brand/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/personal-brand/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Phishing</title>
+      <link>http://localhost:1313/tags/phishing/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/phishing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Phishing Simulation</title>
+      <link>http://localhost:1313/tags/phishing-simulation/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/phishing-simulation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rate Limiting</title>
+      <link>http://localhost:1313/tags/rate-limiting/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/rate-limiting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Recon</title>
+      <link>http://localhost:1313/tags/recon/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/recon/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reflected Xss</title>
+      <link>http://localhost:1313/tags/reflected-xss/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/reflected-xss/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Risk</title>
+      <link>http://localhost:1313/tags/risk/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/risk/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Same Origin Policy</title>
+      <link>http://localhost:1313/tags/same-origin-policy/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/same-origin-policy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Scope</title>
+      <link>http://localhost:1313/tags/scope/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/scope/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Awareness</title>
+      <link>http://localhost:1313/tags/security-awareness/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/security-awareness/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Consulting</title>
+      <link>http://localhost:1313/tags/security-consulting/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/security-consulting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Reporting</title>
+      <link>http://localhost:1313/tags/security-reporting/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/security-reporting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Testing</title>
+      <link>http://localhost:1313/tags/security-testing/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/security-testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Training</title>
+      <link>http://localhost:1313/tags/security-training/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/security-training/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Server-Side Request Forgery</title>
+      <link>http://localhost:1313/tags/server-side-request-forgery/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/server-side-request-forgery/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Severity</title>
+      <link>http://localhost:1313/tags/severity/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/severity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Social Engineering</title>
+      <link>http://localhost:1313/tags/social-engineering/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/social-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sql Injection</title>
+      <link>http://localhost:1313/tags/sql-injection/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/sql-injection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ssrf</title>
+      <link>http://localhost:1313/tags/ssrf/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ssrf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Stored Xss</title>
+      <link>http://localhost:1313/tags/stored-xss/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/stored-xss/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Upload Security</title>
+      <link>http://localhost:1313/tags/upload-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/upload-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vulnerability Management</title>
+      <link>http://localhost:1313/tags/vulnerability-management/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/vulnerability-management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vulnerability Report</title>
+      <link>http://localhost:1313/tags/vulnerability-report/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/vulnerability-report/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web Pentest</title>
+      <link>http://localhost:1313/tags/web-pentest/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/web-pentest/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web-Security</title>
+      <link>http://localhost:1313/tags/web-security/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/web-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Workflow</title>
+      <link>http://localhost:1313/tags/workflow/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/workflow/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xss</title>
+      <link>http://localhost:1313/tags/xss/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/xss/</guid>
       <description></description>
     </item>
     <item>
@@ -30,31 +520,10 @@
       <description></description>
     </item>
     <item>
-      <title>Beginner</title>
-      <link>http://localhost:1313/tags/beginner/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/beginner/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Broken Access Control</title>
       <link>http://localhost:1313/tags/broken-access-control/</link>
       <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
       <guid>http://localhost:1313/tags/broken-access-control/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Burp Suite</title>
-      <link>http://localhost:1313/tags/burp-suite/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/burp-suite/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Checklist</title>
-      <link>http://localhost:1313/tags/checklist/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/checklist/</guid>
       <description></description>
     </item>
     <item>
@@ -65,24 +534,10 @@
       <description></description>
     </item>
     <item>
-      <title>IDOR</title>
-      <link>http://localhost:1313/tags/idor/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/idor/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Input Validation</title>
       <link>http://localhost:1313/tags/input-validation/</link>
       <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
       <guid>http://localhost:1313/tags/input-validation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Lab</title>
-      <link>http://localhost:1313/tags/lab/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/lab/</guid>
       <description></description>
     </item>
     <item>
@@ -121,38 +576,10 @@
       <description></description>
     </item>
     <item>
-      <title>Web Pentest</title>
-      <link>http://localhost:1313/tags/web-pentest/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/web-pentest/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Web Security</title>
-      <link>http://localhost:1313/tags/web-security/</link>
-      <pubDate>Wed, 08 Jul 2026 00:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/web-security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Methodology</title>
-      <link>http://localhost:1313/tags/methodology/</link>
-      <pubDate>Sun, 05 Jul 2026 15:07:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/methodology/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Vulnerability-Research</title>
       <link>http://localhost:1313/tags/vulnerability-research/</link>
       <pubDate>Sun, 05 Jul 2026 15:07:00 +0700</pubDate>
       <guid>http://localhost:1313/tags/vulnerability-research/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Kevinsec</title>
-      <link>http://localhost:1313/tags/kevinsec/</link>
-      <pubDate>Sun, 05 Jul 2026 14:54:00 +0700</pubDate>
-      <guid>http://localhost:1313/tags/kevinsec/</guid>
       <description></description>
     </item>
     <item>

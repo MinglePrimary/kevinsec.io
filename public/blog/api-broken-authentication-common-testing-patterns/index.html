@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>API Broken Authentication: Common Testing Patterns | KevinSec</title>
+<meta name="keywords" content="api security, authentication, broken authentication, pentest, owasp api top 10">
+<meta name="description" content="A practical checklist for identifying broken authentication patterns in APIs, from token handling to weak login flows and session lifecycle issues.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="API Broken Authentication: Common Testing Patterns">
+  <meta property="og:description" content="A practical checklist for identifying broken authentication patterns in APIs, from token handling to weak login flows and session lifecycle issues.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-08T00:00:00+00:00">
+    <meta property="article:tag" content="Api Security">
+    <meta property="article:tag" content="Authentication">
+    <meta property="article:tag" content="Broken Authentication">
+    <meta property="article:tag" content="Pentest">
+    <meta property="article:tag" content="Owasp Api Top 10">
+    <meta property="og:image" content="http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover.png">
+  <meta name="twitter:title" content="API Broken Authentication: Common Testing Patterns">
+  <meta name="twitter:description" content="A practical checklist for identifying broken authentication patterns in APIs, from token handling to weak login flows and session lifecycle issues.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "http://localhost:1313/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "API Broken Authentication: Common Testing Patterns",
+      "item": "http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "API Broken Authentication: Common Testing Patterns",
+  "name": "API Broken Authentication: Common Testing Patterns",
+  "description": "A practical checklist for identifying broken authentication patterns in APIs, from token handling to weak login flows and session lifecycle issues.",
+  "keywords": [
+    "api security", "authentication", "broken authentication", "pentest", "owasp api top 10"
+  ],
+  "articleBody": "API Broken Authentication: Common Testing Patterns API broken authentication happens when an API cannot reliably verify the identity of the caller, or when the surrounding authentication lifecycle is too weak to resist abuse.\nFor a pentester, the goal is not to “break login” only. The goal is to understand how the API issues, accepts, stores, expires, rotates, revokes, and validates authentication material.\nIn modern applications, this usually means testing:\nLogin flows Access tokens Refresh tokens API keys Session cookies MFA flows Password reset flows Mobile API authentication SSO/OAuth integrations Logout and token revocation Image: Type: Context. Mô tả: “A diagram showing a client sending credentials to an API, receiving an access token, then using that token to call protected endpoints.” caption: “API authentication is more than the login request; it includes the whole token and session lifecycle.”\nContext APIs often rely on tokens instead of traditional server-rendered web sessions.\nA simple flow may look like this:\nUser submits credentials -\u003e API validates credentials -\u003e API returns access token -\u003e client uses token for protected API calls A protected request may look like this:\nGET /api/v1/account/profile HTTP/1.1 Host: api.example.com Authorization: Bearer At a minimum, the API needs to answer four questions:\nIs the token valid? Who does this token represent? Is the token still allowed to be used? Is this caller authorized to perform this specific action? Broken authentication focuses mainly on the first three questions. Authorization issues such as BOLA focus on the fourth.\nRoot Cause API broken authentication usually comes from weak assumptions.\nCommon root causes include:\nThe API assumes possession of a token is always enough. Tokens do not expire, or they expire too slowly. Logout does not invalidate tokens. Refresh tokens are not rotated or revoked. Password reset or MFA flows issue tokens without proper verification. API keys are treated like permanent passwords. Authentication checks are inconsistent across endpoints. Mobile clients are trusted too much. Rate limiting is missing from authentication endpoints. Error messages expose whether a username, email, or phone number exists. Authentication is a lifecycle. Weakness in any part of the lifecycle can lead to account takeover, unauthorized API access, or long-lived session abuse.\nCommon Testing Patterns 1. Check for Missing Authentication Start by identifying protected endpoints.\nThen test whether they still respond when authentication is removed.\nSafe testing approach:\nRequest with valid token -\u003e observe normal response Request without token -\u003e expect 401 or 403 Request with malformed token -\u003e expect rejection Request with expired token -\u003e expect rejection The expected result is not always the same status code, but protected data should never be returned.\nRisky pattern:\nGET /api/v1/users/me -\u003e requires token GET /api/v1/users/123 -\u003e returns data without token This suggests inconsistent authentication enforcement.\nImage: Type: Test case. Mô tả: “A Burp Repeater comparison showing the same API request with Authorization header and without Authorization header, where the unauthenticated request should be rejected.” caption: “A protected API endpoint should fail closed when authentication material is missing.”\n2. Test Token Expiration Tokens should have a defined lifetime.\nCheck:\nDoes the access token expire? How long does it remain valid? Can an expired token still call protected endpoints? Does the server validate expiration or only the client? Does the API accept old tokens after password change? A frequent issue is client-side-only expiration. The frontend stops using the token, but the backend still accepts it.\nA secure API must enforce token expiration server-side.\n3. Test Logout Behavior Logout should do more than remove a token from browser storage.\nCheck:\nAfter logout, can the old access token still call the API? Is the refresh token revoked? Are server-side sessions invalidated? Are all devices logged out when the user requests it? Are active sessions visible to the user? If the API uses stateless JWT access tokens, immediate revocation may require a short token lifetime plus a server-side revocation strategy for high-risk events.\n4. Test Refresh Token Rotation Refresh tokens are high-value authentication material.\nReview:\nIs the refresh token long-lived? Is it rotated after use? Can the same refresh token be reused multiple times? Is token reuse detected? Is the refresh token bound to a device, client, or session? Is it revoked after password change or account compromise? Risky pattern:\nRefresh token issued once -\u003e valid for months -\u003e reusable unlimited times A stolen refresh token can become a long-term account access mechanism.\n5. Test Rate Limiting on Authentication Endpoints Authentication endpoints should be protected from high-volume abuse.\nReview rate limiting on:\nLogin MFA verification OTP verification Password reset request Password reset token validation Email change confirmation Phone number verification API key creation Token refresh Rate limiting should consider account, IP address, device, session, and risk context.\nDo not brute-force real users or production systems. In an authorized pentest, use agreed test accounts and a low-volume test plan approved in the rules of engagement.\n6. Check Account Enumeration Authentication flows often leak whether an account exists.\nExamples:\n\"Email does not exist\" \"Invalid password\" \"This phone number is already registered\" \"Reset link sent\" only for existing users Different response time for valid vs invalid accounts Enumeration is not always critical by itself, but it becomes more serious when combined with phishing, credential stuffing, password spraying, or targeted account takeover attempts.\n7. Review API Key Authentication API keys are common in developer platforms, SaaS products, and internal services.\nCheck:\nAre API keys scoped? Can users rotate keys? Can users revoke keys? Are keys shown only once? Are keys hashed at rest? Are keys logged by the application or reverse proxy? Are keys bound to environments? Can a read-only key perform write actions? An API key should be treated like a credential, not like a harmless identifier.\n8. Test MFA Flow Consistency MFA can be bypassed when it is applied inconsistently.\nReview:\nDoes API access require MFA completion? Can the user call protected API endpoints before finishing MFA? Can an old session skip newly enforced MFA? Can password reset disable MFA? Can OAuth login bypass MFA? Is MFA required for sensitive actions? A common design flaw is treating MFA as a frontend state instead of a server-side security state.\n9. Check Authentication State Transitions High-risk actions should change authentication state.\nExamples:\nPassword changed Email changed Phone number changed MFA disabled Recovery code generated New device added API key created Organization admin added After these actions, old sessions or tokens may need to be invalidated, reauthenticated, or risk-scored.\n10. Test Error Handling and Logging Authentication failures should be logged carefully.\nGood logging:\nUser identifier or account reference Source IP or device context Endpoint and event type Failed login count Token reuse signal MFA failure signal Bad logging:\nPasswords Full access tokens Full refresh tokens Password reset tokens MFA codes API keys Sensitive authentication material should never appear in logs.\nImpact API broken authentication can lead to:\nAccount takeover Unauthorized API access Data exposure Session hijacking Long-lived token abuse Privilege escalation through weak session state API key compromise Abuse of password reset and MFA flows Difficulty investigating incidents due to poor logging The impact depends on what the authenticated API can access. A weak authentication issue on a profile endpoint may be medium. The same issue on billing, admin, health records, or organization settings can be critical.\nRemediation A strong API authentication design should include:\nCentralized authentication middleware Consistent checks on every protected endpoint Short-lived access tokens Secure refresh token rotation Token revocation for logout and high-risk events Strong password reset flow MFA for sensitive accounts and actions Rate limiting on authentication endpoints Generic error messages where appropriate Secure token storage guidance for clients No sensitive token values in logs Monitoring for suspicious authentication events Pentester Checklist Use this checklist during an API pentest:\n[ ] Remove Authorization header and confirm protected endpoints reject the request [ ] Test malformed, expired, and revoked tokens [ ] Confirm logout invalidates the expected authentication state [ ] Review refresh token rotation and reuse detection [ ] Check authentication rate limiting [ ] Look for account enumeration signals [ ] Review MFA enforcement consistency [ ] Test old sessions after password or email change [ ] Review API key scope, rotation, and revocation [ ] Confirm sensitive tokens are not logged References OWASP API Security Top 10 2023 - API2 Broken Authentication: https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication/ OWASP WSTG - Authentication Testing: https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/README OWASP Authentication Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html OWASP ASVS: https://owasp.org/www-project-application-security-verification-standard/ CTA KevinSec can help review API authentication flows, token lifecycle controls, MFA enforcement, and session handling. If your product exposes APIs to web, mobile, or third-party clients, a focused authentication review can reduce account takeover risk before attackers find the gaps.\n",
+  "wordCount" : "1432",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover.png","datePublished": "2026-07-08T00:00:00Z",
+  "dateModified": "2026-07-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "KevinSec"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "KevinSec",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/blog/">Blog</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      API Broken Authentication: Common Testing Patterns
+    </h1>
+    <div class="post-description">
+      A practical checklist for identifying broken authentication patterns in APIs, from token handling to weak login flows and session lifecycle issues.
+    </div>
+    <div class="post-meta">
+
+<span title='2026-07-08 00:00:00 +0000 UTC'>July 8, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>KevinSec</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover_hu_2eb969ee3921370d.png 360w,http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover_hu_d87a50c7e1c105a6.png 480w,http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover_hu_d77d1e2ea47425d.png 720w,http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover_hu_dd75266dabde926a.png 1080w,http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover_hu_b5ee1c409aef6821.png 1500w,http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover.png 3008w'
+                src="http://localhost:1313/blog/api-broken-authentication-common-testing-patterns/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="3008" height="2000"
+                alt="API authentication flow with client token and backend verification">
+        <figcaption>Authentication is the first security decision every API must get right.</figcaption>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#api-broken-authentication-common-testing-patterns" aria-label="API Broken Authentication: Common Testing Patterns">API Broken Authentication: Common Testing Patterns</a><ul>
+                    
+            <li>
+                <a href="#context" aria-label="Context">Context</a></li>
+            <li>
+                <a href="#root-cause" aria-label="Root Cause">Root Cause</a></li>
+            <li>
+                <a href="#common-testing-patterns" aria-label="Common Testing Patterns">Common Testing Patterns</a><ul>
+                    
+            <li>
+                <a href="#1-check-for-missing-authentication" aria-label="1. Check for Missing Authentication">1. Check for Missing Authentication</a></li>
+            <li>
+                <a href="#2-test-token-expiration" aria-label="2. Test Token Expiration">2. Test Token Expiration</a></li>
+            <li>
+                <a href="#3-test-logout-behavior" aria-label="3. Test Logout Behavior">3. Test Logout Behavior</a></li>
+            <li>
+                <a href="#4-test-refresh-token-rotation" aria-label="4. Test Refresh Token Rotation">4. Test Refresh Token Rotation</a></li>
+            <li>
+                <a href="#5-test-rate-limiting-on-authentication-endpoints" aria-label="5. Test Rate Limiting on Authentication Endpoints">5. Test Rate Limiting on Authentication Endpoints</a></li>
+            <li>
+                <a href="#6-check-account-enumeration" aria-label="6. Check Account Enumeration">6. Check Account Enumeration</a></li>
+            <li>
+                <a href="#7-review-api-key-authentication" aria-label="7. Review API Key Authentication">7. Review API Key Authentication</a></li>
+            <li>
+                <a href="#8-test-mfa-flow-consistency" aria-label="8. Test MFA Flow Consistency">8. Test MFA Flow Consistency</a></li>
+            <li>
+                <a href="#9-check-authentication-state-transitions" aria-label="9. Check Authentication State Transitions">9. Check Authentication State Transitions</a></li>
+            <li>
+                <a href="#10-test-error-handling-and-logging" aria-label="10. Test Error Handling and Logging">10. Test Error Handling and Logging</a></li></ul>
+            </li>
+            <li>
+                <a href="#impact" aria-label="Impact">Impact</a></li>
+            <li>
+                <a href="#remediation" aria-label="Remediation">Remediation</a></li>
+            <li>
+                <a href="#pentester-checklist" aria-label="Pentester Checklist">Pentester Checklist</a></li>
+            <li>
+                <a href="#references" aria-label="References">References</a></li>
+            <li>
+                <a href="#cta" aria-label="CTA">CTA</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="api-broken-authentication-common-testing-patterns">API Broken Authentication: Common Testing Patterns<a hidden class="anchor" aria-hidden="true" href="#api-broken-authentication-common-testing-patterns">#</a></h1>
+<p>API broken authentication happens when an API cannot reliably verify the identity of the caller, or when the surrounding authentication lifecycle is too weak to resist abuse.</p>
+<p>For a pentester, the goal is not to &ldquo;break login&rdquo; only. The goal is to understand how the API issues, accepts, stores, expires, rotates, revokes, and validates authentication material.</p>
+<p>In modern applications, this usually means testing:</p>
+<ul>
+<li>Login flows</li>
+<li>Access tokens</li>
+<li>Refresh tokens</li>
+<li>API keys</li>
+<li>Session cookies</li>
+<li>MFA flows</li>
+<li>Password reset flows</li>
+<li>Mobile API authentication</li>
+<li>SSO/OAuth integrations</li>
+<li>Logout and token revocation</li>
+</ul>
+<p>Image: Type: Context. Mô tả: &ldquo;A diagram showing a client sending credentials to an API, receiving an access token, then using that token to call protected endpoints.&rdquo; caption: &ldquo;API authentication is more than the login request; it includes the whole token and session lifecycle.&rdquo;</p>
+<h2 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h2>
+<p>APIs often rely on tokens instead of traditional server-rendered web sessions.</p>
+<p>A simple flow may look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User submits credentials -&gt; API validates credentials -&gt; API returns access token -&gt; client uses token for protected API calls
+</span></span></code></pre></div><p>A protected request may look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#a6e22e">GET</span> /api/v1/account/profile <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+</span></span><span style="display:flex;"><span>Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">api.example.com</span>
+</span></span><span style="display:flex;"><span>Authorization<span style="color:#f92672">:</span> <span style="color:#ae81ff">Bearer &lt;access_token&gt;</span>
+</span></span></code></pre></div><p>At a minimum, the API needs to answer four questions:</p>
+<ol>
+<li>Is the token valid?</li>
+<li>Who does this token represent?</li>
+<li>Is the token still allowed to be used?</li>
+<li>Is this caller authorized to perform this specific action?</li>
+</ol>
+<p>Broken authentication focuses mainly on the first three questions. Authorization issues such as BOLA focus on the fourth.</p>
+<h2 id="root-cause">Root Cause<a hidden class="anchor" aria-hidden="true" href="#root-cause">#</a></h2>
+<p>API broken authentication usually comes from weak assumptions.</p>
+<p>Common root causes include:</p>
+<ul>
+<li>The API assumes possession of a token is always enough.</li>
+<li>Tokens do not expire, or they expire too slowly.</li>
+<li>Logout does not invalidate tokens.</li>
+<li>Refresh tokens are not rotated or revoked.</li>
+<li>Password reset or MFA flows issue tokens without proper verification.</li>
+<li>API keys are treated like permanent passwords.</li>
+<li>Authentication checks are inconsistent across endpoints.</li>
+<li>Mobile clients are trusted too much.</li>
+<li>Rate limiting is missing from authentication endpoints.</li>
+<li>Error messages expose whether a username, email, or phone number exists.</li>
+</ul>
+<p>Authentication is a lifecycle. Weakness in any part of the lifecycle can lead to account takeover, unauthorized API access, or long-lived session abuse.</p>
+<h2 id="common-testing-patterns">Common Testing Patterns<a hidden class="anchor" aria-hidden="true" href="#common-testing-patterns">#</a></h2>
+<h3 id="1-check-for-missing-authentication">1. Check for Missing Authentication<a hidden class="anchor" aria-hidden="true" href="#1-check-for-missing-authentication">#</a></h3>
+<p>Start by identifying protected endpoints.</p>
+<p>Then test whether they still respond when authentication is removed.</p>
+<p>Safe testing approach:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Request with valid token -&gt; observe normal response
+</span></span><span style="display:flex;"><span>Request without token -&gt; expect 401 or 403
+</span></span><span style="display:flex;"><span>Request with malformed token -&gt; expect rejection
+</span></span><span style="display:flex;"><span>Request with expired token -&gt; expect rejection
+</span></span></code></pre></div><p>The expected result is not always the same status code, but protected data should never be returned.</p>
+<p>Risky pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>GET /api/v1/users/me -&gt; requires token
+</span></span><span style="display:flex;"><span>GET /api/v1/users/123 -&gt; returns data without token
+</span></span></code></pre></div><p>This suggests inconsistent authentication enforcement.</p>
+<p>Image: Type: Test case. Mô tả: &ldquo;A Burp Repeater comparison showing the same API request with Authorization header and without Authorization header, where the unauthenticated request should be rejected.&rdquo; caption: &ldquo;A protected API endpoint should fail closed when authentication material is missing.&rdquo;</p>
+<h3 id="2-test-token-expiration">2. Test Token Expiration<a hidden class="anchor" aria-hidden="true" href="#2-test-token-expiration">#</a></h3>
+<p>Tokens should have a defined lifetime.</p>
+<p>Check:</p>
+<ul>
+<li>Does the access token expire?</li>
+<li>How long does it remain valid?</li>
+<li>Can an expired token still call protected endpoints?</li>
+<li>Does the server validate expiration or only the client?</li>
+<li>Does the API accept old tokens after password change?</li>
+</ul>
+<p>A frequent issue is client-side-only expiration. The frontend stops using the token, but the backend still accepts it.</p>
+<p>A secure API must enforce token expiration server-side.</p>
+<h3 id="3-test-logout-behavior">3. Test Logout Behavior<a hidden class="anchor" aria-hidden="true" href="#3-test-logout-behavior">#</a></h3>
+<p>Logout should do more than remove a token from browser storage.</p>
+<p>Check:</p>
+<ul>
+<li>After logout, can the old access token still call the API?</li>
+<li>Is the refresh token revoked?</li>
+<li>Are server-side sessions invalidated?</li>
+<li>Are all devices logged out when the user requests it?</li>
+<li>Are active sessions visible to the user?</li>
+</ul>
+<p>If the API uses stateless JWT access tokens, immediate revocation may require a short token lifetime plus a server-side revocation strategy for high-risk events.</p>
+<h3 id="4-test-refresh-token-rotation">4. Test Refresh Token Rotation<a hidden class="anchor" aria-hidden="true" href="#4-test-refresh-token-rotation">#</a></h3>
+<p>Refresh tokens are high-value authentication material.</p>
+<p>Review:</p>
+<ul>
+<li>Is the refresh token long-lived?</li>
+<li>Is it rotated after use?</li>
+<li>Can the same refresh token be reused multiple times?</li>
+<li>Is token reuse detected?</li>
+<li>Is the refresh token bound to a device, client, or session?</li>
+<li>Is it revoked after password change or account compromise?</li>
+</ul>
+<p>Risky pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Refresh token issued once -&gt; valid for months -&gt; reusable unlimited times
+</span></span></code></pre></div><p>A stolen refresh token can become a long-term account access mechanism.</p>
+<h3 id="5-test-rate-limiting-on-authentication-endpoints">5. Test Rate Limiting on Authentication Endpoints<a hidden class="anchor" aria-hidden="true" href="#5-test-rate-limiting-on-authentication-endpoints">#</a></h3>
+<p>Authentication endpoints should be protected from high-volume abuse.</p>
+<p>Review rate limiting on:</p>
+<ul>
+<li>Login</li>
+<li>MFA verification</li>
+<li>OTP verification</li>
+<li>Password reset request</li>
+<li>Password reset token validation</li>
+<li>Email change confirmation</li>
+<li>Phone number verification</li>
+<li>API key creation</li>
+<li>Token refresh</li>
+</ul>
+<p>Rate limiting should consider account, IP address, device, session, and risk context.</p>
+<p>Do not brute-force real users or production systems. In an authorized pentest, use agreed test accounts and a low-volume test plan approved in the rules of engagement.</p>
+<h3 id="6-check-account-enumeration">6. Check Account Enumeration<a hidden class="anchor" aria-hidden="true" href="#6-check-account-enumeration">#</a></h3>
+<p>Authentication flows often leak whether an account exists.</p>
+<p>Examples:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>&#34;Email does not exist&#34;
+</span></span><span style="display:flex;"><span>&#34;Invalid password&#34;
+</span></span><span style="display:flex;"><span>&#34;This phone number is already registered&#34;
+</span></span><span style="display:flex;"><span>&#34;Reset link sent&#34; only for existing users
+</span></span><span style="display:flex;"><span>Different response time for valid vs invalid accounts
+</span></span></code></pre></div><p>Enumeration is not always critical by itself, but it becomes more serious when combined with phishing, credential stuffing, password spraying, or targeted account takeover attempts.</p>
+<h3 id="7-review-api-key-authentication">7. Review API Key Authentication<a hidden class="anchor" aria-hidden="true" href="#7-review-api-key-authentication">#</a></h3>
+<p>API keys are common in developer platforms, SaaS products, and internal services.</p>
+<p>Check:</p>
+<ul>
+<li>Are API keys scoped?</li>
+<li>Can users rotate keys?</li>
+<li>Can users revoke keys?</li>
+<li>Are keys shown only once?</li>
+<li>Are keys hashed at rest?</li>
+<li>Are keys logged by the application or reverse proxy?</li>
+<li>Are keys bound to environments?</li>
+<li>Can a read-only key perform write actions?</li>
+</ul>
+<p>An API key should be treated like a credential, not like a harmless identifier.</p>
+<h3 id="8-test-mfa-flow-consistency">8. Test MFA Flow Consistency<a hidden class="anchor" aria-hidden="true" href="#8-test-mfa-flow-consistency">#</a></h3>
+<p>MFA can be bypassed when it is applied inconsistently.</p>
+<p>Review:</p>
+<ul>
+<li>Does API access require MFA completion?</li>
+<li>Can the user call protected API endpoints before finishing MFA?</li>
+<li>Can an old session skip newly enforced MFA?</li>
+<li>Can password reset disable MFA?</li>
+<li>Can OAuth login bypass MFA?</li>
+<li>Is MFA required for sensitive actions?</li>
+</ul>
+<p>A common design flaw is treating MFA as a frontend state instead of a server-side security state.</p>
+<h3 id="9-check-authentication-state-transitions">9. Check Authentication State Transitions<a hidden class="anchor" aria-hidden="true" href="#9-check-authentication-state-transitions">#</a></h3>
+<p>High-risk actions should change authentication state.</p>
+<p>Examples:</p>
+<ul>
+<li>Password changed</li>
+<li>Email changed</li>
+<li>Phone number changed</li>
+<li>MFA disabled</li>
+<li>Recovery code generated</li>
+<li>New device added</li>
+<li>API key created</li>
+<li>Organization admin added</li>
+</ul>
+<p>After these actions, old sessions or tokens may need to be invalidated, reauthenticated, or risk-scored.</p>
+<h3 id="10-test-error-handling-and-logging">10. Test Error Handling and Logging<a hidden class="anchor" aria-hidden="true" href="#10-test-error-handling-and-logging">#</a></h3>
+<p>Authentication failures should be logged carefully.</p>
+<p>Good logging:</p>
+<ul>
+<li>User identifier or account reference</li>
+<li>Source IP or device context</li>
+<li>Endpoint and event type</li>
+<li>Failed login count</li>
+<li>Token reuse signal</li>
+<li>MFA failure signal</li>
+</ul>
+<p>Bad logging:</p>
+<ul>
+<li>Passwords</li>
+<li>Full access tokens</li>
+<li>Full refresh tokens</li>
+<li>Password reset tokens</li>
+<li>MFA codes</li>
+<li>API keys</li>
+</ul>
+<p>Sensitive authentication material should never appear in logs.</p>
+<h2 id="impact">Impact<a hidden class="anchor" aria-hidden="true" href="#impact">#</a></h2>
+<p>API broken authentication can lead to:</p>
+<ul>
+<li>Account takeover</li>
+<li>Unauthorized API access</li>
+<li>Data exposure</li>
+<li>Session hijacking</li>
+<li>Long-lived token abuse</li>
+<li>Privilege escalation through weak session state</li>
+<li>API key compromise</li>
+<li>Abuse of password reset and MFA flows</li>
+<li>Difficulty investigating incidents due to poor logging</li>
+</ul>
+<p>The impact depends on what the authenticated API can access. A weak authentication issue on a profile endpoint may be medium. The same issue on billing, admin, health records, or organization settings can be critical.</p>
+<h2 id="remediation">Remediation<a hidden class="anchor" aria-hidden="true" href="#remediation">#</a></h2>
+<p>A strong API authentication design should include:</p>
+<ul>
+<li>Centralized authentication middleware</li>
+<li>Consistent checks on every protected endpoint</li>
+<li>Short-lived access tokens</li>
+<li>Secure refresh token rotation</li>
+<li>Token revocation for logout and high-risk events</li>
+<li>Strong password reset flow</li>
+<li>MFA for sensitive accounts and actions</li>
+<li>Rate limiting on authentication endpoints</li>
+<li>Generic error messages where appropriate</li>
+<li>Secure token storage guidance for clients</li>
+<li>No sensitive token values in logs</li>
+<li>Monitoring for suspicious authentication events</li>
+</ul>
+<h2 id="pentester-checklist">Pentester Checklist<a hidden class="anchor" aria-hidden="true" href="#pentester-checklist">#</a></h2>
+<p>Use this checklist during an API pentest:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[ ] Remove Authorization header and confirm protected endpoints reject the request
+</span></span><span style="display:flex;"><span>[ ] Test malformed, expired, and revoked tokens
+</span></span><span style="display:flex;"><span>[ ] Confirm logout invalidates the expected authentication state
+</span></span><span style="display:flex;"><span>[ ] Review refresh token rotation and reuse detection
+</span></span><span style="display:flex;"><span>[ ] Check authentication rate limiting
+</span></span><span style="display:flex;"><span>[ ] Look for account enumeration signals
+</span></span><span style="display:flex;"><span>[ ] Review MFA enforcement consistency
+</span></span><span style="display:flex;"><span>[ ] Test old sessions after password or email change
+</span></span><span style="display:flex;"><span>[ ] Review API key scope, rotation, and revocation
+</span></span><span style="display:flex;"><span>[ ] Confirm sensitive tokens are not logged
+</span></span></code></pre></div><h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ul>
+<li>OWASP API Security Top 10 2023 - API2 Broken Authentication: <a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication/">https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication/</a></li>
+<li>OWASP WSTG - Authentication Testing: <a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/README">https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/README</a></li>
+<li>OWASP Authentication Cheat Sheet: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html</a></li>
+<li>OWASP ASVS: <a href="https://owasp.org/www-project-application-security-verification-standard/">https://owasp.org/www-project-application-security-verification-standard/</a></li>
+</ul>
+<h2 id="cta">CTA<a hidden class="anchor" aria-hidden="true" href="#cta">#</a></h2>
+<p>KevinSec can help review API authentication flows, token lifecycle controls, MFA enforcement, and session handling. If your product exposes APIs to web, mobile, or third-party clients, a focused authentication review can reduce account takeover risk before attackers find the gaps.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/api-security/">Api Security</a></li>
+      <li><a href="http://localhost:1313/tags/authentication/">Authentication</a></li>
+      <li><a href="http://localhost:1313/tags/broken-authentication/">Broken Authentication</a></li>
+      <li><a href="http://localhost:1313/tags/pentest/">Pentest</a></li>
+      <li><a href="http://localhost:1313/tags/owasp-api-top-10/">Owasp Api Top 10</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/blog/api-bola-explained-with-realistic-examples/">
+    <span class="title">« Prev</span>
+    <span>API BOLA Explained with Realistic Examples</span>
+  </a>
+  <a class="next" href="http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/">
+    <span class="title">Next »</span>
+    <span>Burp Suite Beginner Workflow for Web Pentest</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share API Broken Authentication: Common Testing Patterns on x"
+            href="https://x.com/intent/tweet/?text=API%20Broken%20Authentication%3a%20Common%20Testing%20Patterns&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fapi-broken-authentication-common-testing-patterns%2f&amp;hashtags=apisecurity%2cauthentication%2cbrokenauthentication%2cpentest%2cowaspapitop10">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share API Broken Authentication: Common Testing Patterns on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fapi-broken-authentication-common-testing-patterns%2f&amp;title=API%20Broken%20Authentication%3a%20Common%20Testing%20Patterns&amp;summary=API%20Broken%20Authentication%3a%20Common%20Testing%20Patterns&amp;source=http%3a%2f%2flocalhost%3a1313%2fblog%2fapi-broken-authentication-common-testing-patterns%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share API Broken Authentication: Common Testing Patterns on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fblog%2fapi-broken-authentication-common-testing-patterns%2f&title=API%20Broken%20Authentication%3a%20Common%20Testing%20Patterns">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share API Broken Authentication: Common Testing Patterns on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2fapi-broken-authentication-common-testing-patterns%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share API Broken Authentication: Common Testing Patterns on whatsapp"
+            href="https://api.whatsapp.com/send?text=API%20Broken%20Authentication%3a%20Common%20Testing%20Patterns%20-%20http%3a%2f%2flocalhost%3a1313%2fblog%2fapi-broken-authentication-common-testing-patterns%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share API Broken Authentication: Common Testing Patterns on telegram"
+            href="https://telegram.me/share/url?text=API%20Broken%20Authentication%3a%20Common%20Testing%20Patterns&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fapi-broken-authentication-common-testing-patterns%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share API Broken Authentication: Common Testing Patterns on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=API%20Broken%20Authentication%3a%20Common%20Testing%20Patterns&u=http%3a%2f%2flocalhost%3a1313%2fblog%2fapi-broken-authentication-common-testing-patterns%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

@@ -1,13 +1,104 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Web Security on KevinSec</title>
+    <title>Web-Security on KevinSec</title>
     <link>http://localhost:1313/tags/web-security/</link>
-    <description>Recent content in Web Security on KevinSec</description>
+    <description>Recent content in Web-Security on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/web-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CORS Misconfiguration: Simple Mistake, Serious Impact</title>
+      <link>http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/cors-misconfiguration-simple-mistake-serious-impact/</guid>
+      <description>A practical explanation of CORS misconfiguration, why it matters, how to recognize risky patterns, and how to fix it safely.</description>
+    </item>
+    <item>
+      <title>File Upload Security: What Can Go Wrong?</title>
+      <link>http://localhost:1313/blog/file-upload-security-what-can-go-wrong/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/file-upload-security-what-can-go-wrong/</guid>
+      <description>A practical overview of file upload vulnerabilities, common failure patterns, testing ideas, and secure design recommendations.</description>
+    </item>
+    <item>
+      <title>How to Write a Professional Vulnerability Report</title>
+      <link>http://localhost:1313/blog/how-to-write-a-professional-vulnerability-report/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/how-to-write-a-professional-vulnerability-report/</guid>
+      <description>A practical guide to writing clear, reproducible, and business-focused vulnerability reports for web application security testing.</description>
+    </item>
+    <item>
+      <title>JWT Security Testing Checklist</title>
+      <link>http://localhost:1313/blog/jwt-security-testing-checklist/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/jwt-security-testing-checklist/</guid>
+      <description>A practical checklist for testing JSON Web Token security in web applications and APIs.</description>
+    </item>
+    <item>
+      <title>My 15-Day Content Sprint for KevinSec</title>
+      <link>http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/my-15-day-content-sprint-for-kevinsec/</guid>
+      <description>A transparent look at the 15-day content sprint used to build the first 30 KevinSec blog posts around web security, phishing awareness, and pentest methodology.</description>
+    </item>
+    <item>
+      <title>Password Reset Vulnerabilities: Common Patterns</title>
+      <link>http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/password-reset-vulnerabilities-common-patterns/</guid>
+      <description>A practical guide to common password reset vulnerabilities, how they appear in real applications, and how to test them safely.</description>
+    </item>
+    <item>
+      <title>Path Traversal and LFI: Reading Files You Should Not Read</title>
+      <link>http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/</guid>
+      <description>A practical introduction to path traversal and local file inclusion from a web pentesting perspective, with safe testing guidance and remediation patterns.</description>
+    </item>
+    <item>
+      <title>Rate Limiting: The Control That Many Apps Forget</title>
+      <link>http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/rate-limiting-the-control-that-many-apps-forget/</guid>
+      <description>A practical guide to rate limiting as a security control for login, OTP, password reset, API, and resource-intensive endpoints.</description>
+    </item>
+    <item>
+      <title>Reflected XSS Explained: Context, Root Cause, Impact</title>
+      <link>http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/reflected-xss-explained-context-root-cause-impact/</guid>
+      <description>A beginner-friendly explanation of reflected cross-site scripting from context to root cause, impact, testing, and remediation.</description>
+    </item>
+    <item>
+      <title>SQL Injection Lab: From Error Message to Root Cause</title>
+      <link>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-injection-lab-from-error-message-to-root-cause/</guid>
+      <description>A safe lab-style walkthrough showing how to reason from a SQL error message to the root cause of SQL injection.</description>
+    </item>
+    <item>
+      <title>SQL Injection: What Actually Happens Behind the Query</title>
+      <link>http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/sql-injection-what-actually-happens-behind-the-query/</guid>
+      <description>A beginner-friendly explanation of SQL injection from the perspective of query construction, untrusted data, and database interaction.</description>
+    </item>
+    <item>
+      <title>SSRF Explained for Developers and Pentesters</title>
+      <link>http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/ssrf-explained-for-developers-and-pentesters/</guid>
+      <description>A practical explanation of Server-Side Request Forgery, why it happens, how to test it safely, and how developers can prevent it.</description>
+    </item>
+    <item>
+      <title>Stored XSS vs Reflected XSS: Practical Differences</title>
+      <link>http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/</guid>
+      <description>A practical comparison of stored XSS and reflected XSS, including root cause, exploitability, impact, detection, and remediation.</description>
+    </item>
     <item>
       <title>Authentication Testing Checklist for Web Applications</title>
       <link>http://localhost:1313/blog/authentication-testing-checklist-for-web-applications/</link>
