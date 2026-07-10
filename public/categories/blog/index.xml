@@ -6,8 +6,15 @@
     <description>Recent content in Blog on KevinSec</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Think Like a Hacker: 8 Mindset Methods for Security Researchers</title>
+      <link>http://localhost:1313/blog/how-to-think-like-hackers/</link>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/how-to-think-like-hackers/</guid>
+      <description>A practical guide to developing hacker mindset: reverse thinking, logic abuse, zero trust, system decomposition, and attack chaining.</description>
+    </item>
     <item>
       <title>API BOLA Explained with Realistic Examples</title>
       <link>http://localhost:1313/blog/api-bola-explained-with-realistic-examples/</link>

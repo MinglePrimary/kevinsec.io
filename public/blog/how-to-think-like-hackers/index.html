@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>How to Think Like a Hacker: 8 Mindset Methods for Security Researchers | KevinSec</title>
+<meta name="keywords" content="hacker-mindset, web-security, pentest, security-research, kevinsec">
+<meta name="description" content="A practical guide to developing hacker mindset: reverse thinking, logic abuse, zero trust, system decomposition, and attack chaining.">
+<meta name="author" content="KevinSec">
+<link rel="canonical" href="http://localhost:1313/blog/how-to-think-like-hackers/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fdc2fc73c83694cba3e525c98583c913c94c6839870175ec83246a31062b1234.css" integrity="sha256-/cL8c8g2lMuj5SXJhYPJE8lMaDmHAXXsgyRqMQYrEjQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/how-to-think-like-hackers/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F172A">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHWBGBB6JP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XHWBGBB6JP');
+        }
+      </script><meta property="og:url" content="http://localhost:1313/blog/how-to-think-like-hackers/">
+  <meta property="og:site_name" content="KevinSec">
+  <meta property="og:title" content="How to Think Like a Hacker: 8 Mindset Methods for Security Researchers">
+  <meta property="og:description" content="A practical guide to developing hacker mindset: reverse thinking, logic abuse, zero trust, system decomposition, and attack chaining.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-10T00:00:00+00:00">
+    <meta property="article:tag" content="Hacker-Mindset">
+    <meta property="article:tag" content="Web-Security">
+    <meta property="article:tag" content="Pentest">
+    <meta property="article:tag" content="Security-Research">
+    <meta property="article:tag" content="Kevinsec">
+    <meta property="og:image" content="http://localhost:1313/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/cover.png">
+  <meta name="twitter:title" content="How to Think Like a Hacker: 8 Mindset Methods for Security Researchers">
+  <meta name="twitter:description" content="A practical guide to developing hacker mindset: reverse thinking, logic abuse, zero trust, system decomposition, and attack chaining.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "http://localhost:1313/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "How to Think Like a Hacker: 8 Mindset Methods for Security Researchers",
+      "item": "http://localhost:1313/blog/how-to-think-like-hackers/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Think Like a Hacker: 8 Mindset Methods for Security Researchers",
+  "name": "How to Think Like a Hacker: 8 Mindset Methods for Security Researchers",
+  "description": "A practical guide to developing hacker mindset: reverse thinking, logic abuse, zero trust, system decomposition, and attack chaining.",
+  "keywords": [
+    "hacker-mindset", "web-security", "pentest", "security-research", "kevinsec"
+  ],
+  "articleBody": "How to Think Like a Hacker: 8 Mindset Methods for Security Researchers Tools matter. Payloads matter. Labs matter.\nBut a professional hacker is not defined by the tools they run. A professional hacker is defined by how they observe, question, decompose, test, and connect weak signals into real impact.\nThis article summarizes practical thinking methods that help ethical hackers, pentesters, and security researchers move from “running checks” to thinking like an attacker with engineering discipline.\nImage: Type: (Context), Mô tả: “A simple visual showing a hacker mindset loop: Observe → Question → Test → Chain → Report.” caption: “Hacker mindset is a repeatable thinking loop, not random guessing.”\n1. Adversarial Thinking Adversarial thinking means looking at a system from the perspective of someone who wants to abuse it.\nDo not only ask:\nHow is this feature supposed to work?\nAsk:\nHow can this feature be bypassed, misused, or chained with something else?\nFor example, when testing a login flow, a normal user sees username, password, and submit. A hacker sees rate limits, password reset logic, session handling, MFA bypass possibilities, error messages, cookies, and account enumeration behavior.\nPractice For every feature you test, write down at least three attacker questions:\nWhat can I modify? What does the server trust? What happens if I skip this step? What happens if I repeat this request? What happens if I perform this action as another user? 2. Reverse Thinking Reverse thinking means asking how something breaks instead of only asking how it works.\nA developer may think:\nThe user must complete step 1 before step 2.\nA hacker asks:\nWhat if I send the step 2 request directly?\nThis mindset is useful for authentication, authorization, checkout flows, approval workflows, file upload flows, and password reset mechanisms.\nPractice Take one normal workflow and reverse it:\nStart from the final action. Replay the request without previous steps. Change object IDs, roles, quantities, tokens, and headers. Remove optional-looking parameters. Compare how the server responds. Image: Type: (Test case), Mô tả: “A workflow diagram showing normal order: Step 1 → Step 2 → Step 3, then a bypass attempt calling Step 3 directly.” caption: “Reverse thinking tests whether server-side state is actually enforced.”\n3. Logic Abuse Thinking Many serious vulnerabilities are not caused by broken syntax. They are caused by broken business rules.\nLogic abuse means using valid functionality in an unintended way.\nExamples:\nChanging user_id in an API request to access another user’s data. Applying a coupon multiple times. Reusing a password reset token. Changing product quantity to a negative value. Sending two requests at the same time to exploit a race condition. Practice When testing business logic, focus on:\nOwnership Role Sequence Quantity Price Time Token lifetime Approval state Repetition Race condition A strong hacker does not only ask, “Is this input vulnerable to SQL injection?” They also ask, “Can the business process itself be abused?”\n4. Attention to Detail Professional hackers notice things others ignore.\nSmall details often reveal large attack paths:\nUnusual HTTP headers Verbose error messages Hidden input fields JavaScript endpoints Debug parameters Redirect behavior Different responses for valid and invalid users Cache headers Inconsistent authorization checks Practice When using Burp Suite, do not only look at whether the request succeeds or fails. Compare:\nStatus code Response length Error message Redirect chain Cookies Headers Timing Object IDs Role-dependent differences Create an “anomaly log” while testing. Every strange behavior should be recorded, even if it does not look exploitable immediately.\nImage: Type: (PoC), Mô tả: “A Burp Suite Repeater screenshot with highlighted status code, response length, Set-Cookie, and hidden API endpoint in JavaScript.” caption: “Small HTTP differences can expose authorization, session, and logic flaws.”\n5. Strategic Trial-and-Error Hacking requires experimentation, but professional experimentation is structured.\nRandom payload spraying is weak testing. Strategic trial-and-error follows a sequence:\nEstablish a baseline. Modify one variable. Observe the difference. Increase complexity. Try encoding or parser confusion. Document what changed. For example, when testing input validation, do not start with the most complex payload. Start simple, then mutate:\ntest ' \" ../../etc/passwd {{7*7}} http://127.0.0.1 The goal is not to “throw payloads.” The goal is to learn how the application parses, filters, stores, and reflects data.\n6. System Decomposition A web application is not one object. It is a system of components.\nA hacker decomposes the target into smaller parts:\nFrontend Backend API Authentication Authorization Session management Database File storage Background workers Cache CDN Third-party integrations Admin panels Logging and monitoring Once the system is decomposed, attack surfaces become clearer.\nFor example, a file upload feature may involve:\nBrowser upload form API endpoint File type validation Object storage CDN delivery Image parser Admin review panel Each component has different risks.\nPractice Before testing a target deeply, draw a simple system map:\nUser → Frontend → API Gateway → Auth Service → Backend → Database ↓ File Storage → CDN Then ask: where are the trust boundaries?\n7. Zero-Trust Mindset A hacker should not trust the UI, the client, the token, the role, or the request sequence.\nClient-side controls are not security boundaries.\nIf a button is hidden in the UI, test the backend request directly. If a role is shown as read-only, try the write request anyway. If a JWT is present, inspect its claims and validation behavior. If a parameter is not visible, check JavaScript, traffic, and API schemas.\nPractice For every request, ask:\nIs authorization checked server-side? Can this object ID be changed? Can this role be modified? Can this token be reused? Can this request be replayed? Can this action be performed out of order? Zero trust is one of the most important mindsets for finding IDOR, BOLA, privilege escalation, and workflow bypass vulnerabilities.\n8. Chaining Mindset A single low-severity issue may not matter. But two or three weak signals can create serious impact.\nExamples:\nInformation disclosure + IDOR = sensitive data exposure Stored XSS + admin panel = account takeover SSRF + cloud metadata = credential exposure File upload + parser weakness = code execution Weak reset token + user enumeration = account compromise Professional hackers constantly ask:\nWhat does this finding enable next?\nPractice After every finding, write:\nWhat can I access now? What new information did I learn? What trust boundary did I cross? Can this be combined with another weakness? What is the real business impact? Image: Type: (Context), Mô tả: “A chain diagram showing Information Leak → IDOR → Sensitive Document Access → Business Impact.” caption: “Impact often comes from chaining small weaknesses.”\nA Practical Hacker Mindset Checklist Use this checklist during testing:\nQuestion Purpose What does the server trust? Find trust boundary issues What can I modify? Identify controllable inputs What happens if I skip a step? Find workflow bypass What happens if I change role or object ID? Find authorization flaws What happens if I repeat this action? Find replay or race issues What hidden endpoints exist in JavaScript? Expand attack surface What small anomaly did I observe? Track weak signals What can this bug be chained with? Increase real impact Vietnamese Summary Tư duy hacker chuyên nghiệp không phải là đoán mò hoặc chạy tool hàng loạt. Đó là khả năng nhìn hệ thống theo góc nhìn đối nghịch, đặt câu hỏi về trust boundary, kiểm tra logic nghiệp vụ, quan sát chi tiết nhỏ, thử nghiệm có hệ thống, phân rã hệ thống và biết cách chain các điểm yếu nhỏ thành impact thật.\nNếu bạn đang học web pentest hoặc bug bounty, hãy luyện 8 tư duy chính:\nAdversarial thinking Reverse thinking Logic abuse thinking Attention to detail Strategic trial-and-error System decomposition Zero-trust mindset Chaining mindset Một hacker giỏi không chỉ hỏi “payload nào dùng được?”. Họ hỏi: hệ thống này tin vào điều gì, và niềm tin đó có thể bị phá vỡ như thế nào?\nFinal Thought Thinking like a hacker is a discipline.\nIt is not about being chaotic. It is about being curious, skeptical, structured, and precise.\nThe better your questions, the better your findings.\n",
+  "wordCount" : "1334",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/cover.png","datePublished": "2026-07-10T00:00:00Z",
+  "dateModified": "2026-07-10T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "KevinSec"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/how-to-think-like-hackers/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "KevinSec",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="KevinSec (Alt + H)">KevinSec</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/services/" title="Services">
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/blog/">Blog</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      How to Think Like a Hacker: 8 Mindset Methods for Security Researchers
+    </h1>
+    <div class="post-description">
+      A practical guide to developing hacker mindset: reverse thinking, logic abuse, zero trust, system decomposition, and attack chaining.
+    </div>
+    <div class="post-meta">
+
+<span title='2026-07-10 00:00:00 +0000 UTC'>July 10, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>KevinSec</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+            <img loading="eager"
+                srcset='http://localhost:1313/blog/how-to-think-like-hackers/cover_hu_800d4b5f5423dc9.png 360w,http://localhost:1313/blog/how-to-think-like-hackers/cover_hu_caab2765b4922673.png 480w,http://localhost:1313/blog/how-to-think-like-hackers/cover_hu_39cd46c8646e8a64.png 720w,http://localhost:1313/blog/how-to-think-like-hackers/cover_hu_e9a37ae0cc3a2a65.png 1080w,http://localhost:1313/blog/how-to-think-like-hackers/cover.png 1200w'
+                src="http://localhost:1313/blog/how-to-think-like-hackers/cover.png"
+                sizes="(min-width: 768px) 720px, 100vw"
+                width="1200" height="798"
+                alt="Hacker mindset methods">
+        <figcaption>Thinking like a hacker means questioning assumptions, mapping systems, and testing trust boundaries.</figcaption>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#how-to-think-like-a-hacker-8-mindset-methods-for-security-researchers" aria-label="How to Think Like a Hacker: 8 Mindset Methods for Security Researchers">How to Think Like a Hacker: 8 Mindset Methods for Security Researchers</a><ul>
+                    
+            <li>
+                <a href="#1-adversarial-thinking" aria-label="1. Adversarial Thinking">1. Adversarial Thinking</a><ul>
+                    
+            <li>
+                <a href="#practice" aria-label="Practice">Practice</a></li></ul>
+            </li>
+            <li>
+                <a href="#2-reverse-thinking" aria-label="2. Reverse Thinking">2. Reverse Thinking</a><ul>
+                    
+            <li>
+                <a href="#practice-1" aria-label="Practice">Practice</a></li></ul>
+            </li>
+            <li>
+                <a href="#3-logic-abuse-thinking" aria-label="3. Logic Abuse Thinking">3. Logic Abuse Thinking</a><ul>
+                    
+            <li>
+                <a href="#practice-2" aria-label="Practice">Practice</a></li></ul>
+            </li>
+            <li>
+                <a href="#4-attention-to-detail" aria-label="4. Attention to Detail">4. Attention to Detail</a><ul>
+                    
+            <li>
+                <a href="#practice-3" aria-label="Practice">Practice</a></li></ul>
+            </li>
+            <li>
+                <a href="#5-strategic-trial-and-error" aria-label="5. Strategic Trial-and-Error">5. Strategic Trial-and-Error</a></li>
+            <li>
+                <a href="#6-system-decomposition" aria-label="6. System Decomposition">6. System Decomposition</a><ul>
+                    
+            <li>
+                <a href="#practice-4" aria-label="Practice">Practice</a></li></ul>
+            </li>
+            <li>
+                <a href="#7-zero-trust-mindset" aria-label="7. Zero-Trust Mindset">7. Zero-Trust Mindset</a><ul>
+                    
+            <li>
+                <a href="#practice-5" aria-label="Practice">Practice</a></li></ul>
+            </li>
+            <li>
+                <a href="#8-chaining-mindset" aria-label="8. Chaining Mindset">8. Chaining Mindset</a><ul>
+                    
+            <li>
+                <a href="#practice-6" aria-label="Practice">Practice</a></li></ul>
+            </li>
+            <li>
+                <a href="#a-practical-hacker-mindset-checklist" aria-label="A Practical Hacker Mindset Checklist">A Practical Hacker Mindset Checklist</a></li>
+            <li>
+                <a href="#vietnamese-summary" aria-label="Vietnamese Summary">Vietnamese Summary</a></li>
+            <li>
+                <a href="#final-thought" aria-label="Final Thought">Final Thought</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="how-to-think-like-a-hacker-8-mindset-methods-for-security-researchers">How to Think Like a Hacker: 8 Mindset Methods for Security Researchers<a hidden class="anchor" aria-hidden="true" href="#how-to-think-like-a-hacker-8-mindset-methods-for-security-researchers">#</a></h1>
+<p>Tools matter. Payloads matter. Labs matter.</p>
+<p>But a professional hacker is not defined by the tools they run. A professional hacker is defined by how they <strong>observe</strong>, <strong>question</strong>, <strong>decompose</strong>, <strong>test</strong>, and <strong>connect weak signals into real impact</strong>.</p>
+<p>This article summarizes practical thinking methods that help ethical hackers, pentesters, and security researchers move from “running checks” to <strong>thinking like an attacker with engineering discipline</strong>.</p>
+<p>Image: Type: (Context), Mô tả: &ldquo;A simple visual showing a hacker mindset loop: Observe → Question → Test → Chain → Report.&rdquo; caption: &ldquo;Hacker mindset is a repeatable thinking loop, not random guessing.&rdquo;</p>
+<hr>
+<h2 id="1-adversarial-thinking">1. Adversarial Thinking<a hidden class="anchor" aria-hidden="true" href="#1-adversarial-thinking">#</a></h2>
+<p>Adversarial thinking means looking at a system from the perspective of someone who wants to abuse it.</p>
+<p>Do not only ask:</p>
+<blockquote>
+<p>How is this feature supposed to work?</p>
+</blockquote>
+<p>Ask:</p>
+<blockquote>
+<p>How can this feature be bypassed, misused, or chained with something else?</p>
+</blockquote>
+<p>For example, when testing a login flow, a normal user sees username, password, and submit. A hacker sees rate limits, password reset logic, session handling, MFA bypass possibilities, error messages, cookies, and account enumeration behavior.</p>
+<h3 id="practice">Practice<a hidden class="anchor" aria-hidden="true" href="#practice">#</a></h3>
+<p>For every feature you test, write down at least three attacker questions:</p>
+<ul>
+<li>What can I modify?</li>
+<li>What does the server trust?</li>
+<li>What happens if I skip this step?</li>
+<li>What happens if I repeat this request?</li>
+<li>What happens if I perform this action as another user?</li>
+</ul>
+<hr>
+<h2 id="2-reverse-thinking">2. Reverse Thinking<a hidden class="anchor" aria-hidden="true" href="#2-reverse-thinking">#</a></h2>
+<p>Reverse thinking means asking how something breaks instead of only asking how it works.</p>
+<p>A developer may think:</p>
+<blockquote>
+<p>The user must complete step 1 before step 2.</p>
+</blockquote>
+<p>A hacker asks:</p>
+<blockquote>
+<p>What if I send the step 2 request directly?</p>
+</blockquote>
+<p>This mindset is useful for authentication, authorization, checkout flows, approval workflows, file upload flows, and password reset mechanisms.</p>
+<h3 id="practice-1">Practice<a hidden class="anchor" aria-hidden="true" href="#practice-1">#</a></h3>
+<p>Take one normal workflow and reverse it:</p>
+<ol>
+<li>Start from the final action.</li>
+<li>Replay the request without previous steps.</li>
+<li>Change object IDs, roles, quantities, tokens, and headers.</li>
+<li>Remove optional-looking parameters.</li>
+<li>Compare how the server responds.</li>
+</ol>
+<p>Image: Type: (Test case), Mô tả: &ldquo;A workflow diagram showing normal order: Step 1 → Step 2 → Step 3, then a bypass attempt calling Step 3 directly.&rdquo; caption: &ldquo;Reverse thinking tests whether server-side state is actually enforced.&rdquo;</p>
+<hr>
+<h2 id="3-logic-abuse-thinking">3. Logic Abuse Thinking<a hidden class="anchor" aria-hidden="true" href="#3-logic-abuse-thinking">#</a></h2>
+<p>Many serious vulnerabilities are not caused by broken syntax. They are caused by broken business rules.</p>
+<p>Logic abuse means using valid functionality in an unintended way.</p>
+<p>Examples:</p>
+<ul>
+<li>Changing <code>user_id</code> in an API request to access another user’s data.</li>
+<li>Applying a coupon multiple times.</li>
+<li>Reusing a password reset token.</li>
+<li>Changing product quantity to a negative value.</li>
+<li>Sending two requests at the same time to exploit a race condition.</li>
+</ul>
+<h3 id="practice-2">Practice<a hidden class="anchor" aria-hidden="true" href="#practice-2">#</a></h3>
+<p>When testing business logic, focus on:</p>
+<ul>
+<li>Ownership</li>
+<li>Role</li>
+<li>Sequence</li>
+<li>Quantity</li>
+<li>Price</li>
+<li>Time</li>
+<li>Token lifetime</li>
+<li>Approval state</li>
+<li>Repetition</li>
+<li>Race condition</li>
+</ul>
+<p>A strong hacker does not only ask, “Is this input vulnerable to SQL injection?” They also ask, “Can the business process itself be abused?”</p>
+<hr>
+<h2 id="4-attention-to-detail">4. Attention to Detail<a hidden class="anchor" aria-hidden="true" href="#4-attention-to-detail">#</a></h2>
+<p>Professional hackers notice things others ignore.</p>
+<p>Small details often reveal large attack paths:</p>
+<ul>
+<li>Unusual HTTP headers</li>
+<li>Verbose error messages</li>
+<li>Hidden input fields</li>
+<li>JavaScript endpoints</li>
+<li>Debug parameters</li>
+<li>Redirect behavior</li>
+<li>Different responses for valid and invalid users</li>
+<li>Cache headers</li>
+<li>Inconsistent authorization checks</li>
+</ul>
+<h3 id="practice-3">Practice<a hidden class="anchor" aria-hidden="true" href="#practice-3">#</a></h3>
+<p>When using Burp Suite, do not only look at whether the request succeeds or fails. Compare:</p>
+<ul>
+<li>Status code</li>
+<li>Response length</li>
+<li>Error message</li>
+<li>Redirect chain</li>
+<li>Cookies</li>
+<li>Headers</li>
+<li>Timing</li>
+<li>Object IDs</li>
+<li>Role-dependent differences</li>
+</ul>
+<p>Create an “anomaly log” while testing. Every strange behavior should be recorded, even if it does not look exploitable immediately.</p>
+<p>Image: Type: (PoC), Mô tả: &ldquo;A Burp Suite Repeater screenshot with highlighted status code, response length, Set-Cookie, and hidden API endpoint in JavaScript.&rdquo; caption: &ldquo;Small HTTP differences can expose authorization, session, and logic flaws.&rdquo;</p>
+<hr>
+<h2 id="5-strategic-trial-and-error">5. Strategic Trial-and-Error<a hidden class="anchor" aria-hidden="true" href="#5-strategic-trial-and-error">#</a></h2>
+<p>Hacking requires experimentation, but professional experimentation is structured.</p>
+<p>Random payload spraying is weak testing. Strategic trial-and-error follows a sequence:</p>
+<ol>
+<li>Establish a baseline.</li>
+<li>Modify one variable.</li>
+<li>Observe the difference.</li>
+<li>Increase complexity.</li>
+<li>Try encoding or parser confusion.</li>
+<li>Document what changed.</li>
+</ol>
+<p>For example, when testing input validation, do not start with the most complex payload. Start simple, then mutate:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>test
+</span></span><span style="display:flex;"><span>&#39;
+</span></span><span style="display:flex;"><span>&#34;
+</span></span><span style="display:flex;"><span>&lt;test&gt;
+</span></span><span style="display:flex;"><span>../../etc/passwd
+</span></span><span style="display:flex;"><span>{{7*7}}
+</span></span><span style="display:flex;"><span>http://127.0.0.1
+</span></span></code></pre></div><p>The goal is not to “throw payloads.” The goal is to learn how the application parses, filters, stores, and reflects data.</p>
+<hr>
+<h2 id="6-system-decomposition">6. System Decomposition<a hidden class="anchor" aria-hidden="true" href="#6-system-decomposition">#</a></h2>
+<p>A web application is not one object. It is a system of components.</p>
+<p>A hacker decomposes the target into smaller parts:</p>
+<ul>
+<li>Frontend</li>
+<li>Backend API</li>
+<li>Authentication</li>
+<li>Authorization</li>
+<li>Session management</li>
+<li>Database</li>
+<li>File storage</li>
+<li>Background workers</li>
+<li>Cache</li>
+<li>CDN</li>
+<li>Third-party integrations</li>
+<li>Admin panels</li>
+<li>Logging and monitoring</li>
+</ul>
+<p>Once the system is decomposed, attack surfaces become clearer.</p>
+<p>For example, a file upload feature may involve:</p>
+<ol>
+<li>Browser upload form</li>
+<li>API endpoint</li>
+<li>File type validation</li>
+<li>Object storage</li>
+<li>CDN delivery</li>
+<li>Image parser</li>
+<li>Admin review panel</li>
+</ol>
+<p>Each component has different risks.</p>
+<h3 id="practice-4">Practice<a hidden class="anchor" aria-hidden="true" href="#practice-4">#</a></h3>
+<p>Before testing a target deeply, draw a simple system map:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User → Frontend → API Gateway → Auth Service → Backend → Database
+</span></span><span style="display:flex;"><span>                                  ↓
+</span></span><span style="display:flex;"><span>                              File Storage → CDN
+</span></span></code></pre></div><p>Then ask: where are the trust boundaries?</p>
+<hr>
+<h2 id="7-zero-trust-mindset">7. Zero-Trust Mindset<a hidden class="anchor" aria-hidden="true" href="#7-zero-trust-mindset">#</a></h2>
+<p>A hacker should not trust the UI, the client, the token, the role, or the request sequence.</p>
+<p>Client-side controls are not security boundaries.</p>
+<p>If a button is hidden in the UI, test the backend request directly. If a role is shown as read-only, try the write request anyway. If a JWT is present, inspect its claims and validation behavior. If a parameter is not visible, check JavaScript, traffic, and API schemas.</p>
+<h3 id="practice-5">Practice<a hidden class="anchor" aria-hidden="true" href="#practice-5">#</a></h3>
+<p>For every request, ask:</p>
+<ul>
+<li>Is authorization checked server-side?</li>
+<li>Can this object ID be changed?</li>
+<li>Can this role be modified?</li>
+<li>Can this token be reused?</li>
+<li>Can this request be replayed?</li>
+<li>Can this action be performed out of order?</li>
+</ul>
+<p>Zero trust is one of the most important mindsets for finding IDOR, BOLA, privilege escalation, and workflow bypass vulnerabilities.</p>
+<hr>
+<h2 id="8-chaining-mindset">8. Chaining Mindset<a hidden class="anchor" aria-hidden="true" href="#8-chaining-mindset">#</a></h2>
+<p>A single low-severity issue may not matter. But two or three weak signals can create serious impact.</p>
+<p>Examples:</p>
+<ul>
+<li>Information disclosure + IDOR = sensitive data exposure</li>
+<li>Stored XSS + admin panel = account takeover</li>
+<li>SSRF + cloud metadata = credential exposure</li>
+<li>File upload + parser weakness = code execution</li>
+<li>Weak reset token + user enumeration = account compromise</li>
+</ul>
+<p>Professional hackers constantly ask:</p>
+<blockquote>
+<p>What does this finding enable next?</p>
+</blockquote>
+<h3 id="practice-6">Practice<a hidden class="anchor" aria-hidden="true" href="#practice-6">#</a></h3>
+<p>After every finding, write:</p>
+<ul>
+<li>What can I access now?</li>
+<li>What new information did I learn?</li>
+<li>What trust boundary did I cross?</li>
+<li>Can this be combined with another weakness?</li>
+<li>What is the real business impact?</li>
+</ul>
+<p>Image: Type: (Context), Mô tả: &ldquo;A chain diagram showing Information Leak → IDOR → Sensitive Document Access → Business Impact.&rdquo; caption: &ldquo;Impact often comes from chaining small weaknesses.&rdquo;</p>
+<hr>
+<h2 id="a-practical-hacker-mindset-checklist">A Practical Hacker Mindset Checklist<a hidden class="anchor" aria-hidden="true" href="#a-practical-hacker-mindset-checklist">#</a></h2>
+<p>Use this checklist during testing:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Question</th>
+					<th>Purpose</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>What does the server trust?</td>
+					<td>Find trust boundary issues</td>
+			</tr>
+			<tr>
+					<td>What can I modify?</td>
+					<td>Identify controllable inputs</td>
+			</tr>
+			<tr>
+					<td>What happens if I skip a step?</td>
+					<td>Find workflow bypass</td>
+			</tr>
+			<tr>
+					<td>What happens if I change role or object ID?</td>
+					<td>Find authorization flaws</td>
+			</tr>
+			<tr>
+					<td>What happens if I repeat this action?</td>
+					<td>Find replay or race issues</td>
+			</tr>
+			<tr>
+					<td>What hidden endpoints exist in JavaScript?</td>
+					<td>Expand attack surface</td>
+			</tr>
+			<tr>
+					<td>What small anomaly did I observe?</td>
+					<td>Track weak signals</td>
+			</tr>
+			<tr>
+					<td>What can this bug be chained with?</td>
+					<td>Increase real impact</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="vietnamese-summary">Vietnamese Summary<a hidden class="anchor" aria-hidden="true" href="#vietnamese-summary">#</a></h2>
+<p>Tư duy hacker chuyên nghiệp không phải là đoán mò hoặc chạy tool hàng loạt. Đó là khả năng nhìn hệ thống theo góc nhìn đối nghịch, đặt câu hỏi về trust boundary, kiểm tra logic nghiệp vụ, quan sát chi tiết nhỏ, thử nghiệm có hệ thống, phân rã hệ thống và biết cách chain các điểm yếu nhỏ thành impact thật.</p>
+<p>Nếu bạn đang học web pentest hoặc bug bounty, hãy luyện 8 tư duy chính:</p>
+<ol>
+<li>Adversarial thinking</li>
+<li>Reverse thinking</li>
+<li>Logic abuse thinking</li>
+<li>Attention to detail</li>
+<li>Strategic trial-and-error</li>
+<li>System decomposition</li>
+<li>Zero-trust mindset</li>
+<li>Chaining mindset</li>
+</ol>
+<p>Một hacker giỏi không chỉ hỏi “payload nào dùng được?”. Họ hỏi: <strong>hệ thống này tin vào điều gì, và niềm tin đó có thể bị phá vỡ như thế nào?</strong></p>
+<hr>
+<h2 id="final-thought">Final Thought<a hidden class="anchor" aria-hidden="true" href="#final-thought">#</a></h2>
+<p>Thinking like a hacker is a discipline.</p>
+<p>It is not about being chaotic. It is about being curious, skeptical, structured, and precise.</p>
+<p>The better your questions, the better your findings.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/hacker-mindset/">Hacker-Mindset</a></li>
+      <li><a href="http://localhost:1313/tags/web-security/">Web-Security</a></li>
+      <li><a href="http://localhost:1313/tags/pentest/">Pentest</a></li>
+      <li><a href="http://localhost:1313/tags/security-research/">Security-Research</a></li>
+      <li><a href="http://localhost:1313/tags/kevinsec/">Kevinsec</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:1313/blog/api-bola-explained-with-realistic-examples/">
+    <span class="title">Next »</span>
+    <span>API BOLA Explained with Realistic Examples</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Think Like a Hacker: 8 Mindset Methods for Security Researchers on x"
+            href="https://x.com/intent/tweet/?text=How%20to%20Think%20Like%20a%20Hacker%3a%208%20Mindset%20Methods%20for%20Security%20Researchers&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-think-like-hackers%2f&amp;hashtags=hacker-mindset%2cweb-security%2cpentest%2csecurity-research%2ckevinsec">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Think Like a Hacker: 8 Mindset Methods for Security Researchers on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-think-like-hackers%2f&amp;title=How%20to%20Think%20Like%20a%20Hacker%3a%208%20Mindset%20Methods%20for%20Security%20Researchers&amp;summary=How%20to%20Think%20Like%20a%20Hacker%3a%208%20Mindset%20Methods%20for%20Security%20Researchers&amp;source=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-think-like-hackers%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Think Like a Hacker: 8 Mindset Methods for Security Researchers on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-think-like-hackers%2f&title=How%20to%20Think%20Like%20a%20Hacker%3a%208%20Mindset%20Methods%20for%20Security%20Researchers">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Think Like a Hacker: 8 Mindset Methods for Security Researchers on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-think-like-hackers%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Think Like a Hacker: 8 Mindset Methods for Security Researchers on whatsapp"
+            href="https://api.whatsapp.com/send?text=How%20to%20Think%20Like%20a%20Hacker%3a%208%20Mindset%20Methods%20for%20Security%20Researchers%20-%20http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-think-like-hackers%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Think Like a Hacker: 8 Mindset Methods for Security Researchers on telegram"
+            href="https://telegram.me/share/url?text=How%20to%20Think%20Like%20a%20Hacker%3a%208%20Mindset%20Methods%20for%20Security%20Researchers&amp;url=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-think-like-hackers%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share How to Think Like a Hacker: 8 Mindset Methods for Security Researchers on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=How%20to%20Think%20Like%20a%20Hacker%3a%208%20Mindset%20Methods%20for%20Security%20Researchers&u=http%3a%2f%2flocalhost%3a1313%2fblog%2fhow-to-think-like-hackers%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer ks-footer">
+  <div class="ks-footer-inner">
+    <div class="ks-footer-brand">
+      <strong>KevinSec</strong>
+      <span>Secure · Test · Research · Protect</span>
+    </div>
+
+    <div class="ks-footer-copy">
+      © 2026 KevinSec. Security notes, offensive research, and practical web security education.
+    </div>
+
+    <div class="ks-footer-links">
+      <a href="/blog/">Blog</a>
+      <span>·</span>
+      <a href="/research/">Research</a>
+      <span>·</span>
+      <a href="/services/">Services</a>
+      <span>·</span>
+      <a href="/about/">About</a>
+      <span>·</span>
+      <a href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script></body>
+
+</html>

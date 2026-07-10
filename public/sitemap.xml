@@ -2,6 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/blog/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/hacker-mindset/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/how-to-think-like-hackers/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/kevinsec/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/pentest/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/security-research/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/web-security/</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/abuse-prevention/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
@@ -35,12 +68,6 @@
     <loc>http://localhost:1313/tags/beginner/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/blog/</loc>
-    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/bola/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
@@ -54,9 +81,6 @@
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/burp-suite-beginner-workflow-for-web-pentest/</loc>
-    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/checklist/</loc>
@@ -143,12 +167,6 @@
     <loc>http://localhost:1313/blog/jwt-security-testing-checklist/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/kevinsec/</loc>
-    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/lab/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
@@ -192,9 +210,6 @@
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/path-traversal-and-lfi-reading-files-you-should-not-read/</loc>
-    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/pentest/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/pentest-methodology/</loc>
@@ -281,9 +296,6 @@
     <loc>http://localhost:1313/blog/stored-xss-vs-reflected-xss-practical-differences/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/upload-security/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
@@ -294,9 +306,6 @@
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/web-pentest/</loc>
-    <lastmod>2026-07-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/web-security/</loc>
     <lastmod>2026-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/workflow/</loc>
